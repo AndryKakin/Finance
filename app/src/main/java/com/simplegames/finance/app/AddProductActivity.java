@@ -3,6 +3,8 @@ package com.simplegames.finance.app;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
 import android.view.View;
+import android.widget.EditText;
+import android.widget.ListView;
 
 import com.simplegames.finance.dal.IRepository;
 import com.simplegames.finance.dal.SQLiteDbFabric;
@@ -23,10 +25,12 @@ public class AddProductActivity extends ActionBarActivity {
     }
 
     public void addNewProduct_onClick(View view) {
+        EditText nameEditText = (EditText)findViewById(R.id.add_product_editProductName);
+        EditText descriptionEditText = (EditText)findViewById(R.id.add_product_editProductDescription);
         IRepository<Product> productRepository = _fabric.GetProductRepository();
         Product product = new Product();
-        product.Name = "";
-        product.Description = "";
+        product.Name = nameEditText.getText().toString();
+        product.Description = descriptionEditText.getText().toString();
         productRepository.Add(product);
     }
 }

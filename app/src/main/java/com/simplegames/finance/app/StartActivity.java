@@ -16,4 +16,9 @@ public class StartActivity extends ActionBarActivity {
         Intent intent = new Intent(StartActivity.this, AddProductActivity.class);
         startActivity(intent);
     }
+
+    public void displayAllProducts_onClick(View view) {
+        Intent intent = new Intent(StartActivity.this, ShowAllProductsActivity.class);
+        startActivity(intent);
+    }
 }

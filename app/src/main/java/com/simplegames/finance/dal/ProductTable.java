@@ -14,7 +14,7 @@ public class ProductTable {
     public static String SQL_CREATE = "CREATE TABLE " + TableName +
             "(" + IdColumnName + " INTEGER PRIMARY KEY AUTOINCREMENT, " +
             NameColumnName + " VARCHAR(255), " +
-            DescriptionColumnName + "VARCHAR(2048));";
+            DescriptionColumnName + " VARCHAR(2048));";
 
     public static String SQL_DELETE = "DROP TABLE IF EXISTS " + TableName;
 }
