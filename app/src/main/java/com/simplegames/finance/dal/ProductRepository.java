@@ -58,6 +58,7 @@ public class ProductRepository implements IRepository<Product> {
             String name = cursor.getString(cursor
                     .getColumnIndex(ProductTable.NameColumnName));
             Log.i("LOG_TAG", "ROW " + id + " HAS NAME " + name);
+
         }
         cursor.close();
         return null;
