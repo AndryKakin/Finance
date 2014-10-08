@@ -1,5 +1,6 @@
 package com.simplegames.finance.app;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
 import android.view.View;
@@ -32,5 +33,8 @@ public class AddProductActivity extends ActionBarActivity {
         product.Name = nameEditText.getText().toString();
         product.Description = descriptionEditText.getText().toString();
         productRepository.Add(product);
+
+        Intent intent = new Intent(AddProductActivity.this, StartActivity.class);
+        startActivity(intent);
     }
 }
