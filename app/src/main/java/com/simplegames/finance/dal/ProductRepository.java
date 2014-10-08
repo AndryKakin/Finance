@@ -52,15 +52,24 @@ public class ProductRepository implements IRepository<Product> {
                 null, // don't filter by row groups
                 null // The sort order
         );
+        ArrayList<Product> result = new ArrayList<Product>();
         while (cursor.moveToNext()) {
             // GET COLUMN INDICES + VALUES OF THOSE COLUMNS
             int id = cursor.getInt(cursor.getColumnIndex(ProductTable.IdColumnName));
             String name = cursor.getString(cursor
                     .getColumnIndex(ProductTable.NameColumnName));
-            Log.i("LOG_TAG", "ROW " + id + " HAS NAME " + name);
 
+            String description = cursor.getString(cursor
+                    .getColumnIndex(ProductTable.DescriptionColumnName));
+
+            Log.i("LOG_TAG", "ROW " + id + " NAME " + name + " DESCRIPTION " + description);
+            Product product = new Product();
+            product.Id = id;
+            product.Name = name;
+            product.Description = description;
+            result.add(product);
         }
         cursor.close();
-        return null;
+        return result;
     }
 }
