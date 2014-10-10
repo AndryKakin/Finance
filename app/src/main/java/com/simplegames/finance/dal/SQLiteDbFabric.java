@@ -2,6 +2,7 @@ package com.simplegames.finance.dal;
 
 import android.content.Context;
 
+import com.simplegames.finance.dal.product.ProductRepository;
 import com.simplegames.finance.models.Product;
 
 /**

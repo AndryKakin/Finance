@@ -5,7 +5,10 @@ import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.util.Log;
 
-import com.simplegames.finance.models.Product;
+import com.simplegames.finance.dal.product.ProductTable;
+import com.simplegames.finance.dal.shop.ShopTable;
+
+import java.util.ArrayList;
 
 /**
  * Created by andrey.kakin on 02.10.14.
@@ -14,28 +17,37 @@ public class FinanceDataBase extends SQLiteOpenHelper {
     private static final String DATABASE_NAME = "finance_database.db";
     private static final int DATABASE_VERSION = 1;
 
-    private static final String SQL_CREATE_ENTRIES = ProductTable.SQL_CREATE;
-    private static final String SQL_DELETE_ENTRIES = ProductTable.SQL_DELETE;
+    private ArrayList<ITableParams> _tables = new ArrayList<ITableParams>();
 
         public FinanceDataBase(Context context) {
             // TODO Auto-generated constructor stub
             super(context, DATABASE_NAME, null, DATABASE_VERSION);
+            _tables.add(new ProductTable());
+            _tables.add(new ShopTable());
         }
 
         @Override
         public void onCreate(SQLiteDatabase db) {
-            // TODO Auto-generated method stub
-            db.execSQL(SQL_CREATE_ENTRIES);
+            String sqlCreates = "";
+            for(int i=0; i < _tables.size(); i++) {
+                ITableParams table = _tables.get(i);
+                sqlCreates += table.GetSqlCreate() + " \n ";
+            }
+            db.execSQL(sqlCreates);
         }
 
         @Override
         public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
             // TODO Auto-generated method stub
-            Log.w("LOG_TAG", "Обновление базы данных с версии " + oldVersion
-                    + " до версии " + newVersion + ", которое удалит все старые данные");
-            // Удаляем предыдущую таблицу при апгрейде
-            db.execSQL(SQL_DELETE_ENTRIES);
-            // Создаём новый экземпляр таблицы
+            Log.w("LOG_TAG", "Update database from  " + oldVersion
+                    + " to version " + newVersion + ".");
+            String sqlDeletes = "";
+            for(int i=0; i < _tables.size(); i++) {
+                ITableParams table = _tables.get(i);
+                sqlDeletes += table.GetSqlDelete() + " \n ";
+            }
+            db.execSQL(sqlDeletes);
+
             onCreate(db);
         }
     }

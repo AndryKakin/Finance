@@ -1,4 +1,4 @@
-package com.simplegames.finance.dal;
+package com.simplegames.finance.dal.product;
 
 import android.content.ContentValues;
 import android.content.Context;
@@ -6,6 +6,9 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.util.Log;
 
+import com.simplegames.finance.dal.FinanceDataBase;
+import com.simplegames.finance.dal.IRepository;
+import com.simplegames.finance.dal.ITableParams;
 import com.simplegames.finance.models.Product;
 
 import java.util.ArrayList;
@@ -15,17 +18,20 @@ import java.util.ArrayList;
  */
 public class ProductRepository implements IRepository<Product> {
     private FinanceDataBase _financeDataBase;
+    private ProductTable _productTable = new ProductTable();
+
     public ProductRepository(Context context)
     {
         _financeDataBase = new FinanceDataBase(context);
     }
+
     @Override
     public void Add(Product item) {
         SQLiteDatabase sqdb = _financeDataBase.getWritableDatabase();
         ContentValues cv = new ContentValues();
-        cv.put(ProductTable.NameColumnName, item.Name);
-        cv.put(ProductTable.DescriptionColumnName,item.Description);
-        sqdb.insert(ProductTable.TableName, null, cv);
+        cv.put(_productTable.NameColumnName, item.Name);
+        cv.put(_productTable.DescriptionColumnName,item.Description);
+        sqdb.insert(_productTable.GetTableName(), null, cv);
         sqdb.close();
     }
 
@@ -42,10 +48,10 @@ public class ProductRepository implements IRepository<Product> {
     @Override
     public ArrayList<Product> GetAll() {
         SQLiteDatabase sqdb = _financeDataBase.getWritableDatabase();
-        Cursor cursor = sqdb.query(ProductTable.TableName, new String[] {
-                ProductTable.IdColumnName,
-                ProductTable.NameColumnName,
-                ProductTable.DescriptionColumnName},
+        Cursor cursor = sqdb.query(_productTable.GetTableName(), new String[] {
+                        _productTable.IdColumnName,
+                        _productTable.NameColumnName,
+                        _productTable.DescriptionColumnName},
                 null, // The columns for the WHERE clause
                 null, // The values for the WHERE clause
                 null, // don't group the rows
@@ -55,12 +61,14 @@ public class ProductRepository implements IRepository<Product> {
         ArrayList<Product> result = new ArrayList<Product>();
         while (cursor.moveToNext()) {
             // GET COLUMN INDICES + VALUES OF THOSE COLUMNS
-            int id = cursor.getInt(cursor.getColumnIndex(ProductTable.IdColumnName));
+            int id = cursor.getInt(cursor
+                    .getColumnIndex(_productTable.IdColumnName));
+
             String name = cursor.getString(cursor
-                    .getColumnIndex(ProductTable.NameColumnName));
+                    .getColumnIndex(_productTable.NameColumnName));
 
             String description = cursor.getString(cursor
-                    .getColumnIndex(ProductTable.DescriptionColumnName));
+                    .getColumnIndex(_productTable.DescriptionColumnName));
 
             Log.i("LOG_TAG", "ROW " + id + " NAME " + name + " DESCRIPTION " + description);
             Product product = new Product();

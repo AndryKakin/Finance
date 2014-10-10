@@ -1,7 +1,6 @@
 package com.simplegames.finance.BL;
 
 import com.simplegames.finance.dal.IRepository;
-import com.simplegames.finance.dal.ProductRepository;
 import com.simplegames.finance.models.Product;
 
 /**
