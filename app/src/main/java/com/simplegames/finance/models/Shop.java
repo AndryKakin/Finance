@@ -6,6 +6,7 @@ package com.simplegames.finance.models;
 public class Shop {
     public int Id;
     public String Name;
+    public String Description;
 
     public String City;
     public String Street;

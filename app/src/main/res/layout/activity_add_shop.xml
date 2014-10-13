@@ -13,28 +13,27 @@
     <TextView
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:text="@string/product_add_name_header"
+        android:text="@string/shop_add_name_header"
         android:id="@+id/shopAddNameHeaderView"/>
 
     <EditText
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/add_shop_editProductName"/>
+        android:id="@+id/add_shop_editName"/>
+
     <TextView
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:text="@string/product_add_description_header"
-        android:id="@+id/productDescriptionHeaderView"/>
+        android:text="@string/shop_add_description_header"/>
 
     <EditText
         android:layout_width="fill_parent"
         android:layout_height="match_parent"
-        android:id="@+id/add_product_editProductDescription"
-        android:layout_weight="0.93" />
+        android:id="@+id/add_shop_editDescription"/>
     <Button
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:text="Add new product"
+        android:text="@string/shop_add_button_add_header"
         android:id="@+id/addNewProductButton"
         android:onClick="addNewProduct_onClick"/>
 </LinearLayout>

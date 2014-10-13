@@ -11,6 +11,7 @@ public class ShopTable implements ITableParams {
     public String CityColumnName = "City";
     public String StreetColumnName = "Street";
     public String NumberOfHouseColumnName = "NumberOfStreet";
+    public String DescriptionColumnName = "Description";
 
     @Override
     public String GetTableName() {
@@ -24,6 +25,7 @@ public class ShopTable implements ITableParams {
                 NameColumnName          + " VARCHAR(255), " +
                 CityColumnName          + " VARCHAR(255), " +
                 StreetColumnName        + " VARCHAR(255), " +
+                DescriptionColumnName   + " VARCHAR(2048), " +
                 NumberOfHouseColumnName + " INTEGER);";
     }
 

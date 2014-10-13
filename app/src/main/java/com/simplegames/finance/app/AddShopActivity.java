@@ -26,13 +26,13 @@ public class AddShopActivity extends ActionBarActivity {
     }
 
     public void addNewProduct_onClick(View view) {
-        //EditText nameEditText = (EditText)findViewById(R.id.add_product_editProductName);
-        //EditText descriptionEditText = (EditText)findViewById(R.id.add_product_editProductDescription);
-        IRepository<Shop> productRepository = _fabric.GetShopRepository();
-        Product product = new Product();
-        //product.Name = nameEditText.getText().toString();
-        //product.Description = descriptionEditText.getText().toString();
-        //productRepository.Add(product);
+        EditText nameEditText = (EditText)findViewById(R.id.add_shop_editName);
+        EditText descriptionEditText = (EditText)findViewById(R.id.add_shop_editDescription);
+        IRepository<Shop> shopRepository = _fabric.GetShopRepository();
+        Shop shop = new Shop();
+        shop.Name = nameEditText.getText().toString();
+        shop.Description = descriptionEditText.getText().toString();
+        shopRepository.Add(shop);
 
         Intent intent = new Intent(AddShopActivity.this, StartActivity.class);
         startActivity(intent);
