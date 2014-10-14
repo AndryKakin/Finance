@@ -11,14 +11,11 @@ public class ProductTable implements ITableParams{
     public String NameColumnName = "Name";
     public String DescriptionColumnName = "Description";
 
-    @Override
-    public String GetTableName() {
-        return "Product";
-    }
+    public static String TableName = "Product";
 
     @Override
     public String GetSqlCreate() {
-        return "CREATE TABLE " + GetTableName() + "(" +
+        return "CREATE TABLE " + TableName + " (" +
                 IdColumnName + " INTEGER PRIMARY KEY AUTOINCREMENT, " +
                 NameColumnName + " VARCHAR(255), " +
                 DescriptionColumnName + " VARCHAR(2048));";
@@ -26,6 +23,6 @@ public class ProductTable implements ITableParams{
 
     @Override
     public String GetSqlDelete() {
-        return "DROP TABLE IF EXISTS " + GetTableName();
+        return "DROP TABLE IF EXISTS " + TableName;
     }
 }

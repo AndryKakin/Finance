@@ -1,6 +1,5 @@
-package com.simplegames.finance.app;
+package com.simplegames.finance.ViewModels;
 
-import android.app.ListActivity;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
 import android.widget.ArrayAdapter;

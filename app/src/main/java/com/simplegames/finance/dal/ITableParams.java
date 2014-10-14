@@ -3,8 +3,15 @@ package com.simplegames.finance.dal;
 /**
  * Created by andrey.kakin on 10.10.2014.
  */
-public interface ITableParams {
-    public String GetTableName();
-    public String GetSqlCreate();
-    public String GetSqlDelete();
+public abstract class ITableParams {
+    public abstract String GetSqlCreate();
+    public abstract String GetSqlDelete();
+
+    protected static String CreateForeignKey(String fromColumn,
+                                           String toTable,
+                                           String toColumn)
+    {
+        return "  FOREIGN KEY (" + fromColumn + ")" +
+                "REFERENCES " + toTable + "(" + toColumn + ")";
+    }
 }

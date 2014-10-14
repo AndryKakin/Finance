@@ -1,11 +1,10 @@
-package com.simplegames.finance.app;
+package com.simplegames.finance.ViewModels;
 
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
 import android.view.View;
 import android.widget.EditText;
-import android.widget.ListView;
 
 import com.simplegames.finance.dal.IRepository;
 import com.simplegames.finance.dal.SQLiteDbFabric;

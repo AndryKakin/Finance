@@ -1,4 +1,4 @@
-package com.simplegames.finance.app;
+package com.simplegames.finance.ViewModels;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -8,7 +8,6 @@ import android.widget.EditText;
 
 import com.simplegames.finance.dal.IRepository;
 import com.simplegames.finance.dal.SQLiteDbFabric;
-import com.simplegames.finance.models.Product;
 import com.simplegames.finance.models.Shop;
 
 /**

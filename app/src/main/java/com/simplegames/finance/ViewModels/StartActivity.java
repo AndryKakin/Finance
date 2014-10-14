@@ -1,4 +1,4 @@
-package com.simplegames.finance.app;
+package com.simplegames.finance.ViewModels;
 
 import android.content.Intent;
 import android.support.v7.app.ActionBarActivity;

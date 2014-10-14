@@ -20,7 +20,7 @@ public class ShopTable implements ITableParams {
 
     @Override
     public String GetSqlCreate() {
-        return "CREATE TABLE " + GetTableName() + "(" +
+        return "CREATE TABLE " + GetTableName() + " (" +
                 IdColumnName            + " INTEGER PRIMARY KEY AUTOINCREMENT, " +
                 NameColumnName          + " VARCHAR(255), " +
                 CityColumnName          + " VARCHAR(255), " +
