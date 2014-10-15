@@ -6,6 +6,7 @@ import android.support.v7.app.ActionBarActivity;
 import android.view.View;
 import android.widget.EditText;
 
+import com.simplegames.finance.app.R;
 import com.simplegames.finance.dal.IRepository;
 import com.simplegames.finance.dal.SQLiteDbFabric;
 import com.simplegames.finance.models.Shop;

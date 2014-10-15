@@ -3,7 +3,7 @@ package com.simplegames.finance.dal;
 /**
  * Created by andrey.kakin on 10.10.2014.
  */
-public abstract class ITableParams {
+public abstract class TableParams {
     public abstract String GetSqlCreate();
     public abstract String GetSqlDelete();
 

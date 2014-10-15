@@ -1,11 +1,11 @@
 package com.simplegames.finance.dal.product;
 
-import com.simplegames.finance.dal.ITableParams;
+import com.simplegames.finance.dal.TableParams;
 
 /**
  * Created by andrey.kakin on 03.10.14.
  */
-public class ProductTable implements ITableParams{
+public class ProductTable extends TableParams {
 
     public String IdColumnName = "_id";
     public String NameColumnName = "Name";

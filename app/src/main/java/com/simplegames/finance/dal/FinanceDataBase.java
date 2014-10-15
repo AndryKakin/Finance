@@ -17,7 +17,7 @@ public class FinanceDataBase extends SQLiteOpenHelper {
     private static final String DATABASE_NAME = "finance_database.db";
     private static final int DATABASE_VERSION = 1;
 
-    private ArrayList<ITableParams> _tables = new ArrayList<ITableParams>();
+    private ArrayList<TableParams> _tables = new ArrayList<TableParams>();
 
         public FinanceDataBase(Context context) {
             // TODO Auto-generated constructor stub
@@ -30,7 +30,7 @@ public class FinanceDataBase extends SQLiteOpenHelper {
         public void onCreate(SQLiteDatabase db) {
             String sqlCreates = "";
             for(int i=0; i < _tables.size(); i++) {
-                ITableParams table = _tables.get(i);
+                TableParams table = _tables.get(i);
                 sqlCreates += table.GetSqlCreate() + " \n ";
             }
             db.execSQL(sqlCreates);
@@ -43,7 +43,7 @@ public class FinanceDataBase extends SQLiteOpenHelper {
                     + " to version " + newVersion + ".");
             String sqlDeletes = "";
             for(int i=0; i < _tables.size(); i++) {
-                ITableParams table = _tables.get(i);
+                TableParams table = _tables.get(i);
                 sqlDeletes += table.GetSqlDelete() + " \n ";
             }
             db.execSQL(sqlDeletes);

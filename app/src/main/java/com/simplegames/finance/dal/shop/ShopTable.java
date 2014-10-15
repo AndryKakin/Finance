@@ -1,11 +1,11 @@
 package com.simplegames.finance.dal.shop;
 
-import com.simplegames.finance.dal.ITableParams;
+import com.simplegames.finance.dal.TableParams;
 
 /**
  * Created by andrey.kakin on 10.10.2014.
  */
-public class ShopTable implements ITableParams {
+public class ShopTable extends TableParams {
     public String IdColumnName = "_id";
     public String NameColumnName = "Name";
     public String CityColumnName = "City";
@@ -13,14 +13,11 @@ public class ShopTable implements ITableParams {
     public String NumberOfHouseColumnName = "NumberOfStreet";
     public String DescriptionColumnName = "Description";
 
-    @Override
-    public String GetTableName() {
-        return "Shop";
-    }
+    public static String TableName = "Shop";
 
     @Override
     public String GetSqlCreate() {
-        return "CREATE TABLE " + GetTableName() + " (" +
+        return "CREATE TABLE " + ShopTable.TableName + " (" +
                 IdColumnName            + " INTEGER PRIMARY KEY AUTOINCREMENT, " +
                 NameColumnName          + " VARCHAR(255), " +
                 CityColumnName          + " VARCHAR(255), " +
@@ -31,6 +28,6 @@ public class ShopTable implements ITableParams {
 
     @Override
     public String GetSqlDelete() {
-        return "DROP TABLE IF EXISTS " + GetTableName();
+        return "DROP TABLE IF EXISTS " + ShopTable.TableName;
     }
 }

@@ -6,6 +6,7 @@ import android.support.v7.app.ActionBarActivity;
 import android.view.View;
 import android.widget.EditText;
 
+import com.simplegames.finance.app.R;
 import com.simplegames.finance.dal.IRepository;
 import com.simplegames.finance.dal.SQLiteDbFabric;
 import com.simplegames.finance.models.Product;
@@ -33,6 +34,11 @@ public class AddProductActivity extends ActionBarActivity {
         product.Description = descriptionEditText.getText().toString();
         productRepository.Add(product);
 
+        Intent intent = new Intent(AddProductActivity.this, StartActivity.class);
+        startActivity(intent);
+    }
+
+    public void cancel_onClick(View view) {
         Intent intent = new Intent(AddProductActivity.this, StartActivity.class);
         startActivity(intent);
     }

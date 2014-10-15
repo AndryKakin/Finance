@@ -5,6 +5,7 @@ import android.support.v7.app.ActionBarActivity;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
+import com.simplegames.finance.app.R;
 import com.simplegames.finance.dal.IRepository;
 import com.simplegames.finance.dal.SQLiteDbFabric;
 import com.simplegames.finance.models.Product;

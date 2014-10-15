@@ -33,7 +33,7 @@ public class ShopRepository implements IRepository<Shop> {
         cv.put(_shopTable.CityColumnName, item.City);
         cv.put(_shopTable.StreetColumnName, item.Street);
         cv.put(_shopTable.NumberOfHouseColumnName, item.NumberOfHouse);
-        sqdb.insert(_shopTable.GetTableName(), null, cv);
+        sqdb.insert(ShopTable.TableName, null, cv);
         sqdb.close();
     }
 
@@ -50,7 +50,7 @@ public class ShopRepository implements IRepository<Shop> {
     @Override
     public ArrayList<Shop> GetAll() {
         SQLiteDatabase sqdb = _financeDataBase.getWritableDatabase();
-        Cursor cursor = sqdb.query(_shopTable.GetTableName(), new String[] {
+        Cursor cursor = sqdb.query(ShopTable.TableName, new String[] {
                         _shopTable.IdColumnName,
                         _shopTable.NameColumnName,
                         _shopTable.CityColumnName,

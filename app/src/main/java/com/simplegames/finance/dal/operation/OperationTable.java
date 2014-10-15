@@ -1,12 +1,12 @@
 package com.simplegames.finance.dal.operation;
 
-import com.simplegames.finance.dal.ITableParams;
+import com.simplegames.finance.dal.TableParams;
 import com.simplegames.finance.dal.product.ProductTable;
 
 /**
  * Created by andrey.kakin on 13.10.2014.
  */
-public class OperationTable implements ITableParams{
+public class OperationTable extends TableParams {
 
     public String IdColumnName = "_id";
     public String DateTimeColumnName = "Date";

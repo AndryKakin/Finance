@@ -8,7 +8,6 @@ import android.util.Log;
 
 import com.simplegames.finance.dal.FinanceDataBase;
 import com.simplegames.finance.dal.IRepository;
-import com.simplegames.finance.dal.ITableParams;
 import com.simplegames.finance.models.Product;
 
 import java.util.ArrayList;
@@ -31,7 +30,7 @@ public class ProductRepository implements IRepository<Product> {
         ContentValues cv = new ContentValues();
         cv.put(_productTable.NameColumnName, item.Name);
         cv.put(_productTable.DescriptionColumnName,item.Description);
-        sqdb.insert(_productTable.GetTableName(), null, cv);
+        sqdb.insert(ProductTable.TableName, null, cv);
         sqdb.close();
     }
 
@@ -48,7 +47,7 @@ public class ProductRepository implements IRepository<Product> {
     @Override
     public ArrayList<Product> GetAll() {
         SQLiteDatabase sqdb = _financeDataBase.getWritableDatabase();
-        Cursor cursor = sqdb.query(_productTable.GetTableName(), new String[] {
+        Cursor cursor = sqdb.query(ProductTable.TableName, new String[] {
                         _productTable.IdColumnName,
                         _productTable.NameColumnName,
                         _productTable.DescriptionColumnName},
