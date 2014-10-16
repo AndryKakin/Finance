@@ -2,14 +2,14 @@
 <pre-dex-items>
 
     <item
-        dex="L:\Books\Dropbox\AnroidSource\Finance\app\build\intermediates\pre-dexed\debug\classes-90c97c4ab94325a361cc5e495f206b1a879c8eb6.jar"
-        jar="L:\Books\Dropbox\AnroidSource\Finance\app\build\intermediates\exploded-aar\com.android.support\appcompat-v7\19.1.0\classes.jar"
+        dex="D:\MyFiles\Projects\Finance\app\build\intermediates\pre-dexed\debug\classes-179fe1d17be8f86abaf5a5002dbc840e9067e075.jar"
+        jar="D:\MyFiles\Projects\Finance\app\build\intermediates\exploded-aar\com.android.support\appcompat-v7\19.1.0\classes.jar"
         jumboMode="false"
         revision="20.0.0"
         sha1="3499ceba05ca1f6037c6a2fad73df8f636224a28"/>
     <item
-        dex="L:\Books\Dropbox\AnroidSource\Finance\app\build\intermediates\pre-dexed\debug\support-v4-19.1.0-da29af4cdb154a91678790b3be128d9e527d81e6.jar"
-        jar="D:\ProgramFiles\Android\sdk\extras\android\m2repository\com\android\support\support-v4\19.1.0\support-v4-19.1.0.jar"
+        dex="D:\MyFiles\Projects\Finance\app\build\intermediates\pre-dexed\debug\support-v4-19.1.0-e80f572a9d6445c3d2a8a6049960129641777e7c.jar"
+        jar="D:\MyFiles\Android\Android\sdk\extras\android\m2repository\com\android\support\support-v4\19.1.0\support-v4-19.1.0.jar"
         jumboMode="false"
         revision="20.0.0"
         sha1="85f201b380937e61a9dce6ca90ccf6872abbfb67"/>

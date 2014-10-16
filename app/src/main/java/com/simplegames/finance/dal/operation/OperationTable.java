@@ -8,7 +8,7 @@ import com.simplegames.finance.dal.product.ProductTable;
  */
 public class OperationTable extends TableParams {
 
-    public String IdColumnName = "_id";
+    public static String IdColumnName = "_id";
     public String DateTimeColumnName = "Date";
     public String CurrencyColumnName = "Currency";
 

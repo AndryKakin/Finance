@@ -7,7 +7,7 @@ import com.simplegames.finance.dal.TableParams;
  */
 public class ProductTable extends TableParams {
 
-    public String IdColumnName = "_id";
+    public static String IdColumnName = "_id";
     public String NameColumnName = "Name";
     public String DescriptionColumnName = "Description";
 

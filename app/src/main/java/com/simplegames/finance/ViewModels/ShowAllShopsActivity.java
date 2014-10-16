@@ -25,19 +25,19 @@ public class ShowAllShopsActivity extends ActionBarActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_show_all_shops);
-        _fabric = new SQLiteDbFabric();
-        _fabric.Context = this;
+        //_fabric = new SQLiteDbFabric();
+        //_fabric.Context = this;
 
-        IRepository<Shop> shopRepository = _fabric.GetShopRepository();
-        _shops = shopRepository.GetAll();
-        ArrayList<String> shops = new ArrayList<String>();
-        for (int i=0; i < _shops.size(); i++)
-        {
-            shops.add(_shops.get(i).Name);
-        }
-        adapter = new ArrayAdapter<String>(this,
-                android.R.layout.simple_list_item_1, shops);
-        ListView listOfProducts = (ListView)findViewById(R.id.listShopsView);
-        listOfProducts.setAdapter(adapter);
+        //IRepository<Shop> shopRepository = _fabric.GetShopRepository();
+        //_shops = shopRepository.GetAll();
+        //ArrayList<String> shops = new ArrayList<String>();
+        //for (int i=0; i < _shops.size(); i++)
+        //{
+        //    shops.add(_shops.get(i).Name);
+        //}
+        //adapter = new ArrayAdapter<String>(this,
+        //        android.R.layout.simple_list_item_1, shops);
+        //ListView listOfProducts = (ListView)findViewById(R.id.listShopsView);
+        //listOfProducts.setAdapter(adapter);
     }
 }

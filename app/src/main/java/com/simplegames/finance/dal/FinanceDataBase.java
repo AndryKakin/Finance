@@ -5,6 +5,8 @@ import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.util.Log;
 
+import com.simplegames.finance.dal.operation.OperationTable;
+import com.simplegames.finance.dal.operationItem.OperationItemTable;
 import com.simplegames.finance.dal.product.ProductTable;
 import com.simplegames.finance.dal.shop.ShopTable;
 
@@ -24,6 +26,8 @@ public class FinanceDataBase extends SQLiteOpenHelper {
             super(context, DATABASE_NAME, null, DATABASE_VERSION);
             _tables.add(new ProductTable());
             _tables.add(new ShopTable());
+            _tables.add(new OperationTable());
+            _tables.add(new OperationItemTable());
         }
 
         @Override
