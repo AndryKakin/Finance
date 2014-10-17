@@ -25,9 +25,10 @@ public class OperationItemTable extends TableParams {
                 PIO_IdColumnName        + " INTEGER PRIMARY KEY AUTOINCREMENT, " +
                 PIO_OperationIdColumnName   + " INTEGER, " +
                 PIO_PriceColumnName         + " DECIMAL, " +
+                PIO_ProductIdColumnName     + " INTEGER, " +
                 CreateForeignKey(PIO_OperationIdColumnName, OperationTable.TableName, OperationTable.IdColumnName) +
                 CreateForeignKey(PIO_ProductIdColumnName, ProductTable.TableName, ProductTable.IdColumnName)
-                + ");";
+                + "); ";
     }
 
     @Override

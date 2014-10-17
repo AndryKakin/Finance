@@ -18,7 +18,7 @@ public class ProductTable extends TableParams {
         return "CREATE TABLE " + TableName + " (" +
                 IdColumnName + " INTEGER PRIMARY KEY AUTOINCREMENT, " +
                 NameColumnName + " VARCHAR(255), " +
-                DescriptionColumnName + " VARCHAR(2048));";
+                DescriptionColumnName + " VARCHAR(2048)); ";
     }
 
     @Override

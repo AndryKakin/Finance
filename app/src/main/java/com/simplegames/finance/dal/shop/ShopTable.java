@@ -23,7 +23,7 @@ public class ShopTable extends TableParams {
                 CityColumnName          + " VARCHAR(255), " +
                 StreetColumnName        + " VARCHAR(255), " +
                 DescriptionColumnName   + " VARCHAR(2048), " +
-                NumberOfHouseColumnName + " INTEGER);";
+                NumberOfHouseColumnName + " INTEGER); ";
     }
 
     @Override

@@ -27,20 +27,12 @@ public class OperationTable extends TableParams {
         return "CREATE TABLE "  + OperationTable.TableName + " (" +
         IdColumnName            + " INTEGER PRIMARY KEY AUTOINCREMENT, " +
         DateTimeColumnName      + " DATETIME, " +
-        CurrencyColumnName      + " VARCHAR(3)); \n" +
-        "CREATE TABLE "         + ProductInOperationTableName + " (" +
-        PIO_IdColumnName        + " INTEGER PRIMARY KEY AUTOINCREMENT, " +
-        PIO_OperationIdColumnName   + " INTEGER, " +
-        PIO_PriceColumnName         + " DECIMAL, " +
-        CreateForeignKey(PIO_OperationIdColumnName, OperationTable.TableName, IdColumnName) +
-        CreateForeignKey(PIO_ProductIdColumnName, ProductTable.TableName, IdColumnName)
-                + ");";
+        CurrencyColumnName      + " VARCHAR(3));";
     }
 
     @Override
     public String GetSqlDelete() {
-        return "DROP TABLE IF EXISTS " + TableName + " \n " +
-                "DROP TABLE IF EXISTS " + ProductInOperationTableName;
+        return "DROP TABLE IF EXISTS " + TableName;
     }
 }
 

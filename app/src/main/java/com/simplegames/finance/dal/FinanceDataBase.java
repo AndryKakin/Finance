@@ -32,12 +32,9 @@ public class FinanceDataBase extends SQLiteOpenHelper {
 
         @Override
         public void onCreate(SQLiteDatabase db) {
-            String sqlCreates = "";
             for(int i=0; i < _tables.size(); i++) {
-                TableParams table = _tables.get(i);
-                sqlCreates += table.GetSqlCreate() + " \n ";
+                db.execSQL(_tables.get(i).GetSqlCreate());
             }
-            db.execSQL(sqlCreates);
         }
 
         @Override
