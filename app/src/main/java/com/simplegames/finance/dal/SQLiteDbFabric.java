@@ -4,8 +4,8 @@ import android.content.Context;
 
 import com.simplegames.finance.dal.product.ProductRepository;
 import com.simplegames.finance.dal.shop.ShopRepository;
-import com.simplegames.finance.models.Product;
-import com.simplegames.finance.models.Shop;
+import com.simplegames.finance.dal.models.Product;
+import com.simplegames.finance.dal.models.Shop;
 
 /**
  * Created by andrey.kakin on 03.10.14.

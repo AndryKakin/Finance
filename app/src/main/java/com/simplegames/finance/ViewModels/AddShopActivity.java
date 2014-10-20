@@ -9,7 +9,7 @@ import android.widget.EditText;
 import com.simplegames.finance.app.R;
 import com.simplegames.finance.dal.IRepository;
 import com.simplegames.finance.dal.SQLiteDbFabric;
-import com.simplegames.finance.models.Shop;
+import com.simplegames.finance.dal.models.Shop;
 
 /**
  * Created by Andrey on 11.10.2014.

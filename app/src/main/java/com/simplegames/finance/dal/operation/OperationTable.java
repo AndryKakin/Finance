@@ -12,14 +12,6 @@ public class OperationTable extends TableParams {
     public String DateTimeColumnName = "Date";
     public String CurrencyColumnName = "Currency";
 
-    public String ProductInOperationTableName = "ProductItemIn";
-    public String PIO_IdColumnName = "_id";
-    public String PIO_OperationIdColumnName = "FKOperationId";
-    public String PIO_ProductIdColumnName = "FKProductId";
-    public String PIO_PriceColumnName = "Price";
-
-
-
     public static String TableName = "Operation";
 
     @Override

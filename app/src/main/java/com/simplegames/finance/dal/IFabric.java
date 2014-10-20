@@ -1,7 +1,7 @@
 package com.simplegames.finance.dal;
 
-import com.simplegames.finance.models.Product;
-import com.simplegames.finance.models.Shop;
+import com.simplegames.finance.dal.models.Product;
+import com.simplegames.finance.dal.models.Shop;
 
 /**
  * Created by andrey.kakin on 03.10.14.

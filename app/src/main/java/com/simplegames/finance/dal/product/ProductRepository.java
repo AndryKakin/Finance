@@ -8,7 +8,7 @@ import android.util.Log;
 
 import com.simplegames.finance.dal.FinanceDataBase;
 import com.simplegames.finance.dal.IRepository;
-import com.simplegames.finance.models.Product;
+import com.simplegames.finance.dal.models.Product;
 
 import java.util.ArrayList;
 

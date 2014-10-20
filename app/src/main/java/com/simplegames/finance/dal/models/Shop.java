@@ -1,4 +1,4 @@
-package com.simplegames.finance.models;
+package com.simplegames.finance.dal.models;
 
 /**
  * Created by andrey.kakin on 10.10.2014.

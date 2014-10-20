@@ -1,4 +1,4 @@
-package com.simplegames.finance.models;
+package com.simplegames.finance.dal.models;
 
 import java.math.BigDecimal;
 

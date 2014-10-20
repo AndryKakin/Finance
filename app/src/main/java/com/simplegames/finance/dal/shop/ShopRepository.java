@@ -4,12 +4,10 @@ import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
-import android.util.Log;
 
 import com.simplegames.finance.dal.FinanceDataBase;
 import com.simplegames.finance.dal.IRepository;
-import com.simplegames.finance.models.Product;
-import com.simplegames.finance.models.Shop;
+import com.simplegames.finance.dal.models.Shop;
 
 import java.util.ArrayList;
 
@@ -80,7 +78,6 @@ public class ShopRepository implements IRepository<Shop> {
             int number = cursor.getInt(cursor
                     .getColumnIndex(_shopTable.NumberOfHouseColumnName));
 
-            //Log.i("LOG_TAG", "ROW " + id + " NAME " + name + " DESCRIPTION " + description);
             Shop shop = new Shop();
             shop.Id = id;
             shop.Name = name;
