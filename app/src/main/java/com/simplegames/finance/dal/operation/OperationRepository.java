@@ -15,7 +15,6 @@ import java.util.ArrayList;
  * Created by andrey.kakin on 13.10.2014.
  */
 public class OperationRepository implements IRepository<Operation> {
-
     private FinanceDataBase _financeDataBase;
     private OperationTable _operationTable = new OperationTable();
 
@@ -31,7 +30,7 @@ public class OperationRepository implements IRepository<Operation> {
         DateFormat dateF = DateFormat.getDateTimeInstance();
 
         cv.put(_operationTable.DateTimeColumnName, dateF.format(item.DateTime));
-
+        //cv.put(_operationTable.CurrencyColumnName,);
         sqdb.insert(OperationTable.TableName, null, cv);
         sqdb.close();
     }
