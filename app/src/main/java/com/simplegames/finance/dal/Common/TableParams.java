@@ -1,4 +1,4 @@
-package com.simplegames.finance.dal;
+package com.simplegames.finance.dal.Common;
 
 /**
  * Created by andrey.kakin on 10.10.2014.

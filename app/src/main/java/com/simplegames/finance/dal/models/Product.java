@@ -10,6 +10,5 @@ public class Product {
     public String Name;
 
     public Bitmap Bitmap;
-    public String BarCode;
     public String Description;
 }

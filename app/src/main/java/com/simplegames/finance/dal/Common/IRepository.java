@@ -1,4 +1,4 @@
-package com.simplegames.finance.dal;
+package com.simplegames.finance.dal.Common;
 
 import java.util.ArrayList;
 

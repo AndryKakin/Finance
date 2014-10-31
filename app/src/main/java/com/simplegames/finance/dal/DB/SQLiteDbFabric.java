@@ -1,7 +1,9 @@
-package com.simplegames.finance.dal;
+package com.simplegames.finance.dal.DB;
 
 import android.content.Context;
 
+import com.simplegames.finance.dal.Common.IRepository;
+import com.simplegames.finance.dal.IFabric;
 import com.simplegames.finance.dal.models.Operation;
 import com.simplegames.finance.dal.models.OperationItem;
 import com.simplegames.finance.dal.operation.OperationRepository;
@@ -14,7 +16,7 @@ import com.simplegames.finance.dal.models.Shop;
 /**
  * Created by andrey.kakin on 03.10.14.
  */
-public class SQLiteDbFabric implements IFabric{
+public class SQLiteDbFabric implements IFabric {
 
     public Context Context;
     @Override

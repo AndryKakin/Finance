@@ -1,10 +1,11 @@
-package com.simplegames.finance.dal;
+package com.simplegames.finance.dal.DB;
 
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.util.Log;
 
+import com.simplegames.finance.dal.Common.TableParams;
 import com.simplegames.finance.dal.operation.OperationTable;
 import com.simplegames.finance.dal.operationItem.OperationItemTable;
 import com.simplegames.finance.dal.product.ProductTable;

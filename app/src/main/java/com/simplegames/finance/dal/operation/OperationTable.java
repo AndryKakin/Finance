@@ -1,7 +1,6 @@
 package com.simplegames.finance.dal.operation;
 
-import com.simplegames.finance.dal.TableParams;
-import com.simplegames.finance.dal.product.ProductTable;
+import com.simplegames.finance.dal.Common.TableParams;
 
 /**
  * Created by andrey.kakin on 13.10.2014.

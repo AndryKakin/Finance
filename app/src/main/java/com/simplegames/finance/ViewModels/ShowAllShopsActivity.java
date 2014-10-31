@@ -6,8 +6,8 @@ import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
 import com.simplegames.finance.app.R;
-import com.simplegames.finance.dal.IRepository;
-import com.simplegames.finance.dal.SQLiteDbFabric;
+import com.simplegames.finance.dal.Common.IRepository;
+import com.simplegames.finance.dal.DB.SQLiteDbFabric;
 import com.simplegames.finance.dal.models.Shop;
 
 import java.util.ArrayList;

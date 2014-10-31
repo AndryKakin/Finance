@@ -6,8 +6,8 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.util.Log;
 
-import com.simplegames.finance.dal.FinanceDataBase;
-import com.simplegames.finance.dal.IRepository;
+import com.simplegames.finance.dal.DB.FinanceDataBase;
+import com.simplegames.finance.dal.Common.IRepository;
 import com.simplegames.finance.dal.models.Product;
 
 import java.util.ArrayList;

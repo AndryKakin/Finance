@@ -14,5 +14,5 @@
         android:layout_height="wrap_content"
         android:text="@string/product_add_button_add_header"
         android:id="@+id/addNewProductButton"
-        android:onClick="addNewProduct_onClick"/>
+        android:onClick="addNewOperation_onClick"/>
 </LinearLayout>

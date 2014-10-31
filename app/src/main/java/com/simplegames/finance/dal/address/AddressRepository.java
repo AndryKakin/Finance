@@ -1,6 +1,6 @@
 package com.simplegames.finance.dal.address;
 
-import com.simplegames.finance.dal.IRepository;
+import com.simplegames.finance.dal.Common.IRepository;
 import com.simplegames.finance.dal.models.Address;
 
 import java.util.ArrayList;

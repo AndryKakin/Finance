@@ -1,6 +1,6 @@
 package com.simplegames.finance.dal.operationItem;
 
-import com.simplegames.finance.dal.TableParams;
+import com.simplegames.finance.dal.Common.TableParams;
 import com.simplegames.finance.dal.operation.OperationTable;
 import com.simplegames.finance.dal.product.ProductTable;
 

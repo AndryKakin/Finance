@@ -1,5 +1,6 @@
 package com.simplegames.finance.dal;
 
+import com.simplegames.finance.dal.Common.IRepository;
 import com.simplegames.finance.dal.models.Operation;
 import com.simplegames.finance.dal.models.OperationItem;
 import com.simplegames.finance.dal.models.Product;
