@@ -21,5 +21,6 @@
     <string name="shop_add_description_header">Enter description of shop</string>
     <string name="shop_add_name_header">Enter Name of shop</string>
     <string name="shop_add_button_add_header">Add new shop</string>
+    <string name="add_new_purchase">Add new purchase</string>
 
 </resources>

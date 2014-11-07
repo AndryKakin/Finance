@@ -23,7 +23,7 @@ public class AddOperationActivity extends ActionBarActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_add_product);
+        setContentView(R.layout.activity_add_operation);
         _operationManager = new OperationManager(this);
         _productManager = new ProductManager(this);
         _availableProducts = _productManager.GetAll();

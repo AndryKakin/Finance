@@ -33,4 +33,9 @@ public class StartActivity extends ActionBarActivity {
         Intent intent = new Intent(StartActivity.this, ShowAllShopsActivity.class);
         startActivity(intent);
     }
+
+    public void displayAddNewPurchase_onClick(View view) {
+        Intent intent = new Intent(StartActivity.this, AddOperationActivity.class);
+        startActivity(intent);
+    }
 }
