@@ -5,11 +5,12 @@ package com.simplegames.finance.ViewModels;
  */
 
 import android.content.Context;
+import android.util.AttributeSet;
 import android.widget.LinearLayout;
 
 public class OperationItemsLayout extends LinearLayout {
 
-    public OperationItemsLayout(Context context) {
-        super(context);
+    public OperationItemsLayout(Context context, AttributeSet attrs) {
+        super(context, attrs);
     }
 }

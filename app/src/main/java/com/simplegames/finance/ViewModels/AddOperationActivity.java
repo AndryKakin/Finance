@@ -4,6 +4,10 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
 import android.view.View;
+import android.view.ViewGroup;
+import android.widget.ArrayAdapter;
+import android.widget.BaseAdapter;
+import android.widget.ListView;
 
 import com.simplegames.finance.BL.Managers.ProductManager;
 import com.simplegames.finance.BL.Model.Operation;
@@ -27,6 +31,8 @@ public class AddOperationActivity extends ActionBarActivity {
         _operationManager = new OperationManager(this);
         _productManager = new ProductManager(this);
         _availableProducts = _productManager.GetAll();
+        ListView purchaseItemsView = (ListView)findViewById(R.id.purchaseItemsView);
+        purchaseItemsView.setAdapter(new MyAdapter());
     }
 
     public void addNewOperation_onClick(View view) {
@@ -46,5 +52,40 @@ public class AddOperationActivity extends ActionBarActivity {
     public void cancel_onClick(View view) {
         Intent intent = new Intent(AddOperationActivity.this, StartActivity.class);
         startActivity(intent);
+    }
+
+    private class MyAdapter extends BaseAdapter {
+
+        private ArrayList<String> _data;
+        public MyAdapter()
+        {
+            _data  = new ArrayList<String>();
+            _data.add("Test1");
+            _data.add("Test2");
+            _data.add("Test3");
+        }
+
+        @Override
+        public int getCount() {
+            return _data.size();
+        }
+
+        @Override
+        public String getItem(int position) {
+            return _data.get(position);
+        }
+
+        @Override
+        public long getItemId(int position) {
+            return _data.get(position).hashCode();
+    }
+
+        @Override
+        public View getView(int position, View convertView, ViewGroup parent) {
+            if (convertView == null) {
+                convertView = getLayoutInflater().inflate(R.layout.operation_items_template, parent, false);
+            }
+            return convertView;
+        }
     }
 }
