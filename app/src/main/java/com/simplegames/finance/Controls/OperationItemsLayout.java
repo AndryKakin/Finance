@@ -1,4 +1,4 @@
-package com.simplegames.finance.ViewModels;
+package com.simplegames.finance.Controls;
 
 /**
  * Created by andrey.kakin on 10.11.2014.

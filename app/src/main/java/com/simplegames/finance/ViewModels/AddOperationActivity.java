@@ -7,7 +7,9 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.BaseAdapter;
+import android.widget.EditText;
 import android.widget.ListView;
+import android.widget.TextView;
 
 import com.simplegames.finance.BL.Managers.ProductManager;
 import com.simplegames.finance.BL.Model.Operation;
@@ -56,13 +58,19 @@ public class AddOperationActivity extends ActionBarActivity {
 
     private class MyAdapter extends BaseAdapter {
 
-        private ArrayList<String> _data;
+        private ArrayList<Product> _data;
         public MyAdapter()
         {
-            _data  = new ArrayList<String>();
-            _data.add("Test1");
-            _data.add("Test2");
-            _data.add("Test3");
+            _data  = new ArrayList<Product>();
+            Product product1 = new Product();
+            product1.Name = "Test";
+            product1.Id = 34;
+            _data.add(product1);
+
+            Product product2 = new Product();
+            product2.Name = "sdfs";
+            product2.Id = 3223;
+            _data.add(product2);
         }
 
         @Override
@@ -71,7 +79,7 @@ public class AddOperationActivity extends ActionBarActivity {
         }
 
         @Override
-        public String getItem(int position) {
+        public Product getItem(int position) {
             return _data.get(position);
         }
 
@@ -85,6 +93,11 @@ public class AddOperationActivity extends ActionBarActivity {
             if (convertView == null) {
                 convertView = getLayoutInflater().inflate(R.layout.operation_items_template, parent, false);
             }
+            ((TextView) convertView.findViewById(R.id.productNameView))
+                    .setText(getItem(position).Name);
+
+            ((EditText) convertView.findViewById(R.id.editProductCostView))
+                    .setText(Integer.toString(getItem(position).Id));
             return convertView;
         }
     }

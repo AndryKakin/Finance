@@ -1,15 +1,21 @@
-<com.simplegames.finance.ViewModels.OperationItemsLayout
+<com.simplegames.finance.Controls.OperationItemsLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="horizontal"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_width="fill_parent"
+    android:layout_height="35dp"
     android:paddingLeft="8dp"
     android:paddingRight="8dp"
     android:minHeight="?android:listPreferredItemHeight"
     android:gravity="center_vertical">
-    <Button
+    <TextView
+        android:id="@+id/productNameView"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/operation_add_button_add_header"
-        android:id="@+id/button"/>
-</com.simplegames.finance.ViewModels.OperationItemsLayout>
+        android:layout_height="35dp"
+        android:editable="false"/>
+    <EditText
+        android:id="@+id/editProductCostView"
+        android:layout_width="wrap_content"
+        android:layout_height="35dp"
+        android:inputType="numberDecimal"
+        android:ems="10"/>
+</com.simplegames.finance.Controls.OperationItemsLayout>
