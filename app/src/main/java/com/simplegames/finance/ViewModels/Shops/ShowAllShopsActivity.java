@@ -1,4 +1,4 @@
-package com.simplegames.finance.ViewModels;
+package com.simplegames.finance.ViewModels.Shops;
 
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
@@ -24,7 +24,7 @@ public class ShowAllShopsActivity extends ActionBarActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_show_all_shops);
+        setContentView(R.layout.shops_activity_show_all_shops);
         _fabric = new SQLiteDbFabric();
         _fabric.Context = this;
 

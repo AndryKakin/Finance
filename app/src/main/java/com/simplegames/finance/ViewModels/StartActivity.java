@@ -6,6 +6,10 @@ import android.os.Bundle;
 import android.view.View;
 
 import com.simplegames.finance.ViewModels.Operations.AddOperationActivity;
+import com.simplegames.finance.ViewModels.Products.AddProductActivity;
+import com.simplegames.finance.ViewModels.Products.ShowAllProductsActivity;
+import com.simplegames.finance.ViewModels.Shops.AddShopActivity;
+import com.simplegames.finance.ViewModels.Shops.ShowAllShopsActivity;
 import com.simplegames.finance.app.R;
 
 public class StartActivity extends ActionBarActivity {

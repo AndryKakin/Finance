@@ -23,15 +23,6 @@ public class ProductsAdapter extends BaseAdapter {
     {
         _context = context;
         _data  = new ArrayList<Product>(products);
-        Product product1 = new Product();
-        product1.Name = "Test";
-        product1.Id = 34;
-        _data.add(product1);
-
-        Product product2 = new Product();
-        product2.Name = "sdfs";
-        product2.Id = 3223;
-        _data.add(product2);
     }
 
     @Override
@@ -52,7 +43,7 @@ public class ProductsAdapter extends BaseAdapter {
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
         if (convertView == null) {
-            convertView = _context.getLayoutInflater().inflate(R.layout.operation_items_template, parent, false);
+            convertView = _context.getLayoutInflater().inflate(R.layout.template_operation_product_item, parent, false);
         }
         ((TextView) convertView.findViewById(R.id.productNameView))
                 .setText(getItem(position).Name);

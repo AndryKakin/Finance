@@ -1,4 +1,4 @@
-package com.simplegames.finance.ViewModels;
+package com.simplegames.finance.ViewModels.Shops;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -6,6 +6,7 @@ import android.support.v7.app.ActionBarActivity;
 import android.view.View;
 import android.widget.EditText;
 
+import com.simplegames.finance.ViewModels.StartActivity;
 import com.simplegames.finance.app.R;
 import com.simplegames.finance.dal.Common.IRepository;
 import com.simplegames.finance.dal.DB.SQLiteDbFabric;
@@ -20,12 +21,12 @@ public class AddShopActivity extends ActionBarActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_add_shop);
+        setContentView(R.layout.shops_activity_add_shop);
         _fabric = new SQLiteDbFabric();
         _fabric.Context = this;
     }
 
-    public void addNewProduct_onClick(View view) {
+    public void addNewShop_onClick(View view) {
         EditText nameEditText = (EditText)findViewById(R.id.add_shop_editName);
         EditText descriptionEditText = (EditText)findViewById(R.id.add_shop_editDescription);
         IRepository<Shop> shopRepository = _fabric.GetShopRepository();

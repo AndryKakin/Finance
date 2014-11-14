@@ -1,0 +1,23 @@
+<com.simplegames.finance.Controls.OperationItemsLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="horizontal"
+    android:layout_width="fill_parent"
+    android:layout_height="35dp"
+    android:paddingLeft="8dp"
+    android:paddingRight="8dp"
+    android:minHeight="?android:listPreferredItemHeight"
+    android:gravity="center_vertical">
+    <TextView
+        android:id="@+id/productNameView"
+        android:layout_width="wrap_content"
+        android:layout_height="35dp"
+        android:layout_weight="0.4"
+        android:editable="false"/>
+    <EditText
+        android:id="@+id/editProductPriceView"
+        android:layout_width="wrap_content"
+        android:layout_height="35dp"
+        android:layout_weight="0.4"
+        android:inputType="numberDecimal"
+        android:ems="10"/>
+</com.simplegames.finance.Controls.OperationItemsLayout>

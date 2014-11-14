@@ -16,25 +16,25 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity   android:name="com.simplegames.finance.ViewModels.AddProductActivity"
+        <activity   android:name="com.simplegames.finance.ViewModels.Products.AddProductActivity"
             android:label="@string/app_name" >
             <intent-filter>
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity   android:name="com.simplegames.finance.ViewModels.ShowAllProductsActivity"
+        <activity   android:name="com.simplegames.finance.ViewModels.Products.ShowAllProductsActivity"
                     android:label="@string/app_name" >
             <intent-filter>
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity   android:name="com.simplegames.finance.ViewModels.ShowAllShopsActivity"
+        <activity   android:name="com.simplegames.finance.ViewModels.Shops.ShowAllShopsActivity"
             android:label="@string/app_name" >
             <intent-filter>
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity   android:name="com.simplegames.finance.ViewModels.AddShopActivity"
+        <activity   android:name="com.simplegames.finance.ViewModels.Shops.AddShopActivity"
             android:label="@string/app_name" >
             <intent-filter>
                 <category android:name="android.intent.category.LAUNCHER" />
