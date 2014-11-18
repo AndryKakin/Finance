@@ -10,10 +10,20 @@
     tools:context="com.simplegames.finance.ViewModels.Operations.AddOperationActivity"
     android:weightSum="1">
 
+    <RelativeLayout
+        android:id="@+id/operationPropertiesPanel"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content">
+    </RelativeLayout>
+
     <LinearLayout
+        android:id="@+id/itemsPanelView"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal">
+        android:layout_above="@+id/actionPanelView"
+        android:layout_alignParentTop="true"
+        android:orientation="horizontal"
+        android:baselineAligned="false">
         <ListView
             android:id="@+id/purchaseItemsView"
             android:layout_width="match_parent"
@@ -27,6 +37,32 @@
             android:layout_height="match_parent"
             android:layout_weight="0.5"
             android:minWidth="150dp"/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/actionPanelView"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_alignRight="@+id/itemsPanelView"
+        android:layout_alignEnd="@+id/itemsPanelView"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true">
+        <Button
+            android:id="@+id/operations_Add_Operation_Button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.5"
+            android:text="@string/add_operation_button_header"
+            android:onClick="addNewOperation_OnClick"/>
+        <Button
+            android:id="@+id/operations_Cancel_Operation_Button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.5"
+            android:text="@string/button_cancel_header"
+            android:onClick="cancel_onClick"/>
     </LinearLayout>
 
 </RelativeLayout>

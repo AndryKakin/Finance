@@ -47,6 +47,11 @@ public class AddOperationActivity extends ActionBarActivity {
         purchaseItemsView.setAdapter(_purchaseAdapter);
     }
 
+    public void addNewOperation_OnClick(View view) {
+        Intent intent = new Intent(AddOperationActivity.this, StartActivity.class);
+        startActivity(intent);
+    }
+
     public void cancel_onClick(View view) {
         Intent intent = new Intent(AddOperationActivity.this, StartActivity.class);
         startActivity(intent);
