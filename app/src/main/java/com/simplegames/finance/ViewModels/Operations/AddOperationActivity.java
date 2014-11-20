@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ListView;
 
 import com.simplegames.finance.BL.Managers.ProductManager;
@@ -55,5 +56,37 @@ public class AddOperationActivity extends ActionBarActivity {
     public void cancel_onClick(View view) {
         Intent intent = new Intent(AddOperationActivity.this, StartActivity.class);
         startActivity(intent);
+    }
+
+    public void addProductToOperation_OnClick(View view) {
+        ListView productsView = (ListView)view.findViewById(R.id.productsListView);
+        ListView purchasesView = (ListView)view.findViewById(R.id.purchaseItemsView);
+        productsView.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+
+            @Override
+            public void onItemSelected(AdapterView<?> arg0, View arg1,
+                                       int arg2, long arg3) {
+
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> arg0) {
+                // TODO Auto-generated method stub
+            }
+        });
+
+        purchasesView.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+
+            @Override
+            public void onItemSelected(AdapterView<?> arg0, View arg1,
+                                       int arg2, long arg3) {
+
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> arg0) {
+                // TODO Auto-generated method stub
+            }
+        });
     }
 }
