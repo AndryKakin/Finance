@@ -46,6 +46,34 @@ public class AddOperationActivity extends ActionBarActivity {
 
         ListView purchaseItemsView = (ListView)findViewById(R.id.purchaseItemsView);
         purchaseItemsView.setAdapter(_purchaseAdapter);
+
+        productListView.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+
+            @Override
+            public void onItemSelected(AdapterView<?> arg0, View arg1,
+                                       int arg2, long arg3) {
+
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> arg0) {
+                // TODO Auto-generated method stub
+            }
+        });
+
+        purchaseItemsView.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+
+            @Override
+            public void onItemSelected(AdapterView<?> arg0, View arg1,
+                                       int arg2, long arg3) {
+
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> arg0) {
+                // TODO Auto-generated method stub
+            }
+        });
     }
 
     public void addNewOperation_OnClick(View view) {
@@ -59,34 +87,6 @@ public class AddOperationActivity extends ActionBarActivity {
     }
 
     public void addProductToOperation_OnClick(View view) {
-        ListView productsView = (ListView)view.findViewById(R.id.productsListView);
-        ListView purchasesView = (ListView)view.findViewById(R.id.purchaseItemsView);
-        productsView.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
 
-            @Override
-            public void onItemSelected(AdapterView<?> arg0, View arg1,
-                                       int arg2, long arg3) {
-
-            }
-
-            @Override
-            public void onNothingSelected(AdapterView<?> arg0) {
-                // TODO Auto-generated method stub
-            }
-        });
-
-        purchasesView.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-
-            @Override
-            public void onItemSelected(AdapterView<?> arg0, View arg1,
-                                       int arg2, long arg3) {
-
-            }
-
-            @Override
-            public void onNothingSelected(AdapterView<?> arg0) {
-                // TODO Auto-generated method stub
-            }
-        });
     }
 }
