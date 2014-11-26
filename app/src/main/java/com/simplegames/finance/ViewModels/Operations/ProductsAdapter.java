@@ -21,9 +21,12 @@ public class ProductsAdapter extends BaseAdapter {
     private ActionBarActivity _context;
     public ProductsAdapter(ActionBarActivity context,ArrayList<Product> products)
     {
+        SelectedItem = null;
         _context = context;
         _data  = new ArrayList<Product>(products);
     }
+
+    public Product SelectedItem;
 
     @Override
     public int getCount() {
@@ -41,7 +44,7 @@ public class ProductsAdapter extends BaseAdapter {
     }
 
     @Override
-    public View getView(int position, View convertView, ViewGroup parent) {
+    public View getView(final int position, View convertView, ViewGroup parent) {
         if (convertView == null) {
             convertView = _context.getLayoutInflater().inflate(R.layout.template_operation_product_item, parent, false);
         }
@@ -50,6 +53,14 @@ public class ProductsAdapter extends BaseAdapter {
 
         ((EditText) convertView.findViewById(R.id.editProductCostView))
                 .setText(Integer.toString(getItem(position).Id));
+
+        convertView.setOnClickListener(new View.OnClickListener()
+        {
+            public void onClick(View v) {
+                SelectedItem = getItem(position);
+            }
+        });
+
         return convertView;
     }
 }

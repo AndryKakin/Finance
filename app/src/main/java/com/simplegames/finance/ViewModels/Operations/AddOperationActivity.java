@@ -14,6 +14,7 @@ import com.simplegames.finance.BL.Model.Product;
 import com.simplegames.finance.ViewModels.StartActivity;
 import com.simplegames.finance.app.R;
 
+import java.math.BigDecimal;
 import java.util.ArrayList;
 
 /**
@@ -87,6 +88,13 @@ public class AddOperationActivity extends ActionBarActivity {
     }
 
     public void addProductToOperation_OnClick(View view) {
+        if(_productAdapter.SelectedItem != null) {
+            Product selected = _productAdapter.SelectedItem;
+            OperationItem operationItem = new OperationItem();
+            operationItem.Product = selected;
+            operationItem.Price = BigDecimal.ZERO;
+            _purchaseAdapter.Add(operationItem);
+        }
 
     }
 }

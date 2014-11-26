@@ -12,5 +12,6 @@ public class OperationItemsLayout extends LinearLayout {
 
     public OperationItemsLayout(Context context, AttributeSet attrs) {
         super(context, attrs);
+
     }
 }
