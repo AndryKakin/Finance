@@ -10,7 +10,7 @@ import com.simplegames.finance.ViewModels.StartActivity;
 import com.simplegames.finance.app.R;
 import com.simplegames.finance.dal.Common.IRepository;
 import com.simplegames.finance.dal.DB.SQLiteDbFabric;
-import com.simplegames.finance.dal.models.Shop;
+import com.simplegames.finance.dal.shop.Shop;
 
 /**
  * Created by Andrey on 11.10.2014.

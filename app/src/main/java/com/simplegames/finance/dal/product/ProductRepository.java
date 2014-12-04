@@ -8,7 +8,6 @@ import android.util.Log;
 
 import com.simplegames.finance.dal.DB.FinanceDataBase;
 import com.simplegames.finance.dal.Common.IRepository;
-import com.simplegames.finance.dal.models.Product;
 
 import java.util.ArrayList;
 
@@ -25,12 +24,12 @@ public class ProductRepository implements IRepository<Product> {
     }
 
     @Override
-    public void Add(Product item) {
+    public void Add(Product product) {
         SQLiteDatabase sqdb = _financeDataBase.getWritableDatabase();
         ContentValues cv = new ContentValues();
-        cv.put(_productTable.NameColumnName, item.Name);
-        cv.put(_productTable.DescriptionColumnName,item.Description);
-        sqdb.insert(ProductTable.TableName, null, cv);
+        cv.put(_productTable.NameColumnName, product.Name);
+        cv.put(_productTable.DescriptionColumnName,product.Description);
+        product.Id = sqdb.insert(ProductTable.TableName, null, cv);
         sqdb.close();
     }
 
@@ -60,7 +59,7 @@ public class ProductRepository implements IRepository<Product> {
         ArrayList<Product> result = new ArrayList<Product>();
         while (cursor.moveToNext()) {
             // GET COLUMN INDICES + VALUES OF THOSE COLUMNS
-            int id = cursor.getInt(cursor
+            long id = cursor.getLong(cursor
                     .getColumnIndex(_productTable.IdColumnName));
 
             String name = cursor.getString(cursor

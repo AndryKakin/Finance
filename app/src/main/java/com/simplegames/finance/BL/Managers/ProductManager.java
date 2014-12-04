@@ -3,7 +3,7 @@ package com.simplegames.finance.BL.Managers;
 import android.content.Context;
 
 import com.simplegames.finance.dal.Common.IRepository;
-import com.simplegames.finance.dal.models.Product;
+import com.simplegames.finance.dal.product.Product;
 
 import java.util.ArrayList;
 

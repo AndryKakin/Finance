@@ -4,14 +4,14 @@ import android.content.Context;
 
 import com.simplegames.finance.dal.Common.IRepository;
 import com.simplegames.finance.dal.IFabric;
-import com.simplegames.finance.dal.models.Operation;
-import com.simplegames.finance.dal.models.OperationItem;
+import com.simplegames.finance.dal.operation.Operation;
+import com.simplegames.finance.dal.operationItem.OperationItem;
 import com.simplegames.finance.dal.operation.OperationRepository;
 import com.simplegames.finance.dal.operationItem.OperationItemRepository;
 import com.simplegames.finance.dal.product.ProductRepository;
 import com.simplegames.finance.dal.shop.ShopRepository;
-import com.simplegames.finance.dal.models.Product;
-import com.simplegames.finance.dal.models.Shop;
+import com.simplegames.finance.dal.product.Product;
+import com.simplegames.finance.dal.shop.Shop;
 
 /**
  * Created by andrey.kakin on 03.10.14.

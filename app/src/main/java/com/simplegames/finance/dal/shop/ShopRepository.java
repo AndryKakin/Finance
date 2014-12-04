@@ -7,7 +7,6 @@ import android.database.sqlite.SQLiteDatabase;
 
 import com.simplegames.finance.dal.DB.FinanceDataBase;
 import com.simplegames.finance.dal.Common.IRepository;
-import com.simplegames.finance.dal.models.Shop;
 
 import java.util.ArrayList;
 
@@ -31,7 +30,7 @@ public class ShopRepository implements IRepository<Shop> {
         cv.put(_shopTable.CityColumnName, item.City);
         cv.put(_shopTable.StreetColumnName, item.Street);
         cv.put(_shopTable.NumberOfHouseColumnName, item.NumberOfHouse);
-        sqdb.insert(ShopTable.TableName, null, cv);
+        item.Id = sqdb.insert(ShopTable.TableName, null, cv);
         sqdb.close();
     }
 
@@ -63,7 +62,7 @@ public class ShopRepository implements IRepository<Shop> {
         ArrayList<Shop> result = new ArrayList<Shop>();
         while (cursor.moveToNext()) {
             // GET COLUMN INDICES + VALUES OF THOSE COLUMNS
-            int id = cursor.getInt(cursor
+            long id = cursor.getLong(cursor
                     .getColumnIndex(_shopTable.IdColumnName));
 
             String name = cursor.getString(cursor

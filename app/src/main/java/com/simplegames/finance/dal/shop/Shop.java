@@ -1,10 +1,10 @@
-package com.simplegames.finance.dal.models;
+package com.simplegames.finance.dal.shop;
 
 /**
  * Created by andrey.kakin on 10.10.2014.
  */
 public class Shop {
-    public int Id;
+    public long Id;
     public String Name;
     public String Description;
 

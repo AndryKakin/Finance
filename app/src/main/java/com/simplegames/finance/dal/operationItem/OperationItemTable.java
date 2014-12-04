@@ -8,32 +8,29 @@ import com.simplegames.finance.dal.product.ProductTable;
  * Created by andrey.kakin on 16.10.2014.
  */
 public class OperationItemTable extends TableParams {
-
-    public String ProductInOperationTableName = "ProductItemIn";
-    public String PIO_IdColumnName = "_id";
-    public String PIO_OperationIdColumnName = "FKOperationId";
-    public String PIO_ProductIdColumnName = "FKProductId";
-    public String PIO_PriceColumnName = "Price";
+    public String IdColumnName = "_id";
+    public String OperationIdColumnName = "FKOperationId";
+    public String ProductIdColumnName = "FKProductId";
+    public String PriceColumnName = "Price";
 
 
 
-    public static String TableName = "Operation";
+    public static String TableName = "OperationItems";
 
     @Override
     public String GetSqlCreate() {
-        return "CREATE TABLE "         + ProductInOperationTableName + " (" +
-                PIO_IdColumnName        + " INTEGER PRIMARY KEY AUTOINCREMENT, " +
-                PIO_OperationIdColumnName   + " INTEGER, " +
-                PIO_PriceColumnName         + " DECIMAL, " +
-                PIO_ProductIdColumnName     + " INTEGER, " +
-                CreateForeignKey(PIO_OperationIdColumnName, OperationTable.TableName, OperationTable.IdColumnName) +
-                CreateForeignKey(PIO_ProductIdColumnName, ProductTable.TableName, ProductTable.IdColumnName)
+        return "CREATE TABLE "         + TableName + " (" +
+                IdColumnName        + " INT64 PRIMARY KEY AUTOINCREMENT, " +
+                OperationIdColumnName   + " INTEGER, " +
+                ProductIdColumnName     + " INTEGER, " +
+                PriceColumnName         + " DECIMAL, " +
+                CreateForeignKey(OperationIdColumnName, OperationTable.TableName, OperationTable.IdColumnName) +
+                CreateForeignKey(ProductIdColumnName, ProductTable.TableName, ProductTable.IdColumnName)
                 + "); ";
     }
 
     @Override
     public String GetSqlDelete() {
-        return "DROP TABLE IF EXISTS " + TableName + " \n " +
-                "DROP TABLE IF EXISTS " + ProductInOperationTableName;
+        return "DROP TABLE IF EXISTS " + TableName;
     }
 }

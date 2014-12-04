@@ -18,7 +18,7 @@ public class ShopTable extends TableParams {
     @Override
     public String GetSqlCreate() {
         return "CREATE TABLE " + ShopTable.TableName + " (" +
-                IdColumnName            + " INTEGER PRIMARY KEY AUTOINCREMENT, " +
+                IdColumnName            + " INT64 PRIMARY KEY AUTOINCREMENT, " +
                 NameColumnName          + " VARCHAR(255), " +
                 CityColumnName          + " VARCHAR(255), " +
                 StreetColumnName        + " VARCHAR(255), " +

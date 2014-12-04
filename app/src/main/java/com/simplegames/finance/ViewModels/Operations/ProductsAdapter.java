@@ -52,7 +52,7 @@ public class ProductsAdapter extends BaseAdapter {
                 .setText(getItem(position).Name);
 
         ((EditText) convertView.findViewById(R.id.editProductCostView))
-                .setText(Integer.toString(getItem(position).Id));
+                .setText(Long.toString(getItem(position).Id));
 
         convertView.setOnClickListener(new View.OnClickListener()
         {

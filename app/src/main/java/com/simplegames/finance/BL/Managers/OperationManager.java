@@ -3,10 +3,9 @@ package com.simplegames.finance.BL.Managers;
 import android.content.Context;
 
 import com.simplegames.finance.dal.Common.IRepository;
-import com.simplegames.finance.dal.DB.SQLiteDbFabric;
-import com.simplegames.finance.dal.models.Operation;
-import com.simplegames.finance.dal.models.OperationItem;
-import com.simplegames.finance.dal.models.Product;
+import com.simplegames.finance.dal.operation.Operation;
+import com.simplegames.finance.dal.operationItem.OperationItem;
+import com.simplegames.finance.dal.product.Product;
 
 import java.util.ArrayList;
 
@@ -29,15 +28,20 @@ public class OperationManager extends BaseDBManager{
     public void AddOperation(com.simplegames.finance.BL.Model.Operation operation)
     {
         Operation dbOperation = new Operation();
+        dbOperation.Name = operation.Name;
+        dbOperation.Currency = operation.Currency;
         dbOperation.DateTime = operation.DateTime;
-        dbOperation.Items = new ArrayList<OperationItem>();
+        _operationRepository.Add(dbOperation);
+        ArrayList<OperationItem> operationItems = new ArrayList<OperationItem>();
         for (int i=0; i < operation.Items.size(); i++)
         {
-            com.simplegames.finance.BL.Model.OperationItem operationItem;
-            operationItem = operation.Items.get(i);
+            com.simplegames.finance.BL.Model.OperationItem operationItem = operation.Items.get(i);
             OperationItem dbOperationItem = new OperationItem();
+            dbOperationItem.ProductId = operationItem.Product.Id;
+            dbOperationItem.OperationId = dbOperation.Id;
             dbOperationItem.Price = operationItem.Price;
-            dbOperation.Items.add(dbOperationItem);
+            _operationItemRepository.Add(dbOperationItem);
+            operationItems.add(dbOperationItem);
         }
         _operationRepository.Add(dbOperation);
     }

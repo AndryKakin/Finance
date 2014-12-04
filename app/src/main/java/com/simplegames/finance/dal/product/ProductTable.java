@@ -16,7 +16,7 @@ public class ProductTable extends TableParams {
     @Override
     public String GetSqlCreate() {
         return "CREATE TABLE " + TableName + " (" +
-                IdColumnName + " INTEGER PRIMARY KEY AUTOINCREMENT, " +
+                IdColumnName + " INT64 PRIMARY KEY AUTOINCREMENT, " +
                 NameColumnName + " VARCHAR(255), " +
                 DescriptionColumnName + " VARCHAR(2048)); ";
     }

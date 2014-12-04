@@ -13,6 +13,7 @@ import com.simplegames.finance.BL.Model.OperationItem;
 import com.simplegames.finance.BL.Model.Product;
 import com.simplegames.finance.ViewModels.StartActivity;
 import com.simplegames.finance.app.R;
+import com.simplegames.finance.dal.operation.Operation;
 
 import java.math.BigDecimal;
 import java.util.ArrayList;
@@ -78,8 +79,12 @@ public class AddOperationActivity extends ActionBarActivity {
     }
 
     public void addNewOperation_OnClick(View view) {
+        com.simplegames.finance.BL.Model.Operation operation = new com.simplegames.finance.BL.Model.Operation();
+        _operationManager.AddOperation(operation);
+
         Intent intent = new Intent(AddOperationActivity.this, StartActivity.class);
         startActivity(intent);
+        this.finish();
     }
 
     public void cancel_onClick(View view) {

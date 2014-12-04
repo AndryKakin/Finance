@@ -1,4 +1,4 @@
-package com.simplegames.finance.dal.models;
+package com.simplegames.finance.dal.operationItem;
 
 import java.math.BigDecimal;
 
@@ -7,7 +7,8 @@ import java.math.BigDecimal;
  */
 public class OperationItem
 {
-    public int Id;
-    public int ProductId;
+    public long Id;
+    public long OperationId;
+    public long ProductId;
     public BigDecimal Price;
 }

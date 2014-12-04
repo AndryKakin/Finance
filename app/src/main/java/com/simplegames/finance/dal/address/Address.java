@@ -1,4 +1,4 @@
-package com.simplegames.finance.dal.models;
+package com.simplegames.finance.dal.address;
 
 /**
  * Created by andrey.kakin on 20.10.2014.
