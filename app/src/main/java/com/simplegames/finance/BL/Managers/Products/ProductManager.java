@@ -1,7 +1,8 @@
-package com.simplegames.finance.BL.Managers;
+package com.simplegames.finance.BL.Managers.Products;
 
 import android.content.Context;
 
+import com.simplegames.finance.BL.Managers.BaseDBManager;
 import com.simplegames.finance.dal.Common.IRepository;
 import com.simplegames.finance.dal.product.Product;
 
@@ -10,7 +11,7 @@ import java.util.ArrayList;
 /**
  * Created by andrey.kakin on 02.10.14.
  */
-public class ProductManager extends BaseDBManager{
+public class ProductManager extends BaseDBManager {
     private IRepository<Product> _productRepository;
 
     public ProductManager(Context context) {

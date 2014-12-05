@@ -7,13 +7,12 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
 
-import com.simplegames.finance.BL.Managers.ProductManager;
-import com.simplegames.finance.BL.Managers.OperationManager;
+import com.simplegames.finance.BL.Managers.Products.ProductManager;
+import com.simplegames.finance.BL.Managers.Operations.OperationManager;
 import com.simplegames.finance.BL.Model.OperationItem;
 import com.simplegames.finance.BL.Model.Product;
 import com.simplegames.finance.ViewModels.StartActivity;
 import com.simplegames.finance.app.R;
-import com.simplegames.finance.dal.operation.Operation;
 
 import java.math.BigDecimal;
 import java.util.ArrayList;
