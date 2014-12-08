@@ -32,16 +32,21 @@ public class OperationItemRepository implements IRepository<OperationItem> {
 
     @Override
     public void Add(OperationItem operationItem) {
-        SQLiteDatabase sqdb = _financeDataBase.getWritableDatabase();
-        ContentValues cv = new ContentValues();
+        try {
+            SQLiteDatabase sqdb = _financeDataBase.getWritableDatabase();
+            ContentValues cv = new ContentValues();
 
-        cv.put(_operationItemTable.OperationIdColumnName, operationItem.OperationId);
-        cv.put(_operationItemTable.ProductIdColumnName, operationItem.ProductId);
-        cv.put(_operationItemTable.PriceColumnName,
-                DecimalFormat.getNumberInstance().format(operationItem.Price));
+            cv.put(_operationItemTable.OperationIdColumnName, operationItem.OperationId);
+            cv.put(_operationItemTable.ProductIdColumnName, operationItem.ProductId);
+            cv.put(_operationItemTable.PriceColumnName,
+                    DecimalFormat.getNumberInstance().format(operationItem.Price));
 
-        operationItem.Id = sqdb.insert(OperationTable.TableName, null, cv);
-        sqdb.close();
+            operationItem.Id = sqdb.insert(OperationTable.TableName, null, cv);
+            sqdb.close();
+        }
+        catch (Exception ex) {
+
+        }
     }
 
     @Override

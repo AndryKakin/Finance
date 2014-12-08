@@ -17,7 +17,7 @@ public class OperationTable extends TableParams {
     @Override
     public String GetSqlCreate() {
         return "CREATE TABLE "  + OperationTable.TableName + " (" +
-        IdColumnName            + " INT64 PRIMARY KEY AUTOINCREMENT, " +
+        IdColumnName            + " INTEGER PRIMARY KEY AUTOINCREMENT, " +
         NameColumnName          + " VARCHAR(255), " +
         DateTimeColumnName      + " DATETIME, " +
         CurrencyColumnName      + " VARCHAR(3));";

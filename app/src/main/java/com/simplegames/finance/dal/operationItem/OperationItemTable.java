@@ -20,13 +20,13 @@ public class OperationItemTable extends TableParams {
     @Override
     public String GetSqlCreate() {
         return "CREATE TABLE "         + TableName + " (" +
-                IdColumnName        + " INT64 PRIMARY KEY AUTOINCREMENT, " +
+                IdColumnName        + " INTEGER PRIMARY KEY AUTOINCREMENT, " +
                 OperationIdColumnName   + " INTEGER, " +
                 ProductIdColumnName     + " INTEGER, " +
                 PriceColumnName         + " DECIMAL, " +
-                CreateForeignKey(OperationIdColumnName, OperationTable.TableName, OperationTable.IdColumnName) +
-                CreateForeignKey(ProductIdColumnName, ProductTable.TableName, ProductTable.IdColumnName)
-                + "); ";
+                //CreateForeignKey(OperationIdColumnName, OperationTable.TableName, OperationTable.IdColumnName) +
+                //CreateForeignKey(ProductIdColumnName, ProductTable.TableName, ProductTable.IdColumnName)
+                "); ";
     }
 
     @Override

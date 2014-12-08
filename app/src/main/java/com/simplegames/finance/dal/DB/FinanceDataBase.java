@@ -34,7 +34,8 @@ public class FinanceDataBase extends SQLiteOpenHelper {
         @Override
         public void onCreate(SQLiteDatabase db) {
             for(int i=0; i < _tables.size(); i++) {
-                db.execSQL(_tables.get(i).GetSqlCreate());
+                String execute = _tables.get(i).GetSqlCreate();
+                db.execSQL(execute);
             }
         }
 

@@ -59,7 +59,7 @@ public class ProductRepository implements IRepository<Product> {
         ArrayList<Product> result = new ArrayList<Product>();
         while (cursor.moveToNext()) {
             // GET COLUMN INDICES + VALUES OF THOSE COLUMNS
-            long id = cursor.getLong(cursor
+            long id = cursor.getInt(cursor
                     .getColumnIndex(_productTable.IdColumnName));
 
             String name = cursor.getString(cursor

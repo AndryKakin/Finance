@@ -3,6 +3,7 @@ package com.simplegames.finance.ViewModels.Operations;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
+import android.text.format.DateUtils;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
@@ -16,6 +17,10 @@ import com.simplegames.finance.app.R;
 
 import java.math.BigDecimal;
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
+import java.util.concurrent.ExecutionException;
+import java.util.concurrent.FutureTask;
 
 /**
  * Created by andrey.kakin on 29.10.2014.
@@ -79,7 +84,17 @@ public class AddOperationActivity extends ActionBarActivity {
 
     public void addNewOperation_OnClick(View view) {
         com.simplegames.finance.BL.Model.Operation operation = new com.simplegames.finance.BL.Model.Operation();
-        _operationManager.AddOperation(operation);
+        operation.Currency = "RUB";
+        Calendar cal = Calendar.getInstance();
+        operation.DateTime = cal.getTime();
+        for(int i=0; i < _purchaseAdapter.getCount(); i++)
+        {
+            operation.Items.add(_purchaseAdapter.getItem(i));
+        }
+        FutureTask task =_operationManager.AddOperation(operation);
+        task.run();
+        int g = 45;
+
 
         Intent intent = new Intent(AddOperationActivity.this, StartActivity.class);
         startActivity(intent);
