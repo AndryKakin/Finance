@@ -60,7 +60,7 @@ public class PurchasesAdapter extends BaseAdapter {
                 .setText(getItem(position).Product.Name);
 
         ((EditText) convertView.findViewById(R.id.editProductPriceView))
-                .setText("$" + getItem(position).Price.toString());
+                .setText("$" + getItem(position).Price);
         convertView.setOnClickListener(new View.OnClickListener()
         {
             public void onClick(View v) {

@@ -111,7 +111,7 @@ public class AddOperationActivity extends ActionBarActivity {
             Product selected = _productAdapter.SelectedItem;
             OperationItem operationItem = new OperationItem();
             operationItem.Product = selected;
-            operationItem.Price = BigDecimal.ZERO;
+            operationItem.Price = 0;
             _purchaseAdapter.Add(operationItem);
         }
 

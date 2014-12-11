@@ -38,10 +38,9 @@ public class OperationItemRepository implements IRepository<OperationItem> {
 
             cv.put(_operationItemTable.OperationIdColumnName, operationItem.OperationId);
             cv.put(_operationItemTable.ProductIdColumnName, operationItem.ProductId);
-            cv.put(_operationItemTable.PriceColumnName,
-                    DecimalFormat.getNumberInstance().format(operationItem.Price));
+            cv.put(_operationItemTable.PriceColumnName, operationItem.Price);
 
-            operationItem.Id = sqdb.insert(OperationTable.TableName, null, cv);
+            operationItem.Id = sqdb.insert(OperationItemTable.TableName, null, cv);
             sqdb.close();
         }
         catch (Exception ex) {
@@ -86,7 +85,7 @@ public class OperationItemRepository implements IRepository<OperationItem> {
             int productId = cursor.getInt(cursor
                     .getColumnIndex(_operationItemTable.ProductIdColumnName));
 
-            String price = cursor.getString(cursor
+            double price = cursor.getDouble(cursor
                     .getColumnIndex(_operationItemTable.PriceColumnName));
 
 
@@ -97,11 +96,7 @@ public class OperationItemRepository implements IRepository<OperationItem> {
             operationItem.Id = id;
             operationItem.OperationId =operationId;
             operationItem.ProductId = productId;
-            try {
-                operationItem.Price = BigDecimal.valueOf((Double) DecimalFormat.getInstance().parse(price));
-            } catch (ParseException e) {
-                Log.e("OperationItem Repository", e.toString());
-            }
+            operationItem.Price = price;
             result.add(operationItem);
         }
         cursor.close();

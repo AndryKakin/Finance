@@ -23,9 +23,9 @@ public class OperationItemTable extends TableParams {
                 IdColumnName        + " INTEGER PRIMARY KEY AUTOINCREMENT, " +
                 OperationIdColumnName   + " INTEGER, " +
                 ProductIdColumnName     + " INTEGER, " +
-                PriceColumnName         + " DECIMAL, " +
-                //CreateForeignKey(OperationIdColumnName, OperationTable.TableName, OperationTable.IdColumnName) +
-                //CreateForeignKey(ProductIdColumnName, ProductTable.TableName, ProductTable.IdColumnName)
+                PriceColumnName         + " DOUBLE,  " +
+                CreateForeignKey(OperationIdColumnName, OperationTable.TableName, OperationTable.IdColumnName) +
+                CreateForeignKey(ProductIdColumnName, ProductTable.TableName, ProductTable.IdColumnName) +
                 "); ";
     }
 
