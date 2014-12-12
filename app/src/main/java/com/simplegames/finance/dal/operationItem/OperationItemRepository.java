@@ -8,14 +8,9 @@ import android.util.Log;
 
 import com.simplegames.finance.dal.DB.FinanceDataBase;
 import com.simplegames.finance.dal.Common.IRepository;
-import com.simplegames.finance.dal.operation.Operation;
 import com.simplegames.finance.dal.operation.OperationTable;
 
-import java.math.BigDecimal;
 import java.text.DateFormat;
-import java.text.DecimalFormat;
-import java.text.NumberFormat;
-import java.text.ParseException;
 import java.util.ArrayList;
 
 /**
@@ -32,20 +27,15 @@ public class OperationItemRepository implements IRepository<OperationItem> {
 
     @Override
     public void Add(OperationItem operationItem) {
-        try {
-            SQLiteDatabase sqdb = _financeDataBase.getWritableDatabase();
-            ContentValues cv = new ContentValues();
+        SQLiteDatabase sqdb = _financeDataBase.getWritableDatabase();
+        ContentValues cv = new ContentValues();
 
-            cv.put(_operationItemTable.OperationIdColumnName, operationItem.OperationId);
-            cv.put(_operationItemTable.ProductIdColumnName, operationItem.ProductId);
-            cv.put(_operationItemTable.PriceColumnName, operationItem.Price);
+        cv.put(_operationItemTable.OperationIdColumnName, operationItem.OperationId);
+        cv.put(_operationItemTable.ProductIdColumnName, operationItem.ProductId);
+        cv.put(_operationItemTable.PriceColumnName, operationItem.Price);
 
-            operationItem.Id = sqdb.insert(OperationItemTable.TableName, null, cv);
-            sqdb.close();
-        }
-        catch (Exception ex) {
-
-        }
+        operationItem.Id = sqdb.insert(OperationItemTable.TableName, null, cv);
+        sqdb.close();
     }
 
     @Override
