@@ -11,7 +11,10 @@ import com.simplegames.finance.dal.Common.IRepository;
 
 import java.text.DateFormat;
 import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
+import java.util.Locale;
 
 /**
  * Created by andrey.kakin on 13.10.2014.
@@ -25,13 +28,18 @@ public class OperationRepository implements IRepository<Operation> {
         _financeDataBase = new FinanceDataBase(context);
     }
 
+    private String getDateTime(Date date) {
+        SimpleDateFormat dateFormat = new SimpleDateFormat(
+                "yyyy-MM-dd HH:mm:ss", Locale.getDefault());
+        return dateFormat.format(date);
+    }
     @Override
     public void Add(Operation operation) {
         SQLiteDatabase sqdb = _financeDataBase.getWritableDatabase();
         ContentValues cv = new ContentValues();
-        DateFormat dateFormat = DateFormat.getDateTimeInstance();
 
-        cv.put(_operationTable.DateTimeColumnName, dateFormat.format(operation.DateTime));
+        String dateTime = getDateTime(operation.DateTime);
+        cv.put(_operationTable.DateTimeColumnName, dateTime);
         cv.put(_operationTable.CurrencyColumnName, operation.Currency);
         cv.put(_operationTable.NameColumnName, operation.Name);
         operation.Id = sqdb.insert(OperationTable.TableName, null, cv);

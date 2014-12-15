@@ -19,7 +19,7 @@ public class OperationTable extends TableParams {
         return "CREATE TABLE "  + OperationTable.TableName + " (" +
         IdColumnName            + " INTEGER PRIMARY KEY AUTOINCREMENT, " +
         NameColumnName          + " VARCHAR(255), " +
-        DateTimeColumnName      + " DATETIME, " +
+        DateTimeColumnName      + " TIMESTAMP, " +
         CurrencyColumnName      + " VARCHAR(3));";
     }
 

@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.view.View;
 
 import com.simplegames.finance.ViewModels.Operations.AddOperationActivity;
+import com.simplegames.finance.ViewModels.Operations.ShowAllOperationsActivity;
 import com.simplegames.finance.ViewModels.Products.AddProductActivity;
 import com.simplegames.finance.ViewModels.Products.ShowAllProductsActivity;
 import com.simplegames.finance.ViewModels.Shops.AddShopActivity;
@@ -41,6 +42,11 @@ public class StartActivity extends ActionBarActivity {
 
     public void displayAddNewPurchase_onClick(View view) {
         Intent intent = new Intent(StartActivity.this, AddOperationActivity.class);
+        startActivity(intent);
+    }
+
+    public void displayShowAllPurchases_onClick(View view) {
+        Intent intent = new Intent(StartActivity.this, ShowAllOperationsActivity.class);
         startActivity(intent);
     }
 }

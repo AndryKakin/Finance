@@ -1,10 +1,8 @@
 package com.simplegames.finance.BL.Managers.Operations.Tasks;
 
-import com.simplegames.finance.BL.Managers.Operations.OperationManager;
 import com.simplegames.finance.dal.Common.IRepository;
 import com.simplegames.finance.dal.operation.Operation;
 import com.simplegames.finance.dal.operationItem.OperationItem;
-import com.simplegames.finance.dal.product.Product;
 
 import java.util.ArrayList;
 import java.util.concurrent.Callable;
@@ -44,7 +42,6 @@ public class AddOperationCallable implements Callable<Integer> {
             _operationItemRepository.Add(dbOperationItem);
             operationItems.add(dbOperationItem);
         }
-        _operationRepository.Add(dbOperation);
         return 1;
     }
 }

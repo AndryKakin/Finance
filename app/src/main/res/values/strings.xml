@@ -21,7 +21,10 @@
     <string name="shop_add_description_header">Enter description of shop</string>
     <string name="shop_add_name_header">Enter Name of shop</string>
     <string name="shop_add_button_add_header">Add new shop</string>
-    <string name="add_new_purchase">Add new purchase</string>
+
+    <string name="purchase_show_all_purchases">Show all purchases</string>
+    <string name="purchase_add_new_purchase">Add new purchase</string>
+
     <string name="products_remove_product_button_header">Remove product</string>
     <string name="add_operation_button_header">Add operation</string>
 

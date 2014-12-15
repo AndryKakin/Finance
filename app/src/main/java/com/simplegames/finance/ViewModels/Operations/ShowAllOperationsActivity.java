@@ -17,26 +17,12 @@ import java.util.ArrayList;
  */
 public class ShowAllOperationsActivity extends ActionBarActivity {
     private SQLiteDbFabric _fabric;
-    private ArrayList<Product> _products;
-
-    private ArrayAdapter<String> adapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.products_activity_show_all_products);
+        setContentView(R.layout.operations_activity_show_all_operations);
         _fabric = new SQLiteDbFabric();
         _fabric.Context = this;
-        IRepository<Product> productRepository = _fabric.GetProductRepository();
-        _products = productRepository.GetAll();
-        ArrayList<String> products = new ArrayList<String>();
-        for (int i=0; i < _products.size(); i++)
-        {
-            products.add(_products.get(i).Name);
-        }
-        adapter = new ArrayAdapter<String>(this,
-                android.R.layout.simple_list_item_1, products);
-        ListView listOfProducts = (ListView)findViewById(R.id.listProductsView);
-        listOfProducts.setAdapter(adapter);
     }
 }
