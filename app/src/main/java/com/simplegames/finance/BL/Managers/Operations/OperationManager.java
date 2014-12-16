@@ -3,13 +3,12 @@ package com.simplegames.finance.BL.Managers.Operations;
 import android.content.Context;
 
 import com.simplegames.finance.BL.Managers.BaseDBManager;
-import com.simplegames.finance.BL.Managers.Operations.Tasks.AddOperationCallable;
 import com.simplegames.finance.dal.Common.IRepository;
 import com.simplegames.finance.dal.operation.Operation;
 import com.simplegames.finance.dal.operationItem.OperationItem;
 import com.simplegames.finance.dal.product.Product;
 
-import java.util.concurrent.FutureTask;
+import java.util.ArrayList;
 
 /**
  * Created by andrey.kakin on 31.10.2014.
@@ -17,21 +16,39 @@ import java.util.concurrent.FutureTask;
 public class OperationManager extends BaseDBManager {
     private IRepository<Operation> _operationRepository;
     private IRepository<OperationItem> _operationItemRepository;
-    private IRepository<Product> _productRepository;
+    //private IRepository<Product> _productRepository;
 
     public OperationManager(Context context)
     {
         super(context);
         _operationRepository = _fabric.GetOperationRepository();
         _operationItemRepository = _fabric.GetOperationItemRepository();
-        _productRepository = _fabric.GetProductRepository();
+        //_productRepository = _fabric.GetProductRepository();
     }
 
-    public FutureTask AddOperation(com.simplegames.finance.BL.Model.Operation operation)
+    public void AddOperation(com.simplegames.finance.BL.Model.Operation operation)
     {
-        return new FutureTask(new AddOperationCallable(
-                    _operationRepository,
-                    _operationItemRepository,
-                    operation));
+        Operation dbOperation = new Operation();
+        dbOperation.Name = operation.Name;
+        dbOperation.Currency = operation.Currency;
+        dbOperation.DateTime = operation.DateTime;
+        _operationRepository.Add(dbOperation);
+        ArrayList<OperationItem> operationItems = new ArrayList<OperationItem>();
+        for (int i=0; i < operation.Items.size(); i++)
+        {
+            com.simplegames.finance.BL.Model.OperationItem operationItem = operation.Items.get(i);
+            OperationItem dbOperationItem = new OperationItem();
+            dbOperationItem.ProductId = operationItem.Product.Id;
+            dbOperationItem.OperationId = dbOperation.Id;
+            dbOperationItem.Price = operationItem.Price;
+            _operationItemRepository.Add(dbOperationItem);
+            operationItems.add(dbOperationItem);
+        }
+    }
+
+    public ArrayList<Operation> GetAll()
+    {
+        ArrayList<Operation> result = _operationRepository.GetAll();
+        return result;
     }
 }

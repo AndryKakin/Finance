@@ -1,15 +1,18 @@
 package com.simplegames.finance.ViewModels.Operations;
 
 import android.content.Intent;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
 import android.text.format.DateUtils;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
+import android.widget.TextView;
 
 import com.simplegames.finance.BL.Managers.Products.ProductManager;
 import com.simplegames.finance.BL.Managers.Operations.OperationManager;
+import com.simplegames.finance.BL.Model.Operation;
 import com.simplegames.finance.BL.Model.OperationItem;
 import com.simplegames.finance.BL.Model.Product;
 import com.simplegames.finance.ViewModels.StartActivity;
@@ -91,14 +94,39 @@ public class AddOperationActivity extends ActionBarActivity {
         {
             operation.Items.add(_purchaseAdapter.getItem(i));
         }
-        FutureTask task =_operationManager.AddOperation(operation);
-        task.run();
-        int g = 45;
+        AddNewOperationUITask addNewOperationUITask = new AddNewOperationUITask();
+        addNewOperationUITask.execute(operation);
+    }
 
+    private class AddNewOperationUITask extends AsyncTask<com.simplegames.finance.BL.Model.Operation, Integer, Void> {
+        @Override
+        protected Void doInBackground(Operation... params) {
+            int count = 5;
+            for(int i=0;i<count;i++) {
+                try {
+                    Thread.sleep(1000);
+                    publishProgress((int) ((i / (float) count) * 100));
+                } catch (InterruptedException e) {
+                    // TODO Auto-generated catch block
+                    e.printStackTrace();
+                }
+            }
+            _operationManager.AddOperation(params[0]);
+            return null;
+        }
 
-        Intent intent = new Intent(AddOperationActivity.this, StartActivity.class);
-        startActivity(intent);
-        this.finish();
+        @Override
+        protected void onPostExecute(Void result) {
+            Intent intent = new Intent(AddOperationActivity.this, StartActivity.class);
+            startActivity(intent);
+            finish();
+        }
+
+        @Override
+        protected void onProgressUpdate(Integer... progress) {
+
+        }
+
     }
 
     public void cancel_onClick(View view) {
