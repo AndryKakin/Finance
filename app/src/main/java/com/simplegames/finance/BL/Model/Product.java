@@ -6,4 +6,5 @@ package com.simplegames.finance.BL.Model;
 public class Product extends BLBaseModel{
     public String Name;
     public String Description;
+    public boolean IsSelected;
 }

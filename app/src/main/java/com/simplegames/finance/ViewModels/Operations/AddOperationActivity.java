@@ -135,13 +135,13 @@ public class AddOperationActivity extends ActionBarActivity {
     }
 
     public void addProductToOperation_OnClick(View view) {
-        if(_productAdapter.SelectedItem != null) {
-            Product selected = _productAdapter.SelectedItem;
-            OperationItem operationItem = new OperationItem();
-            operationItem.Product = selected;
-            operationItem.Price = 0;
-            _purchaseAdapter.Add(operationItem);
-        }
+        //if(_productAdapter. != null) {
+        //    Product selected = _productAdapter.SelectedItem;
+        //    OperationItem operationItem = new OperationItem();
+        //    operationItem.Product = selected;
+        //   operationItem.Price = 0;
+        //    _purchaseAdapter.Add(operationItem);
+        //}
 
     }
 }

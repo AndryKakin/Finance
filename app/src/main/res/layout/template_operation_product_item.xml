@@ -6,7 +6,8 @@
     android:paddingLeft="8dp"
     android:paddingRight="8dp"
     android:minHeight="?android:listPreferredItemHeight"
-    android:gravity="center_vertical">
+    android:gravity="center_vertical"
+    android:background="@color/silver">
     <TextView
         android:id="@+id/productNameView"
         android:layout_width="wrap_content"

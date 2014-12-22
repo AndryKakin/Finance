@@ -1,5 +1,6 @@
 package com.simplegames.finance.ViewModels.Operations;
 
+import android.graphics.Color;
 import android.support.v7.app.ActionBarActivity;
 import android.view.View;
 import android.view.ViewGroup;
@@ -21,12 +22,9 @@ public class ProductsAdapter extends BaseAdapter {
     private ActionBarActivity _context;
     public ProductsAdapter(ActionBarActivity context,ArrayList<Product> products)
     {
-        SelectedItem = null;
         _context = context;
         _data  = new ArrayList<Product>(products);
     }
-
-    public Product SelectedItem;
 
     @Override
     public int getCount() {
@@ -54,13 +52,26 @@ public class ProductsAdapter extends BaseAdapter {
         ((EditText) convertView.findViewById(R.id.editProductCostView))
                 .setText(Long.toString(getItem(position).Id));
 
+        SetSelectedView(position, convertView);
+
         convertView.setOnClickListener(new View.OnClickListener()
         {
             public void onClick(View v) {
-                SelectedItem = getItem(position);
+                Product product = getItem(position);
+                product.IsSelected = !product.IsSelected;
+                SetSelectedView(position, v);
+
             }
         });
 
         return convertView;
+    }
+
+    private void SetSelectedView(int position, View convertView) {
+        Product tempProduct = getItem(position);
+        if(tempProduct.IsSelected)
+            convertView.setBackgroundColor(Color.rgb(226, 11, 11));
+        else
+            convertView.setBackgroundColor(Color.rgb(26, 55, 65));
     }
 }
