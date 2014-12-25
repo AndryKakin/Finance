@@ -135,13 +135,26 @@ public class AddOperationActivity extends ActionBarActivity {
     }
 
     public void addProductToOperation_OnClick(View view) {
-        //if(_productAdapter. != null) {
-        //    Product selected = _productAdapter.SelectedItem;
-        //    OperationItem operationItem = new OperationItem();
-        //    operationItem.Product = selected;
-        //   operationItem.Price = 0;
-        //    _purchaseAdapter.Add(operationItem);
-        //}
-
+        ArrayList<Product> selectedProducts = new ArrayList<Product>();
+        for(int i=0; i < _productAdapter.getCount(); i++)
+        {
+            Product product =_productAdapter.getItem(i);
+            if(product.IsSelected)
+            {
+                selectedProducts.add(product);
+            }
+        }
+        if(selectedProducts.size() > 0)
+        {
+            for(int i=0; i < selectedProducts.size(); i++)
+            {
+                Product selectedProduct = selectedProducts.get(i);
+                OperationItem operationItem = new OperationItem();
+                operationItem.Product = selectedProduct;
+                operationItem.Price = 0;
+                _purchaseAdapter.add(operationItem);
+                _productAdapter.remove(selectedProduct);
+            }
+        }
     }
 }

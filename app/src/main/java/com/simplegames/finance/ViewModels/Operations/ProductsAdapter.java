@@ -25,6 +25,17 @@ public class ProductsAdapter extends BaseAdapter {
         _context = context;
         _data  = new ArrayList<Product>(products);
     }
+    public void add(Product product)
+    {
+        _data.add(product);
+        this.notifyDataSetChanged();
+    }
+
+    public void remove(Product product)
+    {
+        _data.remove(product);
+        this.notifyDataSetChanged();
+    }
 
     @Override
     public int getCount() {
