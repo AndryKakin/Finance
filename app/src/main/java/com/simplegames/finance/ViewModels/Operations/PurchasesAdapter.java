@@ -7,9 +7,11 @@ import android.view.KeyEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
+import com.simplegames.finance.BL.Model.Operation;
 import com.simplegames.finance.BL.Model.OperationItem;
 import com.simplegames.finance.BL.Model.Product;
 import com.simplegames.finance.app.R;
@@ -70,7 +72,7 @@ public class PurchasesAdapter extends BaseAdapter {
         editPriceView.setText("$" + getItem(position).Price);
         editPriceView.addTextChangedListener(new TextWatcher() {
 
-            private String previousDigits, num;
+            private String previousDigits;
             private boolean textChanged = false;
 
             @Override
@@ -109,6 +111,30 @@ public class PurchasesAdapter extends BaseAdapter {
 
         });
 
+        final EditText editCountView = (EditText) convertView.findViewById(R.id.editProductCountView);
+        editCountView.setText(Integer.toString(getItem(position).Count));
+
+        Button upCountButton = (Button) convertView.findViewById(R.id.upCountButtonView);
+        upCountButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                OperationItem operationItem = getItem(position);
+                operationItem.Count++;
+                editCountView.setText(Integer.toString(operationItem.Count));
+            }
+        });
+        Button downCountButton = (Button) convertView.findViewById(R.id.downCountButtonView);
+        downCountButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                OperationItem operationItem = getItem(position);
+                if(operationItem.Count > 1)
+                {
+                    operationItem.Count--;
+                }
+                editCountView.setText(Integer.toString(operationItem.Count));
+            }
+        });
         return convertView;
     }
 }

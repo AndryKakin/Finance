@@ -152,6 +152,7 @@ public class AddOperationActivity extends ActionBarActivity {
                 OperationItem operationItem = new OperationItem();
                 operationItem.Product = selectedProduct;
                 operationItem.Price = 0;
+                operationItem.Count = 1;
                 _purchaseAdapter.add(operationItem);
                 _productAdapter.remove(selectedProduct);
             }

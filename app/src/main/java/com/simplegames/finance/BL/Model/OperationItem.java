@@ -6,4 +6,5 @@ package com.simplegames.finance.BL.Model;
 public class OperationItem extends BLBaseModel{
     public double Price;
     public Product Product;
+    public int Count;
 }
