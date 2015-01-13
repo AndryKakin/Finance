@@ -10,6 +10,7 @@ public class ProductTable extends TableParams {
     public static String IdColumnName = "_id";
     public String NameColumnName = "Name";
     public String DescriptionColumnName = "Description";
+    public String Image = "Image";
 
     public static String TableName = "Product";
 
@@ -18,6 +19,7 @@ public class ProductTable extends TableParams {
         return "CREATE TABLE " + TableName + " (" +
                 IdColumnName + " INTEGER PRIMARY KEY AUTOINCREMENT, " +
                 NameColumnName + " VARCHAR(255), " +
+                Image + " BLOB, " +
                 DescriptionColumnName + " VARCHAR(2048)); ";
     }
 

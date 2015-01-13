@@ -11,6 +11,7 @@
     <string name="product_add_description_header">Enter description of product</string>
     <string name="product_add_name_header">Enter Name product</string>
     <string name="product_add_button_add_header">Add new product</string>
+    <string name="product_choose_image_button_add_header">Choose image for product</string>
 
 
     <string name="operation_add_button_add_header">Add new operation</string>

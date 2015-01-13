@@ -4,11 +4,14 @@ import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.util.Log;
 
 import com.simplegames.finance.dal.DB.FinanceDataBase;
 import com.simplegames.finance.dal.Common.IRepository;
 
+import java.io.ByteArrayOutputStream;
 import java.util.ArrayList;
 
 /**
@@ -29,6 +32,11 @@ public class ProductRepository implements IRepository<Product> {
         ContentValues cv = new ContentValues();
         cv.put(_productTable.NameColumnName, product.Name);
         cv.put(_productTable.DescriptionColumnName,product.Description);
+
+        ByteArrayOutputStream memory = new ByteArrayOutputStream();
+        product.Bitmap.compress(Bitmap.CompressFormat.JPEG, 100, memory);
+        cv.put(_productTable.Image, memory.toByteArray());
+
         product.Id = sqdb.insert(ProductTable.TableName, null, cv);
         sqdb.close();
     }
@@ -49,7 +57,8 @@ public class ProductRepository implements IRepository<Product> {
         Cursor cursor = sqdb.query(ProductTable.TableName, new String[] {
                         _productTable.IdColumnName,
                         _productTable.NameColumnName,
-                        _productTable.DescriptionColumnName},
+                        _productTable.DescriptionColumnName,
+                        _productTable.Image},
                 null, // The columns for the WHERE clause
                 null, // The values for the WHERE clause
                 null, // don't group the rows
@@ -62,17 +71,18 @@ public class ProductRepository implements IRepository<Product> {
             long id = cursor.getInt(cursor
                     .getColumnIndex(_productTable.IdColumnName));
 
-            String name = cursor.getString(cursor
-                    .getColumnIndex(_productTable.NameColumnName));
+            String name = cursor.getString(cursor.getColumnIndex(_productTable.NameColumnName));
 
-            String description = cursor.getString(cursor
-                    .getColumnIndex(_productTable.DescriptionColumnName));
+            String description = cursor.getString(cursor.getColumnIndex(_productTable.DescriptionColumnName));
+
+            byte[] data = cursor.getBlob(cursor.getColumnIndex(_productTable.Image));
 
             Log.i("LOG_TAG", "ROW " + id + " NAME " + name + " DESCRIPTION " + description);
             Product product = new Product();
             product.Id = id;
             product.Name = name;
             product.Description = description;
+            product.Bitmap = BitmapFactory.decodeByteArray(data, 0, data.length);
             result.add(product);
         }
         cursor.close();

@@ -18,8 +18,12 @@ public class ProductManager extends BaseDBManager {
         super(context);
         _productRepository = _fabric.GetProductRepository();
     }
-    public void Add(Product item) {
-        _productRepository.Add(item);
+    public void Add(com.simplegames.finance.BL.Model.Product product) {
+        Product dbProduct = new Product();
+        dbProduct.Bitmap = product.Bitmap;
+        dbProduct.Description = product.Description;
+        dbProduct.Name = product.Name;
+        _productRepository.Add(dbProduct);
     }
 
     public ArrayList<com.simplegames.finance.BL.Model.Product> GetAll()
@@ -32,6 +36,8 @@ public class ProductManager extends BaseDBManager {
             com.simplegames.finance.BL.Model.Product product = new com.simplegames.finance.BL.Model.Product();
             product.Name = dbProduct.Name;
             product.Id = dbProduct.Id;
+            product.Bitmap = dbProduct.Bitmap;
+            product.Description = dbProduct.Description;
             products.add(product);
         }
         return products;

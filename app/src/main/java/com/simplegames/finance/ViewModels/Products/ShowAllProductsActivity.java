@@ -5,10 +5,10 @@ import android.support.v7.app.ActionBarActivity;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
+import com.simplegames.finance.BL.Managers.Products.ProductManager;
+import com.simplegames.finance.BL.Model.Product;
+
 import com.simplegames.finance.app.R;
-import com.simplegames.finance.dal.Common.IRepository;
-import com.simplegames.finance.dal.DB.SQLiteDbFabric;
-import com.simplegames.finance.dal.product.Product;
 
 import java.util.ArrayList;
 
@@ -16,7 +16,8 @@ import java.util.ArrayList;
  * Created by andrey.kakin on 03.10.14.
  */
 public class ShowAllProductsActivity extends ActionBarActivity {
-    private SQLiteDbFabric _fabric;
+    private ProductManager _productManager;
+
     private ArrayList<Product> _products;
 
     private ArrayAdapter<String> adapter;
@@ -25,10 +26,8 @@ public class ShowAllProductsActivity extends ActionBarActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.products_activity_show_all_products);
-        _fabric = new SQLiteDbFabric();
-        _fabric.Context = this;
-        IRepository<Product> productRepository = _fabric.GetProductRepository();
-        _products = productRepository.GetAll();
+        _productManager = new ProductManager(this);
+        _products = _productManager.GetAll();
         ArrayList<String> products = new ArrayList<String>();
         for (int i=0; i < _products.size(); i++)
         {

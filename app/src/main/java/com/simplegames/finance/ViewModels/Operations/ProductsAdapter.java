@@ -6,6 +6,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.simplegames.finance.BL.Model.Product;
@@ -57,6 +58,8 @@ public class ProductsAdapter extends BaseAdapter {
         if (convertView == null) {
             convertView = _context.getLayoutInflater().inflate(R.layout.template_operation_product_item, parent, false);
         }
+        ((ImageView) convertView.findViewById(R.id.productImageView)).setImageBitmap(getItem(position).Bitmap);
+
         ((TextView) convertView.findViewById(R.id.productNameView))
                 .setText(getItem(position).Name);
 
