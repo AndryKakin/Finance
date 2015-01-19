@@ -70,7 +70,7 @@ public class OperationRepository implements IRepository<Operation> {
                 null, // don't filter by row groups
                 null // The sort order
         );
-        DateFormat dateFormat = DateFormat.getDateTimeInstance();
+        DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
         ArrayList<Operation> result = new ArrayList<Operation>();
         while (cursor.moveToNext()) {
             // GET COLUMN INDICES + VALUES OF THOSE COLUMNS

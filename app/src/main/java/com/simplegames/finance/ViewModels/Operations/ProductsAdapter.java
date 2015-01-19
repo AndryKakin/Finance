@@ -8,8 +8,6 @@ import android.widget.BaseAdapter;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
-
-import com.simplegames.finance.BL.Model.Product;
 import com.simplegames.finance.app.R;
 
 import java.util.ArrayList;
@@ -19,20 +17,20 @@ import java.util.ArrayList;
  */
 public class ProductsAdapter extends BaseAdapter {
 
-    private ArrayList<Product> _data;
+    private ArrayList<ProductVM> _data;
     private ActionBarActivity _context;
-    public ProductsAdapter(ActionBarActivity context,ArrayList<Product> products)
+    public ProductsAdapter(ActionBarActivity context,ArrayList<ProductVM> products)
     {
         _context = context;
-        _data  = new ArrayList<Product>(products);
+        _data  = new ArrayList<ProductVM>(products);
     }
-    public void add(Product product)
+    public void add(ProductVM product)
     {
         _data.add(product);
         this.notifyDataSetChanged();
     }
 
-    public void remove(Product product)
+    public void remove(ProductVM product)
     {
         _data.remove(product);
         this.notifyDataSetChanged();
@@ -44,7 +42,7 @@ public class ProductsAdapter extends BaseAdapter {
     }
 
     @Override
-    public Product getItem(int position) {
+    public ProductVM getItem(int position) {
         return _data.get(position);
     }
 
@@ -71,7 +69,7 @@ public class ProductsAdapter extends BaseAdapter {
         convertView.setOnClickListener(new View.OnClickListener()
         {
             public void onClick(View v) {
-                Product product = getItem(position);
+                ProductVM product = getItem(position);
                 product.IsSelected = !product.IsSelected;
                 SetSelectedView(position, v);
 
@@ -82,10 +80,10 @@ public class ProductsAdapter extends BaseAdapter {
     }
 
     private void SetSelectedView(int position, View convertView) {
-        Product tempProduct = getItem(position);
+        ProductVM tempProduct = getItem(position);
         if(tempProduct.IsSelected)
-            convertView.setBackgroundColor(Color.rgb(226, 11, 11));
+            convertView.setBackgroundColor(Color.rgb(128, 185, 249));
         else
-            convertView.setBackgroundColor(Color.rgb(26, 55, 65));
+            convertView.setBackgroundColor(Color.rgb(147, 250, 141));
     }
 }

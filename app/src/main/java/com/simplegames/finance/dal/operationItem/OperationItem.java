@@ -9,4 +9,5 @@ public class OperationItem
     public long OperationId;
     public long ProductId;
     public double Price;
+    public long Count;
 }

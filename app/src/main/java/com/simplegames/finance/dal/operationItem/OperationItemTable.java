@@ -12,6 +12,7 @@ public class OperationItemTable extends TableParams {
     public String OperationIdColumnName = "FKOperationId";
     public String ProductIdColumnName = "FKProductId";
     public String PriceColumnName = "Price";
+    public String CountOfProductsName = "Count";
 
 
 
@@ -23,6 +24,7 @@ public class OperationItemTable extends TableParams {
                 IdColumnName        + " INTEGER PRIMARY KEY AUTOINCREMENT, " +
                 OperationIdColumnName   + " INTEGER, " +
                 ProductIdColumnName     + " INTEGER, " +
+                CountOfProductsName     + " INTEGER, " +
                 PriceColumnName         + " DOUBLE,  " +
                 CreateForeignKey(OperationIdColumnName, OperationTable.TableName, OperationTable.IdColumnName) +
                 CreateForeignKey(ProductIdColumnName, ProductTable.TableName, ProductTable.IdColumnName) +

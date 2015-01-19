@@ -6,7 +6,6 @@ import com.simplegames.finance.BL.Managers.BaseDBManager;
 import com.simplegames.finance.dal.Common.IRepository;
 import com.simplegames.finance.dal.operation.Operation;
 import com.simplegames.finance.dal.operationItem.OperationItem;
-import com.simplegames.finance.dal.product.Product;
 
 import java.util.ArrayList;
 
@@ -16,14 +15,12 @@ import java.util.ArrayList;
 public class OperationManager extends BaseDBManager {
     private IRepository<Operation> _operationRepository;
     private IRepository<OperationItem> _operationItemRepository;
-    //private IRepository<Product> _productRepository;
 
     public OperationManager(Context context)
     {
         super(context);
         _operationRepository = _fabric.GetOperationRepository();
         _operationItemRepository = _fabric.GetOperationItemRepository();
-        //_productRepository = _fabric.GetProductRepository();
     }
 
     public void AddOperation(com.simplegames.finance.BL.Model.Operation operation)
@@ -41,14 +38,40 @@ public class OperationManager extends BaseDBManager {
             dbOperationItem.ProductId = operationItem.Product.Id;
             dbOperationItem.OperationId = dbOperation.Id;
             dbOperationItem.Price = operationItem.Price;
+            dbOperationItem.Count = operationItem.Count;
             _operationItemRepository.Add(dbOperationItem);
             operationItems.add(dbOperationItem);
         }
     }
 
-    public ArrayList<Operation> GetAll()
+    public ArrayList<com.simplegames.finance.BL.Model.Operation> GetAll()
     {
-        ArrayList<Operation> result = _operationRepository.GetAll();
+        ArrayList<com.simplegames.finance.BL.Model.Operation> result = new ArrayList<com.simplegames.finance.BL.Model.Operation>();
+        ArrayList<Operation> dbOperations = _operationRepository.GetAll();
+        ArrayList<OperationItem> dbOperationItems = _operationItemRepository.GetAll();
+        for(int i=0; i < dbOperations.size(); i++)
+        {
+            Operation dbOperation = dbOperations.get(i);
+            com.simplegames.finance.BL.Model.Operation blOperation = new com.simplegames.finance.BL.Model.Operation();
+            blOperation.Id = dbOperation.Id;
+            blOperation.DateTime = dbOperation.DateTime;
+            blOperation.Currency = dbOperation.Currency;
+            blOperation.Name = dbOperation.Name;
+            blOperation.Items = new ArrayList< com.simplegames.finance.BL.Model.OperationItem>();
+            for(int j=0; j < dbOperationItems.size(); j++)
+            {
+                OperationItem dbOperationItem = dbOperationItems.get(j);
+                if(dbOperationItem.OperationId == dbOperation.Id)
+                {
+                    com.simplegames.finance.BL.Model.OperationItem blOperationItem = new com.simplegames.finance.BL.Model.OperationItem();
+                    blOperationItem.Id = dbOperationItem.Id;
+                    blOperationItem.Count = (int) dbOperationItem.Count;
+                    blOperationItem.Price = dbOperationItem.Price;
+                    blOperation.Items.add(blOperationItem);
+                }
+            }
+            result.add(blOperation);
+        }
         return result;
     }
 }

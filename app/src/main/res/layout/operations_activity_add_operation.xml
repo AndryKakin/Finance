@@ -39,13 +39,14 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_weight="0.5"
-            android:background="#ffffb76f" />
+            android:background="#ffaaaaaa" />
 
         <ListView
             android:id="@+id/productsListView"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_weight="0.5"
+            android:background="#ffcc8888"
             android:minWidth="150dp"/>
     </LinearLayout>
 

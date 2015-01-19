@@ -32,6 +32,7 @@ public class OperationItemRepository implements IRepository<OperationItem> {
 
         cv.put(_operationItemTable.OperationIdColumnName, operationItem.OperationId);
         cv.put(_operationItemTable.ProductIdColumnName, operationItem.ProductId);
+        cv.put(_operationItemTable.CountOfProductsName, operationItem.Count);
         cv.put(_operationItemTable.PriceColumnName, operationItem.Price);
 
         operationItem.Id = sqdb.insert(OperationItemTable.TableName, null, cv);
@@ -51,10 +52,11 @@ public class OperationItemRepository implements IRepository<OperationItem> {
     @Override
     public ArrayList<OperationItem> GetAll() {
         SQLiteDatabase sqdb = _financeDataBase.getWritableDatabase();
-        Cursor cursor = sqdb.query(OperationTable.TableName, new String[] {
+        Cursor cursor = sqdb.query(OperationItemTable.TableName, new String[] {
                         _operationItemTable.IdColumnName,
                         _operationItemTable.OperationIdColumnName,
                         _operationItemTable.ProductIdColumnName,
+                        _operationItemTable.CountOfProductsName,
                         _operationItemTable.PriceColumnName},
                 null, // The columns for the WHERE clause
                 null, // The values for the WHERE clause
@@ -62,7 +64,6 @@ public class OperationItemRepository implements IRepository<OperationItem> {
                 null, // don't filter by row groups
                 null // The sort order
         );
-        DateFormat dateFormat = DateFormat.getDateTimeInstance();
         ArrayList<OperationItem> result = new ArrayList<OperationItem>();
         while (cursor.moveToNext()) {
             // GET COLUMN INDICES + VALUES OF THOSE COLUMNS
@@ -75,18 +76,23 @@ public class OperationItemRepository implements IRepository<OperationItem> {
             int productId = cursor.getInt(cursor
                     .getColumnIndex(_operationItemTable.ProductIdColumnName));
 
-            double price = cursor.getDouble(cursor
-                    .getColumnIndex(_operationItemTable.PriceColumnName));
+            double price = cursor.getDouble(cursor.getColumnIndex(_operationItemTable.PriceColumnName));
+
+            int count = cursor.getInt(cursor.getColumnIndex(_operationItemTable.CountOfProductsName));
 
 
-            Log.i("LOG_TAG", "ROW " + id + " OperationId " + operationId +
+            Log.i("LOG_TAG",
+                    "ROW " + id +
+                    " OperationId " + operationId +
                     " ProductId " + productId +
-                    " Price " + price);
+                    " Price " + price +
+                    " Count " + count);
             OperationItem operationItem = new OperationItem();
             operationItem.Id = id;
             operationItem.OperationId =operationId;
             operationItem.ProductId = productId;
             operationItem.Price = price;
+            operationItem.Count = count;
             result.add(operationItem);
         }
         cursor.close();

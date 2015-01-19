@@ -4,11 +4,9 @@ import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
-import android.text.format.DateUtils;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
-import android.widget.TextView;
 
 import com.simplegames.finance.BL.Managers.Products.ProductManager;
 import com.simplegames.finance.BL.Managers.Operations.OperationManager;
@@ -18,12 +16,8 @@ import com.simplegames.finance.BL.Model.Product;
 import com.simplegames.finance.ViewModels.StartActivity;
 import com.simplegames.finance.app.R;
 
-import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.Calendar;
-import java.util.Date;
-import java.util.concurrent.ExecutionException;
-import java.util.concurrent.FutureTask;
 
 /**
  * Created by andrey.kakin on 29.10.2014.
@@ -47,7 +41,7 @@ public class AddOperationActivity extends ActionBarActivity {
         _availableProducts = _productManager.GetAll();
         _purchaseItems = new ArrayList<OperationItem>();
 
-        _productAdapter = new ProductsAdapter(this,_availableProducts);
+        _productAdapter = new ProductsAdapter(this, ConvertProductsBLToVM(_availableProducts));
         _purchaseAdapter = new PurchasesAdapter(this,_purchaseItems);
 
         ListView productListView = (ListView)findViewById(R.id.productsListView);
@@ -83,6 +77,24 @@ public class AddOperationActivity extends ActionBarActivity {
                 // TODO Auto-generated method stub
             }
         });
+    }
+
+    private ArrayList<ProductVM> ConvertProductsBLToVM(ArrayList<Product> blProducts) {
+        ArrayList<ProductVM> result = new ArrayList<ProductVM>();
+        for(int i=0; i<blProducts.size(); i++)
+        {
+            result.add(ConvertProductBLToVM(blProducts.get(i)));
+        }
+        return result;
+    }
+
+    private ProductVM ConvertProductBLToVM(Product product) {
+        ProductVM productVM = new ProductVM();
+        productVM.Bitmap = product.Bitmap;
+        productVM.Description = product.Description;
+        productVM.Id = product.Id;
+        productVM.Name =  product.Name;
+        return productVM;
     }
 
     public void addNewOperation_OnClick(View view) {
@@ -138,10 +150,10 @@ public class AddOperationActivity extends ActionBarActivity {
         ArrayList<Product> selectedProducts = new ArrayList<Product>();
         for(int i=0; i < _productAdapter.getCount(); i++)
         {
-            Product product =_productAdapter.getItem(i);
+            ProductVM product =_productAdapter.getItem(i);
             if(product.IsSelected)
             {
-                selectedProducts.add(product);
+                selectedProducts.add(ConvertVMToBL(product));
             }
         }
         if(selectedProducts.size() > 0)
@@ -154,8 +166,17 @@ public class AddOperationActivity extends ActionBarActivity {
                 operationItem.Price = 0;
                 operationItem.Count = 1;
                 _purchaseAdapter.add(operationItem);
-                _productAdapter.remove(selectedProduct);
+                _productAdapter.remove(ConvertProductBLToVM(selectedProduct));
             }
         }
+    }
+
+    private Product ConvertVMToBL(ProductVM productVM) {
+        Product product = new Product();
+        product.Bitmap = productVM.Bitmap;
+        product.Description = productVM.Description;
+        product.Id = productVM.Id;
+        product.Name =  productVM.Name;
+        return product;
     }
 }
