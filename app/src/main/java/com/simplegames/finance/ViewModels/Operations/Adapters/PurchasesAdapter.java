@@ -1,9 +1,8 @@
-package com.simplegames.finance.ViewModels.Operations;
+package com.simplegames.finance.ViewModels.Operations.Adapters;
 
 import android.support.v7.app.ActionBarActivity;
 import android.text.Editable;
 import android.text.TextWatcher;
-import android.view.KeyEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
@@ -11,9 +10,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
-import com.simplegames.finance.BL.Model.Operation;
 import com.simplegames.finance.BL.Model.OperationItem;
-import com.simplegames.finance.BL.Model.Product;
 import com.simplegames.finance.app.R;
 
 import java.util.ArrayList;
@@ -62,7 +59,7 @@ public class PurchasesAdapter extends BaseAdapter {
     @Override
     public View getView(final int position, View convertView, ViewGroup parent) {
         if (convertView == null) {
-            convertView = _context.getLayoutInflater().inflate(R.layout.template_operation_purchase_item, parent, false);
+            convertView = _context.getLayoutInflater().inflate(R.layout.template_operation_item, parent, false);
         }
 
         ((TextView) convertView.findViewById(R.id.productNameView))
@@ -72,30 +69,35 @@ public class PurchasesAdapter extends BaseAdapter {
         editPriceView.setText("$" + getItem(position).Price);
         editPriceView.addTextChangedListener(new TextWatcher() {
 
-            private String previousDigits;
-            private boolean textChanged = false;
+            private String _previousDigits;
+            private boolean _textChanged = false;
+            private int _previewCursorPositionStart = 0;
+            private int _previewCursorPositionEnd = 0;
 
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-                previousDigits = s.toString();
+                _previousDigits = s.toString();
+                _previewCursorPositionStart = editPriceView.getSelectionStart();
+                _previewCursorPositionEnd = editPriceView.getSelectionEnd();
             }
 
             @Override
             public void onTextChanged(CharSequence currentDigits, int start,
                                       int before, int count) {
                 String input = currentDigits.toString();
-                if (!(previousDigits.equalsIgnoreCase(input)) && input.length() > 1) {
-                    textChanged = true;
+                if (!(_previousDigits.equalsIgnoreCase(input)) && input.length() > 1) {
+                    _textChanged = true;
                 }
             }
 
             @Override
             public void afterTextChanged(Editable s) {
-                if (textChanged) {
-                    textChanged = false;
+                if (_textChanged) {
+                    _textChanged = false;
 
                     String value = s.toString().substring(1,s.toString().length());
                     editPriceView.setText(s);
+                    editPriceView.setSelection(_previewCursorPositionStart,_previewCursorPositionEnd);
                     try {
                         double val = Double.parseDouble(value);
                         OperationItem operationItem = getItem(position);

@@ -1,4 +1,4 @@
-package com.simplegames.finance.ViewModels.Operations;
+package com.simplegames.finance.ViewModels.Operations.Adapters;
 
 import android.graphics.Color;
 import android.support.v7.app.ActionBarActivity;
@@ -8,6 +8,8 @@ import android.widget.BaseAdapter;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
+
+import com.simplegames.finance.ViewModels.Operations.Models.ProductVM;
 import com.simplegames.finance.app.R;
 
 import java.util.ArrayList;

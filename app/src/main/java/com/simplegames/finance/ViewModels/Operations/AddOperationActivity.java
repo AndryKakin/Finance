@@ -13,6 +13,9 @@ import com.simplegames.finance.BL.Managers.Operations.OperationManager;
 import com.simplegames.finance.BL.Model.Operation;
 import com.simplegames.finance.BL.Model.OperationItem;
 import com.simplegames.finance.BL.Model.Product;
+import com.simplegames.finance.ViewModels.Operations.Adapters.ProductsAdapter;
+import com.simplegames.finance.ViewModels.Operations.Adapters.PurchasesAdapter;
+import com.simplegames.finance.ViewModels.Operations.Models.ProductVM;
 import com.simplegames.finance.ViewModels.StartActivity;
 import com.simplegames.finance.app.R;
 

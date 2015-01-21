@@ -1,4 +1,4 @@
-package com.simplegames.finance.ViewModels.Operations;
+package com.simplegames.finance.ViewModels.Operations.Models;
 
 import android.graphics.Bitmap;
 
