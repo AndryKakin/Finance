@@ -15,6 +15,8 @@ import com.simplegames.finance.BL.Model.OperationItem;
 import com.simplegames.finance.BL.Model.Product;
 import com.simplegames.finance.ViewModels.Operations.Adapters.ProductsAdapter;
 import com.simplegames.finance.ViewModels.Operations.Adapters.PurchasesAdapter;
+import com.simplegames.finance.ViewModels.Operations.Models.Converters.ProductVMConverter;
+import com.simplegames.finance.ViewModels.Operations.Models.ProductSelectListener;
 import com.simplegames.finance.ViewModels.Operations.Models.ProductVM;
 import com.simplegames.finance.ViewModels.StartActivity;
 import com.simplegames.finance.app.R;
@@ -44,7 +46,21 @@ public class AddOperationActivity extends ActionBarActivity {
         _availableProducts = _productManager.GetAll();
         _purchaseItems = new ArrayList<OperationItem>();
 
-        _productAdapter = new ProductsAdapter(this, ConvertProductsBLToVM(_availableProducts));
+        ProductSelectListener addNewOperation = new ProductSelectListener() {
+            @Override
+            public void OnSelected(ProductVM selectedProductVM) {
+
+            }
+        };
+
+        ArrayList<ProductVM> productVMs = ProductVMConverter.ConvertProductsBLToVM(_availableProducts);
+        for(int i=0; i<productVMs.size(); i++)
+        {
+            ProductVM productVM = productVMs.get(i);
+            productVM.addListener(addNewOperation);
+        }
+
+        _productAdapter = new ProductsAdapter(this, productVMs);
         _purchaseAdapter = new PurchasesAdapter(this,_purchaseItems);
 
         ListView productListView = (ListView)findViewById(R.id.productsListView);
@@ -82,24 +98,6 @@ public class AddOperationActivity extends ActionBarActivity {
         });
     }
 
-    private ArrayList<ProductVM> ConvertProductsBLToVM(ArrayList<Product> blProducts) {
-        ArrayList<ProductVM> result = new ArrayList<ProductVM>();
-        for(int i=0; i<blProducts.size(); i++)
-        {
-            result.add(ConvertProductBLToVM(blProducts.get(i)));
-        }
-        return result;
-    }
-
-    private ProductVM ConvertProductBLToVM(Product product) {
-        ProductVM productVM = new ProductVM();
-        productVM.Bitmap = product.Bitmap;
-        productVM.Description = product.Description;
-        productVM.Id = product.Id;
-        productVM.Name =  product.Name;
-        return productVM;
-    }
-
     public void addNewOperation_OnClick(View view) {
         com.simplegames.finance.BL.Model.Operation operation = new com.simplegames.finance.BL.Model.Operation();
         operation.Currency = "RUB";
@@ -118,13 +116,7 @@ public class AddOperationActivity extends ActionBarActivity {
         protected Void doInBackground(Operation... params) {
             int count = 5;
             for(int i=0;i<count;i++) {
-                try {
-                    Thread.sleep(1000);
-                    publishProgress((int) ((i / (float) count) * 100));
-                } catch (InterruptedException e) {
-                    // TODO Auto-generated catch block
-                    e.printStackTrace();
-                }
+                publishProgress((int) ((i / (float) count) * 100));
             }
             _operationManager.AddOperation(params[0]);
             return null;
@@ -156,7 +148,7 @@ public class AddOperationActivity extends ActionBarActivity {
             ProductVM product =_productAdapter.getItem(i);
             if(product.IsSelected)
             {
-                selectedProducts.add(ConvertVMToBL(product));
+                selectedProducts.add(ProductVMConverter.ConvertVMToBL(product));
             }
         }
         if(selectedProducts.size() > 0)
@@ -169,17 +161,8 @@ public class AddOperationActivity extends ActionBarActivity {
                 operationItem.Price = 0;
                 operationItem.Count = 1;
                 _purchaseAdapter.add(operationItem);
-                _productAdapter.remove(ConvertProductBLToVM(selectedProduct));
+                _productAdapter.remove(ProductVMConverter.ConvertProductBLToVM(selectedProduct));
             }
         }
-    }
-
-    private Product ConvertVMToBL(ProductVM productVM) {
-        Product product = new Product();
-        product.Bitmap = productVM.Bitmap;
-        product.Description = productVM.Description;
-        product.Id = productVM.Id;
-        product.Name =  productVM.Name;
-        return product;
     }
 }
