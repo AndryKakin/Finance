@@ -1,5 +1,6 @@
 package com.simplegames.finance.ViewModels.Operations;
 
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
@@ -13,6 +14,7 @@ import com.simplegames.finance.BL.Managers.Operations.OperationManager;
 import com.simplegames.finance.BL.Model.Operation;
 import com.simplegames.finance.BL.Model.OperationItem;
 import com.simplegames.finance.BL.Model.Product;
+import com.simplegames.finance.ViewModels.Common.BusyActionBarActivity;
 import com.simplegames.finance.ViewModels.Operations.Adapters.ProductsAdapter;
 import com.simplegames.finance.ViewModels.Operations.Adapters.PurchasesAdapter;
 import com.simplegames.finance.ViewModels.Operations.Models.Converters.ProductVMConverter;
@@ -27,11 +29,12 @@ import java.util.Calendar;
 /**
  * Created by andrey.kakin on 29.10.2014.
  */
-public class AddOperationActivity extends ActionBarActivity {
+public class AddOperationActivity extends BusyActionBarActivity {
     private OperationManager _operationManager;
     private ProductManager _productManager;
 
     private ArrayList<Product> _availableProducts;
+    private ArrayList<ProductVM> _productVMs;
     private ArrayList<OperationItem> _purchaseItems;
 
     private ProductsAdapter _productAdapter;
@@ -40,6 +43,9 @@ public class AddOperationActivity extends ActionBarActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        progress.setMessage("Data is loading...");
+        progress.show();
+
         setContentView(R.layout.operations_activity_add_operation);
         _operationManager = new OperationManager(this);
         _productManager = new ProductManager(this);
@@ -49,18 +55,29 @@ public class AddOperationActivity extends ActionBarActivity {
         ProductSelectListener addNewOperation = new ProductSelectListener() {
             @Override
             public void OnSelected(ProductVM selectedProductVM) {
-
+                progress.setMessage("Item moving...");
+                progress.show();
+                Product selectedProduct = ProductVMConverter.ConvertVMToBL(selectedProductVM);
+                OperationItem operationItem = new OperationItem();
+                operationItem.Product = selectedProduct;
+                operationItem.Price = 0;
+                operationItem.Count = 1;
+                _purchaseAdapter.add(operationItem);
+                _purchaseAdapter.notifyDataSetChanged();
+                _productAdapter.remove(ProductVMConverter.ConvertProductBLToVM(selectedProduct));
+                _productAdapter.notifyDataSetChanged();
+                progress.hide();
             }
         };
 
-        ArrayList<ProductVM> productVMs = ProductVMConverter.ConvertProductsBLToVM(_availableProducts);
-        for(int i=0; i<productVMs.size(); i++)
+        _productVMs = ProductVMConverter.ConvertProductsBLToVM(_availableProducts);
+        for(int i=0; i<_productVMs.size(); i++)
         {
-            ProductVM productVM = productVMs.get(i);
+            ProductVM productVM = _productVMs.get(i);
             productVM.addListener(addNewOperation);
         }
 
-        _productAdapter = new ProductsAdapter(this, productVMs);
+        _productAdapter = new ProductsAdapter(this, _productVMs);
         _purchaseAdapter = new PurchasesAdapter(this,_purchaseItems);
 
         ListView productListView = (ListView)findViewById(R.id.productsListView);
@@ -69,33 +86,7 @@ public class AddOperationActivity extends ActionBarActivity {
         ListView purchaseItemsView = (ListView)findViewById(R.id.purchaseItemsView);
         purchaseItemsView.setAdapter(_purchaseAdapter);
 
-        productListView.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-
-            @Override
-            public void onItemSelected(AdapterView<?> arg0, View arg1,
-                                       int arg2, long arg3) {
-
-            }
-
-            @Override
-            public void onNothingSelected(AdapterView<?> arg0) {
-                // TODO Auto-generated method stub
-            }
-        });
-
-        purchaseItemsView.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-
-            @Override
-            public void onItemSelected(AdapterView<?> arg0, View arg1,
-                                       int arg2, long arg3) {
-
-            }
-
-            @Override
-            public void onNothingSelected(AdapterView<?> arg0) {
-                // TODO Auto-generated method stub
-            }
-        });
+        progress.hide();
     }
 
     public void addNewOperation_OnClick(View view) {
@@ -139,30 +130,5 @@ public class AddOperationActivity extends ActionBarActivity {
     public void cancel_onClick(View view) {
         Intent intent = new Intent(AddOperationActivity.this, StartActivity.class);
         startActivity(intent);
-    }
-
-    public void addProductToOperation_OnClick(View view) {
-        ArrayList<Product> selectedProducts = new ArrayList<Product>();
-        for(int i=0; i < _productAdapter.getCount(); i++)
-        {
-            ProductVM product =_productAdapter.getItem(i);
-            if(product.IsSelected)
-            {
-                selectedProducts.add(ProductVMConverter.ConvertVMToBL(product));
-            }
-        }
-        if(selectedProducts.size() > 0)
-        {
-            for(int i=0; i < selectedProducts.size(); i++)
-            {
-                Product selectedProduct = selectedProducts.get(i);
-                OperationItem operationItem = new OperationItem();
-                operationItem.Product = selectedProduct;
-                operationItem.Price = 0;
-                operationItem.Count = 1;
-                _purchaseAdapter.add(operationItem);
-                _productAdapter.remove(ProductVMConverter.ConvertProductBLToVM(selectedProduct));
-            }
-        }
     }
 }

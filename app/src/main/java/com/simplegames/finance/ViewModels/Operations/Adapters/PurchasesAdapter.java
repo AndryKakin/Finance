@@ -59,14 +59,15 @@ public class PurchasesAdapter extends BaseAdapter {
     @Override
     public View getView(final int position, View convertView, ViewGroup parent) {
         if (convertView == null) {
-            convertView = _context.getLayoutInflater().inflate(R.layout.template_operation_item, parent, false);
+            convertView = _context.getLayoutInflater().inflate(R.layout.template_operation_purchase_item, parent, false);
         }
 
-        ((TextView) convertView.findViewById(R.id.productNameView))
-                .setText(getItem(position).Product.Name);
+        OperationItem operationItem = getItem(position);
+        TextView productNameView = (TextView)convertView.findViewById(R.id.productNameView);
+        productNameView.setText(operationItem.Product.Name);
 
         final EditText editPriceView = ((EditText) convertView.findViewById(R.id.editProductPriceView));
-        editPriceView.setText("$" + getItem(position).Price);
+        editPriceView.setText("$" + operationItem.Price);
         editPriceView.addTextChangedListener(new TextWatcher() {
 
             private String _previousDigits;
@@ -114,7 +115,7 @@ public class PurchasesAdapter extends BaseAdapter {
         });
 
         final EditText editCountView = (EditText) convertView.findViewById(R.id.editProductCountView);
-        editCountView.setText(Integer.toString(getItem(position).Count));
+        editCountView.setText(Integer.toString(operationItem.Count));
 
         Button upCountButton = (Button) convertView.findViewById(R.id.upCountButtonView);
         upCountButton.setOnClickListener(new View.OnClickListener() {

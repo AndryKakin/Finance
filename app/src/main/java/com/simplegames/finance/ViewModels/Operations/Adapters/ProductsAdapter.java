@@ -72,8 +72,9 @@ public class ProductsAdapter extends BaseAdapter {
         {
             public void onClick(View v) {
                 ProductVM product = getItem(position);
-                product.IsSelected = !product.IsSelected;
-                SetSelectedView(position, v);
+                //product.IsSelected = !product.IsSelected;
+                product.Select();
+                //SetSelectedView(position, v);
 
             }
         });

@@ -1,6 +1,7 @@
 package com.simplegames.finance.ViewModels.Products;
 
 import android.app.Activity;
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.database.Cursor;
 import android.graphics.Bitmap;
@@ -13,6 +14,7 @@ import android.view.View;
 import android.widget.EditText;
 
 import com.simplegames.finance.BL.Managers.Products.ProductManager;
+import com.simplegames.finance.ViewModels.Common.BusyActionBarActivity;
 import com.simplegames.finance.ViewModels.StartActivity;
 import com.simplegames.finance.app.R;
 import com.simplegames.finance.BL.Model.Product;
@@ -20,11 +22,10 @@ import com.simplegames.finance.BL.Model.Product;
 /**
  * Created by andrey.kakin on 02.10.14.
  */
-public class AddProductActivity extends ActionBarActivity {
+public class AddProductActivity extends BusyActionBarActivity {
     private ProductManager _productManager;
     private static final int SELECT_PHOTO = 100;
     private Bitmap _bitmap = null;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -52,6 +53,9 @@ public class AddProductActivity extends ActionBarActivity {
         }
     }
     public void addNewProduct_onClick(View view) {
+        progress.setMessage("Product is saving...");
+        progress.show();
+
         EditText nameEditText = (EditText)findViewById(R.id.add_product_editProductName);
         EditText descriptionEditText = (EditText)findViewById(R.id.add_product_editProductDescription);
         Product product = new Product();
@@ -60,6 +64,7 @@ public class AddProductActivity extends ActionBarActivity {
         product.Bitmap = _bitmap;
         _productManager.Add(product);
 
+        progress.hide();
         Intent intent = new Intent(AddProductActivity.this, StartActivity.class);
         startActivity(intent);
     }
