@@ -37,7 +37,14 @@ public class PurchasesAdapter extends BaseAdapter {
 
     public void remove(OperationItem operationItem)
     {
-        _data.remove(operationItem);
+        for(int i=0; i< _data.size(); i++) {
+            OperationItem item = _data.get(i);
+            if(item.Id == operationItem.Id)
+            {
+                _data.remove(i);
+                break;
+            }
+        }
         this.notifyDataSetChanged();
     }
 

@@ -63,12 +63,11 @@ public class OperationAdapter extends BaseAdapter {
         {
             totalPrice += currentOperation.Items.get(i).Price;
         }
+
         ((TextView) convertView.findViewById(R.id.operationNameView)).setText(currentOperation.Name);
         ((TextView) convertView.findViewById(R.id.operationTimeView)).setText(currentOperation.DateTime.toString());
-        ((TextView) convertView.findViewById(R.id.operationTimeView)).setText(currentOperation.Items.size());
+        ((TextView) convertView.findViewById(R.id.operationCountView)).setText(Integer.toString(currentOperation.Items.size()));
         ((EditText) convertView.findViewById(R.id.operationPriceView)).setText(currentOperation.Currency + totalPrice);
-
-
 
         return convertView;
     }

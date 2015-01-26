@@ -34,7 +34,14 @@ public class ProductsAdapter extends BaseAdapter {
 
     public void remove(ProductVM product)
     {
-        _data.remove(product);
+        for(int i=0; i< _data.size(); i++) {
+            ProductVM item = _data.get(i);
+            if(item.Id == product.Id)
+            {
+                _data.remove(i);
+                break;
+            }
+        }
         this.notifyDataSetChanged();
     }
 

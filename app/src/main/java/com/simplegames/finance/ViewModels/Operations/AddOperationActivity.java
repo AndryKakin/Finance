@@ -1,13 +1,21 @@
 package com.simplegames.finance.ViewModels.Operations;
 
+import android.app.DatePickerDialog;
+import android.app.Dialog;
 import android.app.ProgressDialog;
+import android.app.TimePickerDialog;
 import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
+import android.text.format.DateFormat;
 import android.view.View;
 import android.widget.AdapterView;
+import android.widget.CalendarView;
+import android.widget.DatePicker;
+import android.widget.EditText;
 import android.widget.ListView;
+import android.widget.TimePicker;
 
 import com.simplegames.finance.BL.Managers.Products.ProductManager;
 import com.simplegames.finance.BL.Managers.Operations.OperationManager;
@@ -23,15 +31,24 @@ import com.simplegames.finance.ViewModels.Operations.Models.ProductVM;
 import com.simplegames.finance.ViewModels.StartActivity;
 import com.simplegames.finance.app.R;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.Date;
 
 /**
  * Created by andrey.kakin on 29.10.2014.
  */
 public class AddOperationActivity extends BusyActionBarActivity {
+    static final int DATE_DIALOG_ID = 999;
+    static final int TIME_DIALOG_ID = 998;
+
+    com.simplegames.finance.BL.Model.Operation _operation = new com.simplegames.finance.BL.Model.Operation();
     private OperationManager _operationManager;
     private ProductManager _productManager;
+    private SimpleDateFormat _dateFormat = new SimpleDateFormat("yyyy/MM/dd");
+    private SimpleDateFormat _timeFormat = new SimpleDateFormat("HH:mm:ss");
+
 
     private ArrayList<Product> _availableProducts;
     private ArrayList<ProductVM> _productVMs;
@@ -43,10 +60,38 @@ public class AddOperationActivity extends BusyActionBarActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        setContentView(R.layout.operations_activity_add_operation);
+        _operation.Currency = "RUB";
+        Calendar cal = Calendar.getInstance();
+        Date t = cal.getTime();
+        _operation.DateTime = new Date();
+
         progress.setMessage("Data is loading...");
         progress.show();
 
-        setContentView(R.layout.operations_activity_add_operation);
+        Date date = new Date();
+
+        EditText dateView = (EditText)findViewById(R.id.operationDateView);
+        dateView.setText(_dateFormat.format(date));
+        dateView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                showDialog(DATE_DIALOG_ID);
+
+            }
+        });
+
+        EditText timeView = (EditText)findViewById(R.id.operationTimeView);
+        timeView.setText(_timeFormat.format(date));
+        timeView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                showDialog(TIME_DIALOG_ID);
+
+            }
+        });
+
         _operationManager = new OperationManager(this);
         _productManager = new ProductManager(this);
         _availableProducts = _productManager.GetAll();
@@ -90,16 +135,12 @@ public class AddOperationActivity extends BusyActionBarActivity {
     }
 
     public void addNewOperation_OnClick(View view) {
-        com.simplegames.finance.BL.Model.Operation operation = new com.simplegames.finance.BL.Model.Operation();
-        operation.Currency = "RUB";
-        Calendar cal = Calendar.getInstance();
-        operation.DateTime = cal.getTime();
         for(int i=0; i < _purchaseAdapter.getCount(); i++)
         {
-            operation.Items.add(_purchaseAdapter.getItem(i));
+            _operation.Items.add(_purchaseAdapter.getItem(i));
         }
         AddNewOperationUITask addNewOperationUITask = new AddNewOperationUITask();
-        addNewOperationUITask.execute(operation);
+        addNewOperationUITask.execute(_operation);
     }
 
     private class AddNewOperationUITask extends AsyncTask<com.simplegames.finance.BL.Model.Operation, Integer, Void> {
@@ -131,4 +172,49 @@ public class AddOperationActivity extends BusyActionBarActivity {
         Intent intent = new Intent(AddOperationActivity.this, StartActivity.class);
         startActivity(intent);
     }
+
+    @Override
+    protected Dialog onCreateDialog(int id) {
+        switch (id) {
+            case DATE_DIALOG_ID:
+
+                int year = _operation.DateTime.getYear();
+                int month = _operation.DateTime.getMonth();
+                int day = _operation.DateTime.getDay();
+                int hours = _operation.DateTime.getHours();
+                int minute = _operation.DateTime.getMinutes();
+                return new DatePickerDialog(this, datePickerListener,
+                        _operation.DateTime.getYear() + 1900,
+                        _operation.DateTime.getMonth(),
+                        _operation.DateTime.getDay());
+            case TIME_DIALOG_ID:
+                return new TimePickerDialog(this,timePickerListener,
+                        _operation.DateTime.getHours(),
+                        _operation.DateTime.getMinutes(),true);
+        }
+        return null;
+    }
+
+    private TimePickerDialog.OnTimeSetListener timePickerListener = new TimePickerDialog.OnTimeSetListener() {
+        @Override
+        public void onTimeSet(TimePicker view, int hourOfDay, int minute) {
+            _operation.DateTime.setHours(hourOfDay);
+            _operation.DateTime.setMinutes(minute);
+            EditText timeView = (EditText)findViewById(R.id.operationTimeView);
+            timeView.setText(_timeFormat.format(_operation.DateTime));
+        }
+    };
+
+    private DatePickerDialog.OnDateSetListener datePickerListener = new DatePickerDialog.OnDateSetListener() {
+
+        // when dialog box is closed, below method will be called.
+        public void onDateSet(DatePicker view, int selectedYear,
+                              int selectedMonth, int selectedDay) {
+            _operation.DateTime.setYear(selectedYear - 1900);
+            _operation.DateTime.setMonth(selectedMonth);
+            _operation.DateTime.setDate(selectedDay);
+            EditText dateView = (EditText)findViewById(R.id.operationDateView);
+            dateView.setText(_dateFormat.format(_operation.DateTime));
+        }
+    };
 }
