@@ -16,25 +16,23 @@
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         android:layout_alignParentTop="true">
-        <EditText
-            android:layout_width="wrap_content"
+        <Button
+            android:layout_width="120dp"
             android:layout_height="wrap_content"
-            android:inputType="datetime"
-            android:ems="10"
-            android:id="@+id/operationDateView"
-            android:layout_weight="0.2"/>
-        <EditText
-            android:layout_width="wrap_content"
+            android:id="@+id/operationDateView"/>
+        <Button
+            android:layout_width="120dp"
             android:layout_height="wrap_content"
-            android:inputType="datetime"
-            android:ems="10"
-            android:id="@+id/operationTimeView"
-            android:layout_weight="0.2"/>
-        <EditText
-            android:layout_width="wrap_content"
+            android:id="@+id/operationTimeView"/>
+        <Button
+            android:layout_width="200dp"
             android:layout_height="wrap_content"
-            android:id="@+id/operationNameView"
-            android:layout_weight="0.6" />
+            android:text="enter shop"
+            android:id="@+id/operationShopView"/>
+        <EditText
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/operationNameView"/>
     </LinearLayout>
 
     <LinearLayout

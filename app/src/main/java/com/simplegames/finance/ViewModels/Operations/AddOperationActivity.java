@@ -11,6 +11,7 @@ import android.support.v7.app.ActionBarActivity;
 import android.text.format.DateFormat;
 import android.view.View;
 import android.widget.AdapterView;
+import android.widget.Button;
 import android.widget.CalendarView;
 import android.widget.DatePicker;
 import android.widget.EditText;
@@ -72,7 +73,7 @@ public class AddOperationActivity extends BusyActionBarActivity {
 
         Date date = new Date();
 
-        EditText dateView = (EditText)findViewById(R.id.operationDateView);
+        Button dateView = (Button)findViewById(R.id.operationDateView);
         dateView.setText(_dateFormat.format(date));
         dateView.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -82,7 +83,7 @@ public class AddOperationActivity extends BusyActionBarActivity {
             }
         });
 
-        EditText timeView = (EditText)findViewById(R.id.operationTimeView);
+        Button timeView = (Button)findViewById(R.id.operationTimeView);
         timeView.setText(_timeFormat.format(date));
         timeView.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -177,16 +178,10 @@ public class AddOperationActivity extends BusyActionBarActivity {
     protected Dialog onCreateDialog(int id) {
         switch (id) {
             case DATE_DIALOG_ID:
-
-                int year = _operation.DateTime.getYear();
-                int month = _operation.DateTime.getMonth();
-                int day = _operation.DateTime.getDay();
-                int hours = _operation.DateTime.getHours();
-                int minute = _operation.DateTime.getMinutes();
                 return new DatePickerDialog(this, datePickerListener,
                         _operation.DateTime.getYear() + 1900,
                         _operation.DateTime.getMonth(),
-                        _operation.DateTime.getDay());
+                        _operation.DateTime.getDate());
             case TIME_DIALOG_ID:
                 return new TimePickerDialog(this,timePickerListener,
                         _operation.DateTime.getHours(),
@@ -200,7 +195,7 @@ public class AddOperationActivity extends BusyActionBarActivity {
         public void onTimeSet(TimePicker view, int hourOfDay, int minute) {
             _operation.DateTime.setHours(hourOfDay);
             _operation.DateTime.setMinutes(minute);
-            EditText timeView = (EditText)findViewById(R.id.operationTimeView);
+            Button timeView = (Button)findViewById(R.id.operationTimeView);
             timeView.setText(_timeFormat.format(_operation.DateTime));
         }
     };
@@ -213,7 +208,7 @@ public class AddOperationActivity extends BusyActionBarActivity {
             _operation.DateTime.setYear(selectedYear - 1900);
             _operation.DateTime.setMonth(selectedMonth);
             _operation.DateTime.setDate(selectedDay);
-            EditText dateView = (EditText)findViewById(R.id.operationDateView);
+            Button dateView = (Button)findViewById(R.id.operationDateView);
             dateView.setText(_dateFormat.format(_operation.DateTime));
         }
     };
