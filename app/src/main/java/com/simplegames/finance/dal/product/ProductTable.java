@@ -1,5 +1,6 @@
 package com.simplegames.finance.dal.product;
 
+import com.simplegames.finance.dal.Category.CategoryTable;
 import com.simplegames.finance.dal.Common.TableParams;
 
 /**
@@ -8,6 +9,7 @@ import com.simplegames.finance.dal.Common.TableParams;
 public class ProductTable extends TableParams {
 
     public static String IdColumnName = "_id";
+    public String CategoryIdColumnName = "FKCategoryId";
     public String NameColumnName = "Name";
     public String DescriptionColumnName = "Description";
     public String Image = "Image";
@@ -20,7 +22,9 @@ public class ProductTable extends TableParams {
                 IdColumnName + " INTEGER PRIMARY KEY AUTOINCREMENT, " +
                 NameColumnName + " VARCHAR(255), " +
                 Image + " BLOB, " +
-                DescriptionColumnName + " VARCHAR(2048)); ";
+                DescriptionColumnName + " VARCHAR(2048), " +
+                CreateForeignKey(CategoryIdColumnName, CategoryTable.TableName, CategoryTable.IdColumnName) +
+                "); ";
     }
 
     @Override

@@ -5,7 +5,10 @@ import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.util.Log;
 
+import com.simplegames.finance.dal.Category.CategoryTable;
 import com.simplegames.finance.dal.Common.TableParams;
+import com.simplegames.finance.dal.Composition.CompositionTable;
+import com.simplegames.finance.dal.Composition.CompositionToProductTable;
 import com.simplegames.finance.dal.operation.OperationTable;
 import com.simplegames.finance.dal.operationItem.OperationItemTable;
 import com.simplegames.finance.dal.product.ProductTable;
@@ -29,6 +32,9 @@ public class FinanceDataBase extends SQLiteOpenHelper {
             _tables.add(new ShopTable());
             _tables.add(new OperationTable());
             _tables.add(new OperationItemTable());
+            _tables.add(new CategoryTable());
+            _tables.add(new CompositionTable());
+            _tables.add(new CompositionToProductTable());
         }
 
         @Override
