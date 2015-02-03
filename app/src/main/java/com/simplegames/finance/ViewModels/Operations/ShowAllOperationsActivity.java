@@ -1,24 +1,15 @@
 package com.simplegames.finance.ViewModels.Operations;
 
+import android.os.AsyncTask;
 import android.os.Bundle;
-import android.support.v7.app.ActionBarActivity;
-import android.widget.ArrayAdapter;
+import android.util.Log;
 import android.widget.ListView;
 
 import com.simplegames.finance.BL.Managers.Operations.OperationManager;
-import com.simplegames.finance.BL.Model.OperationItem;
 import com.simplegames.finance.ViewModels.Common.BusyActionBarActivity;
 import com.simplegames.finance.ViewModels.Operations.Adapters.OperationAdapter;
-import com.simplegames.finance.ViewModels.Operations.Adapters.PurchasesAdapter;
 import com.simplegames.finance.app.R;
-import com.simplegames.finance.dal.Common.IRepository;
-import com.simplegames.finance.dal.DB.SQLiteDbFabric;
-import com.simplegames.finance.dal.operation.Operation;
-import com.simplegames.finance.dal.product.Product;
-
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Locale;
 
 /**
  * Created by andrey.kakin on 12.12.2014.
@@ -36,6 +27,7 @@ public class ShowAllOperationsActivity extends BusyActionBarActivity {
         progress.setMessage("Data is loading...");
         progress.show();
 
+
         _operationManager = new OperationManager(this);
         _blOperations = _operationManager.GetAll();
         _operationAdapter = new OperationAdapter(this,_blOperations);
@@ -43,5 +35,27 @@ public class ShowAllOperationsActivity extends BusyActionBarActivity {
         ListView listOfProducts = (ListView)findViewById(R.id.listOperationsView);
         listOfProducts.setAdapter(_operationAdapter);
         progress.hide();
+    }
+
+    private class LoadAllOperation extends AsyncTask<ShowAllOperationsActivity, Integer, ArrayList<com.simplegames.finance.BL.Model.Operation>>
+    {
+        protected void onPreExecute (){
+            Log.d("PreExceute", "On pre Exceute......");
+        }
+
+        protected ArrayList<com.simplegames.finance.BL.Model.Operation> doInBackground(Void...arg0) {
+            Log.d("DoINBackGround","On doInBackground...");
+
+            _operationManager = new OperationManager();
+            return  _operationManager.GetAll();
+        }
+
+        protected void onProgressUpdate(Integer...a){
+            Log.d("You are in progress update ... " + a[0]);
+        }
+
+        protected void onPostExecute(String result) {
+            Log.d(""+result);
+        }
     }
 }

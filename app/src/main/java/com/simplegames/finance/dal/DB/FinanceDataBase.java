@@ -26,7 +26,6 @@ public class FinanceDataBase extends SQLiteOpenHelper {
     private ArrayList<TableParams> _tables = new ArrayList<TableParams>();
 
         public FinanceDataBase(Context context) {
-            // TODO Auto-generated constructor stub
             super(context, DATABASE_NAME, null, DATABASE_VERSION);
             _tables.add(new ProductTable());
             _tables.add(new ShopTable());
@@ -47,7 +46,6 @@ public class FinanceDataBase extends SQLiteOpenHelper {
 
         @Override
         public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
-            // TODO Auto-generated method stub
             Log.w("LOG_TAG", "Update database from  " + oldVersion
                     + " to version " + newVersion + ".");
             String sqlDeletes = "";

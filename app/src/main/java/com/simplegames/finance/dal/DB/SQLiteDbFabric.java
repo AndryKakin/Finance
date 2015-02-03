@@ -2,8 +2,10 @@ package com.simplegames.finance.dal.DB;
 
 import android.content.Context;
 
+import com.simplegames.finance.dal.Category.Category;
+import com.simplegames.finance.dal.Category.CategoryRepository;
 import com.simplegames.finance.dal.Common.IRepository;
-import com.simplegames.finance.dal.IFabric;
+import com.simplegames.finance.dal.Common.IFabric;
 import com.simplegames.finance.dal.operation.Operation;
 import com.simplegames.finance.dal.operationItem.OperationItem;
 import com.simplegames.finance.dal.operation.OperationRepository;
@@ -34,4 +36,9 @@ public class SQLiteDbFabric implements IFabric {
 
     @Override
     public IRepository<OperationItem> GetOperationItemRepository() { return new OperationItemRepository(Context); }
+
+    @Override
+    public IRepository<Category> GetCategoryRepository() {
+        return new CategoryRepository(Context);
+    }
 }
