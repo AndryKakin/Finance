@@ -14,48 +14,49 @@ import java.util.ArrayList;
 /**
  * Created by andrey.kakin on 12.12.2014.
  */
-public class ShowAllOperationsActivity extends BusyActionBarActivity {
+public class ShowAllOperationsActivity extends BusyActionBarActivity{
     private OperationManager _operationManager;
 
-    private ArrayList<com.simplegames.finance.BL.Model.Operation> _blOperations;
+    private LoadAllOperation _loadAllOperation;
 
     private OperationAdapter _operationAdapter;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.operations_activity_show_all_operations);
-        progress.setMessage("Data is loading...");
-        progress.show();
+        _loadAllOperation = new LoadAllOperation();
+        _loadAllOperation.execute();
+    }
 
-
-        _operationManager = new OperationManager(this);
-        _blOperations = _operationManager.GetAll();
-        _operationAdapter = new OperationAdapter(this,_blOperations);
+    private void initializeOperationAdapter(ArrayList<com.simplegames.finance.BL.Model.Operation> result)
+    {
+        _operationAdapter = new OperationAdapter(this,result);
 
         ListView listOfProducts = (ListView)findViewById(R.id.listOperationsView);
         listOfProducts.setAdapter(_operationAdapter);
         progress.hide();
     }
 
-    private class LoadAllOperation extends AsyncTask<ShowAllOperationsActivity, Integer, ArrayList<com.simplegames.finance.BL.Model.Operation>>
+    private class LoadAllOperation extends AsyncTask<Void, Integer, ArrayList<com.simplegames.finance.BL.Model.Operation>>
     {
         protected void onPreExecute (){
-            Log.d("PreExceute", "On pre Exceute......");
+            Log.d("PreExecute", "On pre Execute......");
+            progress.setMessage("Data is loading...");
+            progress.show();
         }
 
         protected ArrayList<com.simplegames.finance.BL.Model.Operation> doInBackground(Void...arg0) {
             Log.d("DoINBackGround","On doInBackground...");
-
-            _operationManager = new OperationManager();
+            _operationManager = new OperationManager(getApplicationContext());
             return  _operationManager.GetAll();
         }
 
         protected void onProgressUpdate(Integer...a){
-            Log.d("You are in progress update ... " + a[0]);
+            Log.d("onProgressUpdate","You are in progress update ... ");
         }
 
-        protected void onPostExecute(String result) {
-            Log.d(""+result);
+        protected void onPostExecute(ArrayList<com.simplegames.finance.BL.Model.Operation> result) {
+            initializeOperationAdapter(result);
         }
     }
 }
