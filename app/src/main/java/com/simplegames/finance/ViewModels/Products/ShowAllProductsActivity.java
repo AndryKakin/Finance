@@ -23,7 +23,7 @@ import java.util.ArrayList;
 public class ShowAllProductsActivity extends BusyActionBarActivity {
     private ProductManager _productManager;
 
-    private ArrayList<Product> _products;
+    private LoadAllProducts _loadAllProducts;
 
     private ArrayAdapter<String> adapter;
 
@@ -31,20 +31,24 @@ public class ShowAllProductsActivity extends BusyActionBarActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.products_activity_show_all_products);
-        _productManager = new ProductManager(this);
-        _products = _productManager.GetAll();
-        ArrayList<String> products = new ArrayList<String>();
-        for (int i=0; i < _products.size(); i++)
-        {
-            products.add(_products.get(i).Name);
-        }
-        adapter = new ArrayAdapter<String>(this,
-                android.R.layout.simple_list_item_1, products);
-        ListView listOfProducts = (ListView)findViewById(R.id.listProductsView);
-        listOfProducts.setAdapter(adapter);
+		_loadAllProducts = new LoadAllProducts();
+		_loadAllProducts.execute();
     }
 
-    private class LoadAllProducts extends AsyncTask<Void, Integer, ArrayList<Operation>>
+    private void initializeProductAdapter(ArrayList<com.simplegames.finance.BL.Model.Product> result)
+    {
+		ArrayList<String> products = new ArrayList<String>();
+		for (int i=0; i < result.size(); i++)
+        {
+            products.add(result.get(i).Name);
+        }
+        adapter = new ArrayAdapter<String>(this,android.R.layout.simple_list_item_1, products);
+        ListView listOfProducts = (ListView)findViewById(R.id.listProductsView);
+        listOfProducts.setAdapter(adapter);
+        progress.hide();
+    }
+	
+    private class LoadAllProducts extends AsyncTask<Void, Integer, ArrayList<Product>>
     {
         protected void onPreExecute (){
             Log.d("PreExecute", "On pre Execute......");
@@ -52,18 +56,18 @@ public class ShowAllProductsActivity extends BusyActionBarActivity {
             progress.show();
         }
 
-        protected ArrayList<com.simplegames.finance.BL.Model.Operation> doInBackground(Void...arg0) {
+        protected ArrayList<com.simplegames.finance.BL.Model.Product> doInBackground(Void...arg0) {
             Log.d("DoINBackGround","On doInBackground...");
-            _operationManager = new OperationManager(getApplicationContext());
-            return  _operationManager.GetAll();
+            _productManager = new ProductManager(getApplicationContext());
+            return  _productManager.GetAll();
         }
 
         protected void onProgressUpdate(Integer...a){
             Log.d("onProgressUpdate","You are in progress update ... ");
         }
 
-        protected void onPostExecute(ArrayList<com.simplegames.finance.BL.Model.Operation> result) {
-            initializeOperationAdapter(result);
+        protected void onPostExecute(ArrayList<com.simplegames.finance.BL.Model.Product> result) {
+            initializeProductAdapter(result);
         }
     }
 }
