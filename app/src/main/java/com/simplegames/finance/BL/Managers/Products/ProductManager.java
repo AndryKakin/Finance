@@ -2,6 +2,7 @@ package com.simplegames.finance.BL.Managers.Products;
 
 import android.content.Context;
 
+import com.google.gson.Gson;
 import com.simplegames.finance.BL.Managers.BaseDBManager;
 import com.simplegames.finance.dal.Common.IRepository;
 import com.simplegames.finance.dal.product.Product;
@@ -23,6 +24,7 @@ public class ProductManager extends BaseDBManager {
         dbProduct.Bitmap = product.Bitmap;
         dbProduct.Description = product.Description;
         dbProduct.Name = product.Name;
+        String data = new Gson().toJson(dbProduct);
         _productRepository.Add(dbProduct);
     }
 
