@@ -1,0 +1,2 @@
+D:\MyFiles\Projects\Library\GRPC\GrpcGeneration\protoc.exe --grpc_out=. --plugin=protoc-gen-grpc=D:\MyFiles\Projects\Library\GRPC\GrpcGeneration\grpc_csharp_plugin.exe helloworld.proto
+D:\MyFiles\Projects\Library\GRPC\GrpcGeneration\protoc.exe --go_out=plugins=grpc:. helloworld.proto
