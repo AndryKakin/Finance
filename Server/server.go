@@ -1,52 +1,66 @@
 package main
 
 import (
-	"encoding/json"
 	"fmt"
-	"net/http"
-	"os"
-	"strconv"
-
-	"code.google.com/p/go.net/websocket"
+	"github.com/HouzuoGuo/tiedot/db"
+	"golang.org/x/net/context"
+	"google.golang.org/grpc"
+	"log"
+	"net"
+	"time"
 )
 
-type Product struct {
-	Id          int
-	Name        string
-	Description string
-	Bitmap      []byte
+const (
+	port = ":50051"
+)
+
+type server struct{}
+
+func (s *server) AddProduct(ctx context.Context, in *Product) (*ResultResponse, error) {
+	myDb, err := db.OpenDB(MainDBPath)
+
+	if err != nil {
+		panic(err)
+	}
+
+	productStore := myDb.Use(productStoreName)
+	docID, err := productStore.Insert(map[string]interface{}{
+		"Name":        in.Name,
+		"Description": in.Description,
+		"Bitmap":      in.Bitmap})
+	if err != nil {
+		panic(err)
+	}
+	fmt.Println(docID)
+	fmt.Println(time.Now())
+	fmt.Println(in.Name)
+	return &ResultResponse{Status: 1}, nil
 }
 
-func ListenProductManage(ws *websocket.Conn) {
-	fmt.Println("Echoing")
+func (s *server) UpdateProduct(ctx context.Context, in *Product) (*ResultResponse, error) {
+	fmt.Println(time.Now())
+	fmt.Println(in.Name)
+	return &ResultResponse{Status: 1}, nil
+}
 
-	var reply string
-	error := websocket.Message.Receive(ws, &reply)
-	checkError(error)
+func (s *server) DeleteProduct(ctx context.Context, in *Product) (*ResultResponse, error) {
+	fmt.Println(time.Now())
+	fmt.Println(in.Name)
+	return &ResultResponse{Status: 1}, nil
+}
 
-	var backResult Product
-	error = json.Unmarshal([]byte(reply), &backResult)
-	checkError(error)
-
-	fmt.Println("Received back from client:")
-	fmt.Println("Id          : " + strconv.Itoa(backResult.Id))
-	fmt.Println("Name        : " + backResult.Name)
-	fmt.Println("Description : " + backResult.Description)
-	//fmt.Println("Bitmap      : " + backResult.Bitmap[0])
-	fmt.Println(reply)
-
+func (s *server) GetAll(ctx context.Context, in *GetAllRequest) (*ProductsResponse, error) {
+	var result = "GetAll:" + time.Now().Format(time.UnixDate)
+	fmt.Println(result)
+	return &ProductsResponse{}, nil
 }
 
 func ServerGo() {
-	fmt.Println("Web server start...")
-	http.Handle("/Products", websocket.Handler(ListenProductManage))
-	err := http.ListenAndServe(":8000", nil)
-	checkError(err)
-}
-
-func checkError(err error) {
+	lis, err := net.Listen("tcp", port)
 	if err != nil {
-		fmt.Println("Fatal error ", err.Error())
-		os.Exit(1)
+		log.Fatalf("failed to listen: %v", err)
 	}
+	s := grpc.NewServer()
+	RegisterProductServiceServer(s, &server{})
+	s.Serve(lis)
 }

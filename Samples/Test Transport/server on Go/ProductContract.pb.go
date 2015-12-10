@@ -112,9 +112,9 @@ var _ grpc.ClientConn
 
 type ProductServiceClient interface {
 	AddProduct(ctx context.Context, in *Product, opts ...grpc.CallOption) (*ResultResponse, error)
-	//UpdateProduct(ctx context.Context, in *Product, opts ...grpc.CallOption) (*ResultResponse, error)
-	//DeleteProduct(ctx context.Context, in *Product, opts ...grpc.CallOption) (*ResultResponse, error)
-	//GetAll(ctx context.Context, in *GetAllRequest, opts ...grpc.CallOption) (*ProductsResponse, error)
+	UpdateProduct(ctx context.Context, in *Product, opts ...grpc.CallOption) (*ResultResponse, error)
+	DeleteProduct(ctx context.Context, in *Product, opts ...grpc.CallOption) (*ResultResponse, error)
+	GetAll(ctx context.Context, in *GetAllRequest, opts ...grpc.CallOption) (*ProductsResponse, error)
 }
 
 type productServiceClient struct {
@@ -134,10 +134,40 @@ func (c *productServiceClient) AddProduct(ctx context.Context, in *Product, opts
 	return out, nil
 }
 
+func (c *productServiceClient) UpdateProduct(ctx context.Context, in *Product, opts ...grpc.CallOption) (*ResultResponse, error) {
+	out := new(ResultResponse)
+	err := grpc.Invoke(ctx, "/products.ProductService/UpdateProduct", in, out, c.cc, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *productServiceClient) DeleteProduct(ctx context.Context, in *Product, opts ...grpc.CallOption) (*ResultResponse, error) {
+	out := new(ResultResponse)
+	err := grpc.Invoke(ctx, "/products.ProductService/DeleteProduct", in, out, c.cc, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *productServiceClient) GetAll(ctx context.Context, in *GetAllRequest, opts ...grpc.CallOption) (*ProductsResponse, error) {
+	out := new(ProductsResponse)
+	err := grpc.Invoke(ctx, "/products.ProductService/GetAll", in, out, c.cc, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
 // Server API for ProductService service
 
 type ProductServiceServer interface {
 	AddProduct(context.Context, *Product) (*ResultResponse, error)
+	UpdateProduct(context.Context, *Product) (*ResultResponse, error)
+	DeleteProduct(context.Context, *Product) (*ResultResponse, error)
+	GetAll(context.Context, *GetAllRequest) (*ProductsResponse, error)
 }
 
 func RegisterProductServiceServer(s *grpc.Server, srv ProductServiceServer) {
@@ -156,6 +186,42 @@ func _ProductService_AddProduct_Handler(srv interface{}, ctx context.Context, de
 	return out, nil
 }
 
+func _ProductService_UpdateProduct_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error) (interface{}, error) {
+	in := new(Product)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	out, err := srv.(ProductServiceServer).UpdateProduct(ctx, in)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func _ProductService_DeleteProduct_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error) (interface{}, error) {
+	in := new(Product)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	out, err := srv.(ProductServiceServer).DeleteProduct(ctx, in)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func _ProductService_GetAll_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error) (interface{}, error) {
+	in := new(GetAllRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	out, err := srv.(ProductServiceServer).GetAll(ctx, in)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
 var _ProductService_serviceDesc = grpc.ServiceDesc{
 	ServiceName: "products.ProductService",
 	HandlerType: (*ProductServiceServer)(nil),
@@ -163,6 +229,18 @@ var _ProductService_serviceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "AddProduct",
 			Handler:    _ProductService_AddProduct_Handler,
+		},
+		{
+			MethodName: "UpdateProduct",
+			Handler:    _ProductService_UpdateProduct_Handler,
+		},
+		{
+			MethodName: "DeleteProduct",
+			Handler:    _ProductService_DeleteProduct_Handler,
+		},
+		{
+			MethodName: "GetAll",
+			Handler:    _ProductService_GetAll_Handler,
 		},
 	},
 	Streams: []grpc.StreamDesc{},
