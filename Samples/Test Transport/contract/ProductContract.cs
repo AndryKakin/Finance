@@ -22,7 +22,7 @@ namespace Google.Protobuf.Products {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
             "ChVQcm9kdWN0Q29udHJhY3QucHJvdG8SCHByb2R1Y3RzIkgKB1Byb2R1Y3QS", 
-            "CgoCSWQYASABKAUSDAoETmFtZRgCIAEoCRITCgtEZXNjcmlwdGlvbhgDIAEo", 
+            "CgoCSWQYASABKAMSDAoETmFtZRgCIAEoCRITCgtEZXNjcmlwdGlvbhgDIAEo", 
             "CRIOCgZCaXRtYXAYBCABKAwiNwoQUHJvZHVjdHNSZXNwb25zZRIjCghQcm9k", 
             "dWN0cxgBIAMoCzIRLnByb2R1Y3RzLlByb2R1Y3QiMgoOUmVzdWx0UmVzcG9u", 
             "c2USIAoGU3RhdHVzGAEgASgOMhAucHJvZHVjdHMuU3RhdHVzIg8KDUdldEFs", 
@@ -87,8 +87,8 @@ namespace Google.Protobuf.Products {
     }
 
     public const int IdFieldNumber = 1;
-    private int id_;
-    public int Id {
+    private long id_;
+    public long Id {
       get { return id_; }
       set {
         id_ = value;
@@ -142,7 +142,7 @@ namespace Google.Protobuf.Products {
 
     public override int GetHashCode() {
       int hash = 1;
-      if (Id != 0) hash ^= Id.GetHashCode();
+      if (Id != 0L) hash ^= Id.GetHashCode();
       if (Name.Length != 0) hash ^= Name.GetHashCode();
       if (Description.Length != 0) hash ^= Description.GetHashCode();
       if (Bitmap.Length != 0) hash ^= Bitmap.GetHashCode();
@@ -154,9 +154,9 @@ namespace Google.Protobuf.Products {
     }
 
     public void WriteTo(pb::CodedOutputStream output) {
-      if (Id != 0) {
+      if (Id != 0L) {
         output.WriteRawTag(8);
-        output.WriteInt32(Id);
+        output.WriteInt64(Id);
       }
       if (Name.Length != 0) {
         output.WriteRawTag(18);
@@ -174,8 +174,8 @@ namespace Google.Protobuf.Products {
 
     public int CalculateSize() {
       int size = 0;
-      if (Id != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeInt32Size(Id);
+      if (Id != 0L) {
+        size += 1 + pb::CodedOutputStream.ComputeInt64Size(Id);
       }
       if (Name.Length != 0) {
         size += 1 + pb::CodedOutputStream.ComputeStringSize(Name);
@@ -193,7 +193,7 @@ namespace Google.Protobuf.Products {
       if (other == null) {
         return;
       }
-      if (other.Id != 0) {
+      if (other.Id != 0L) {
         Id = other.Id;
       }
       if (other.Name.Length != 0) {
@@ -215,7 +215,7 @@ namespace Google.Protobuf.Products {
             input.SkipLastField();
             break;
           case 8: {
-            Id = input.ReadInt32();
+            Id = input.ReadInt64();
             break;
           }
           case 18: {
