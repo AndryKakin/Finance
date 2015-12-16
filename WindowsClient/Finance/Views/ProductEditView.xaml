@@ -7,6 +7,39 @@
              mc:Ignorable="d" 
              d:DesignHeight="300" d:DesignWidth="300">
     <Grid>
-            
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="Auto"/>
+            <ColumnDefinition Width="Auto"/>
+            <ColumnDefinition Width="Auto"/>
+            <ColumnDefinition Width="Auto"/>
+        </Grid.ColumnDefinitions>
+        <Button Grid.Row="0"
+                Grid.Column="0"
+                Content="Add product"
+                Command="{Binding AddProductCommand}"/>
+        <Button Grid.Row="0"
+                Grid.Column="1"
+                Content="Delete product"/>
+        <Button Grid.Row="0"
+                Grid.Column="2"
+                Content="Edit product"/>
+        <Button Grid.Row="0"
+                Grid.Column="3"
+                Content="Load all products"/>
+        <ListBox Grid.Row="1" 
+                 Grid.Column="0"
+                 Grid.ColumnSpan="4">
+            <ListBox.ItemTemplate>
+                <DataTemplate>
+                    <StackPanel>
+                        <TextBlock Text="{Binding Name}"/>
+                    </StackPanel>
+                </DataTemplate>
+            </ListBox.ItemTemplate>
+        </ListBox>
     </Grid>
 </UserControl>

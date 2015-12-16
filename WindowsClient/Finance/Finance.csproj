@@ -85,6 +85,9 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="ViewModels\ProductEditViewModel.cs" />
+    <Compile Include="Views\AddProductWindowView.xaml.cs">
+      <DependentUpon>AddProductWindowView.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\ProductEditView.xaml.cs">
       <DependentUpon>ProductEditView.xaml</DependentUpon>
     </Compile>
@@ -100,6 +103,10 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="Views\AddProductWindowView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Views\ProductEditView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>

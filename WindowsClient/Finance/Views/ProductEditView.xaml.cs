@@ -1,17 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows;
+﻿using Finance.ViewModels;
+using Microsoft.Practices.ServiceLocation;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 
 namespace Finance.Views
 {
@@ -23,6 +12,16 @@ namespace Finance.Views
         public ProductEditView()
         {
             InitializeComponent();
+            ViewModel = new ProductEditViewModel(new Models.Products.ProductManager());
+        }
+
+        public ProductEditViewModel ViewModel
+        {
+            get { return (ProductEditViewModel)DataContext; }
+            set
+            {
+                DataContext = value;
+            }
         }
     }
 }

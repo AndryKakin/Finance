@@ -113,23 +113,4 @@
     </None>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
-  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
-    <PropertyGroup>
-      <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
-    </PropertyGroup>
-    <Error Condition="!Exists('..\packages\grpc.native.csharp_ext.0.11.1\build\portable-net45\grpc.native.csharp_ext.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\grpc.native.csharp_ext.0.11.1\build\portable-net45\grpc.native.csharp_ext.props'))" />
-    <Error Condition="!Exists('..\packages\grpc.native.csharp_ext.0.11.1\build\portable-net45\grpc.native.csharp_ext.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\grpc.native.csharp_ext.0.11.1\build\portable-net45\grpc.native.csharp_ext.targets'))" />
-    <Error Condition="!Exists('..\packages\grpc.dependencies.openssl.redist.1.0.204.1\build\portable-net45+netcore45+wpa81+wp8\grpc.dependencies.openssl.redist.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\grpc.dependencies.openssl.redist.1.0.204.1\build\portable-net45+netcore45+wpa81+wp8\grpc.dependencies.openssl.redist.targets'))" />
-    <Error Condition="!Exists('..\packages\grpc.dependencies.zlib.redist.1.2.8.10\build\portable-net45+netcore45+wpa81+wp8\grpc.dependencies.zlib.redist.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\grpc.dependencies.zlib.redist.1.2.8.10\build\portable-net45+netcore45+wpa81+wp8\grpc.dependencies.zlib.redist.targets'))" />
-  </Target>
-  <Import Project="..\packages\grpc.native.csharp_ext.0.11.1\build\portable-net45\grpc.native.csharp_ext.targets" Condition="Exists('..\packages\grpc.native.csharp_ext.0.11.1\build\portable-net45\grpc.native.csharp_ext.targets')" />
-  <Import Project="..\packages\grpc.dependencies.openssl.redist.1.0.204.1\build\portable-net45+netcore45+wpa81+wp8\grpc.dependencies.openssl.redist.targets" Condition="Exists('..\packages\grpc.dependencies.openssl.redist.1.0.204.1\build\portable-net45+netcore45+wpa81+wp8\grpc.dependencies.openssl.redist.targets')" />
-  <Import Project="..\packages\grpc.dependencies.zlib.redist.1.2.8.10\build\portable-net45+netcore45+wpa81+wp8\grpc.dependencies.zlib.redist.targets" Condition="Exists('..\packages\grpc.dependencies.zlib.redist.1.2.8.10\build\portable-net45+netcore45+wpa81+wp8\grpc.dependencies.zlib.redist.targets')" />
-  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
-       Other similar extension points exist, see Microsoft.Common.targets.
-  <Target Name="BeforeBuild">
-  </Target>
-  <Target Name="AfterBuild">
-  </Target>
-  -->
 </Project>
