@@ -1,18 +1,18 @@
-﻿using System;
-using System.ComponentModel.Composition;
+﻿using System.ComponentModel.Composition;
 using System.Windows.Input;
 using Microsoft.Practices.Prism.Commands;
 using Models.Products;
 using System.Collections.Generic;
 using Finance.Views;
+using Microsoft.Practices.Prism.Mvvm;
 
 namespace Finance.ViewModels
 {
     [Export]
     [PartCreationPolicy(CreationPolicy.Shared)]
-    public class ProductEditViewModel
+    public class ProductEditViewModel : BindableBase
     {
-        private ProductManager _productManager;
+        private readonly ProductManager _productManager;
 
         [ImportingConstructor]
         public ProductEditViewModel(ProductManager productManager)
@@ -34,7 +34,7 @@ namespace Finance.ViewModels
 
         private void LoadAllProducts()
         {
-            var products = _productManager.GetAllProducts();
+            Products = _productManager.GetAllProducts();
         }
 
         public ICommand LoadProductCommand { get; set; }

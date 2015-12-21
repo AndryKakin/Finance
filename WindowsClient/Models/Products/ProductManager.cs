@@ -13,6 +13,7 @@ using Status = Google.Protobuf.Products.Status;
 namespace Models.Products
 {
     [Export]
+    [PartCreationPolicy(CreationPolicy.Shared)]
     public class ProductManager
     {
         private string _addresses;
