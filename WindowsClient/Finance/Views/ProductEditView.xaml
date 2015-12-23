@@ -35,7 +35,8 @@
                 Command="{Binding LoadProductCommand}"/>
         <ListBox Grid.Row="1" 
                  Grid.Column="0"
-                 Grid.ColumnSpan="4">
+                 Grid.ColumnSpan="4"
+                 ItemsSource="{Binding Products}">
             <ListBox.ItemTemplate>
                 <DataTemplate>
                     <StackPanel>

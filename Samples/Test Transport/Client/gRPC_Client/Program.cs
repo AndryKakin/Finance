@@ -16,10 +16,12 @@ namespace gRPC_Client
             var request = new Product
             {
                 Description = "dfdfgdfghdf",
-                Name = "Bread"
+                Name = "Bread",
             };
-
             request.Bitmap = ByteString.CopyFrom(File.ReadAllBytes("Lighthouse.jpg"));
+            var t = client.AddProduct(request);
+
+
             var resuts = client.GetAll(new GetAllRequest());
             File.WriteAllBytes("Lighthouse1.jpg",resuts.Products[0].Bitmap.ToByteArray());
             channel.ShutdownAsync().Wait();

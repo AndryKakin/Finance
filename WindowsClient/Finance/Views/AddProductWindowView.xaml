@@ -17,16 +17,36 @@
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
         <TextBlock Grid.Row="0" Grid.Column="0"
                    Text="Name:"/>
         <TextBox Grid.Row="0" Grid.Column="1"
-                 Text="{Binding}"/>
-        <Button Grid.Row="2" Grid.Column="0"
+                 Text="{Binding Name}"/>
+
+        <TextBlock Grid.Row="1" Grid.Column="0"
+                   Text="Description:"/>
+        <TextBox Grid.Row="1" Grid.Column="1"
+                 Text="{Binding Description}"/>
+
+        <Image Grid.Row="2"
+               Grid.Column="0"
+               MaxHeight="256"
+               MaxWidth="256"
+               MinWidth="128"
+               MinHeight="128"
+               Source="{Binding TempBitmap}"></Image>
+        <Button Grid.Row="2"
+                Grid.Column="1"
+                Content="..."
+                Command="{Binding ChooseImageCommand}"></Button>
+        
+        <Button Grid.Row="3" Grid.Column="0"
                 Content="Save"
                 Command="{Binding SaveCommand}"/>
-        <Button Grid.Row="2" Grid.Column="1"
+        <Button Grid.Row="3" Grid.Column="1"
                 Content="Save"
                 Command="{Binding CancelCommand}"/>
+        
     </Grid>
 </Window>
