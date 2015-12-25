@@ -14,6 +14,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using Models.Products;
 
 namespace Finance
 {
@@ -22,18 +23,10 @@ namespace Finance
     /// </summary>
     public partial class MainWindow : Window
     {
-        private AggregateCatalog catalog;
-        private CompositionContainer _container;
         public MainWindow()
         {
             InitializeComponent();
-            //An aggregate catalog that combines multiple catalogs
-            catalog = new AggregateCatalog();
-            //Adds all the parts found in the same assembly as the Program class
-            catalog.Catalogs.Add(new AssemblyCatalog(typeof(MainWindow).Assembly));
-
-            //Create the CompositionContainer with the parts in the catalog
-            _container = new CompositionContainer(catalog);
+            var t = ServiceLocator.Current.GetInstance<ProductManager>();
         }
     }
 }

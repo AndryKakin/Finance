@@ -34,8 +34,7 @@ namespace Models.Products
                 Name = productModel.Name,
                 Description = productModel.Description,
                 Bitmap = GetValue(productModel.Bitmap)
-        };
-            request.Bitmap = ByteString.CopyFrom(File.ReadAllBytes("Lighthouse.jpg"));
+            };
             var result = client.AddProduct(request);
             if(result.Status == Status.Failed)
                 throw new Exception();
@@ -43,11 +42,14 @@ namespace Models.Products
 
         private static ByteString GetValue(Bitmap bitmap)
         {
-            using (var memoryStream = new MemoryStream())
+            using (var newBitmap = new Bitmap(bitmap))
             {
-                bitmap.Save(memoryStream, ImageFormat.Jpeg);
-                memoryStream.Position = 0;
-                return ByteString.CopyFrom(memoryStream.ToArray());
+                using (var memoryStream = new MemoryStream())
+                {
+                    newBitmap.Save(memoryStream, ImageFormat.Jpeg);
+                    memoryStream.Position = 0;
+                    return ByteString.CopyFrom(memoryStream.ToArray());
+                }
             }
         }
 

@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:viewModels="clr-namespace:Finance.ViewModels"
         mc:Ignorable="d"
-        Title="AddProductWindowView" Height="300" Width="300"
+        Title="AddProductWindowView" Height="300" Width="500"
         d:DataContext="{d:DesignInstance viewModels:AddProductViewModel,
                                               IsDesignTimeCreatable=True}">
     <Grid>
@@ -31,10 +31,8 @@
 
         <Image Grid.Row="2"
                Grid.Column="0"
-               MaxHeight="256"
-               MaxWidth="256"
-               MinWidth="128"
-               MinHeight="128"
+               Height="256"
+               Width="256"
                Source="{Binding TempBitmap}"></Image>
         <Button Grid.Row="2"
                 Grid.Column="1"

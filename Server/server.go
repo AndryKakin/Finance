@@ -37,22 +37,18 @@ func (s *server) AddProduct(ctx context.Context, in *Product) (*ResultResponse, 
 	if err != nil {
 		panic(err)
 	}
-	fmt.Println(docID)
-	fmt.Println(time.Now())
-	fmt.Println(in.Name)
-	return &ResultResponse{Status: 1}, nil
+	fmt.Print("AddProduct: Id(%v) Time(%v) Name(%v)\n", docID, time.Now(), in.Name)
+	return &ResultResponse{Status: Status_Ok}, nil
 }
 
 func (s *server) UpdateProduct(ctx context.Context, in *Product) (*ResultResponse, error) {
-	fmt.Println(time.Now())
-	fmt.Println(in.Name)
-	return &ResultResponse{Status: 1}, nil
+	fmt.Print("UpdateProduct: Id(%v) Time(%v) Name(%v)\n", in.Id, time.Now(), in.Name)
+	return &ResultResponse{Status: Status_Ok}, nil
 }
 
 func (s *server) DeleteProduct(ctx context.Context, in *Product) (*ResultResponse, error) {
-	fmt.Println(time.Now())
-	fmt.Println(in.Name)
-	return &ResultResponse{Status: 1}, nil
+	fmt.Print("DeleteProduct: Id(%v) Time(%v) Name(%v)\n", in.Id, time.Now(), in.Name)
+	return &ResultResponse{Status: Status_Ok}, nil
 }
 
 func (s *server) GetAll(ctx context.Context, in *GetAllRequest) (*ProductsResponse, error) {

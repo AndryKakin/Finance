@@ -12,7 +12,7 @@ namespace Finance.Views
         public ProductEditView()
         {
             InitializeComponent();
-            ViewModel = new ProductEditViewModel(new Models.Products.ProductManager());
+            ViewModel = ServiceLocator.Current.GetInstance<ProductEditViewModel>();
         }
 
         public ProductEditViewModel ViewModel

@@ -28,7 +28,6 @@ namespace Finance.ViewModels
         private void AddProduct()
         {
             var addPoductWindow = new AddProductWindowView();
-            addPoductWindow.DataContext = new AddProductViewModel(_productManager);
             addPoductWindow.Show();
         }
 

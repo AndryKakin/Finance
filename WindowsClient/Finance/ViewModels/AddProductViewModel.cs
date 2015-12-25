@@ -1,4 +1,5 @@
-﻿using System.Drawing;
+﻿using System.ComponentModel.Composition;
+using System.Drawing;
 using System.IO;
 using System.Windows.Forms;
 using System.Windows.Input;
@@ -11,9 +12,12 @@ using OpenFileDialog = System.Windows.Forms.OpenFileDialog;
 
 namespace Finance.ViewModels
 {
+    [Export]
     public class AddProductViewModel : BindableBase
     {
         private ProductManager _productManager;
+
+        [ImportingConstructor]
         public AddProductViewModel(ProductManager productManager)
         {
             _productManager = productManager;
