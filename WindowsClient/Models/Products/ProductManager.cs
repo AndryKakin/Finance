@@ -33,7 +33,7 @@ namespace Models.Products
             {
                 Name = productModel.Name,
                 Description = productModel.Description,
-                Bitmap = GetValue(productModel.Bitmap)
+                Bitmap = ByteString.CopyFrom(productModel.Bitmap)
             };
             var result = client.AddProduct(request);
             if(result.Status == Status.Failed)
@@ -55,23 +55,16 @@ namespace Models.Products
 
         public IEnumerable<Product> GetAllProducts()
         {
-            Channel channel = new Channel(_addresses, Credentials.Insecure);
+            var channel = new Channel(_addresses, Credentials.Insecure);
 
             var client = ProductService.NewClient(channel);
             var results = client.GetAll(new GetAllRequest());
-            return results.Products.Select(dtoProduct =>
+            return results.Products.Select(dtoProduct => new Product
             {
-                using (var memoryStream= new MemoryStream(dtoProduct.Bitmap.ToByteArray()))
-                {
-                    memoryStream.Position = 0;
-                    return new Product
-                    {
-                        Id = dtoProduct.Id,
-                        Name = dtoProduct.Name,
-                        Description = dtoProduct.Description,
-                        Bitmap = new Bitmap(memoryStream)
-                    };
-                }
+                Id = dtoProduct.Id,
+                Name = dtoProduct.Name,
+                Description = dtoProduct.Description,
+                Bitmap = dtoProduct.Bitmap.ToByteArray()
             });
         }
     }

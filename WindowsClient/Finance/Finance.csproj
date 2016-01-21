@@ -108,8 +108,10 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="Bootstrappercs.cs" />
+    <Compile Include="Exstentions\BitmapExstension.cs" />
     <Compile Include="ViewModels\AddProductViewModel.cs" />
     <Compile Include="ViewModels\ProductEditViewModel.cs" />
+    <Compile Include="ViewModels\ProductViewModel.cs" />
     <Compile Include="Views\AddProductWindowView.xaml.cs">
       <DependentUpon>AddProductWindowView.xaml</DependentUpon>
     </Compile>

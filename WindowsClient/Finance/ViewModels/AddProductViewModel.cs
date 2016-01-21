@@ -61,7 +61,7 @@ namespace Finance.ViewModels
             {
                 Name = Name,
                 Description = Description,
-                Bitmap = Bitmap
+                //Bitmap = Bitmap
 
             });
         }

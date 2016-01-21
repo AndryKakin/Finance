@@ -39,7 +39,10 @@
                  ItemsSource="{Binding Products}">
             <ListBox.ItemTemplate>
                 <DataTemplate>
-                    <StackPanel>
+                    <StackPanel Orientation="Horizontal">
+                        <Image Height="32"
+                               Width="32"
+                               Source="{Binding Image}"></Image>
                         <TextBlock Text="{Binding Name}"/>
                     </StackPanel>
                 </DataTemplate>

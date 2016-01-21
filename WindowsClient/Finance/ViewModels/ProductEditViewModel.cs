@@ -3,6 +3,8 @@ using System.Windows.Input;
 using Microsoft.Practices.Prism.Commands;
 using Models.Products;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
+using System.Linq;
 using Finance.Views;
 using Microsoft.Practices.Prism.Mvvm;
 
@@ -20,10 +22,10 @@ namespace Finance.ViewModels
             _productManager = productManager;
             LoadProductCommand = new DelegateCommand(LoadAllProducts);
             AddProductCommand = new DelegateCommand(AddProduct);
-            Products = new List<Product>();
+            Products = new ObservableCollection<ProductViewModel>();
         }
 
-        public IEnumerable<Product> Products { get; set; }
+        public IEnumerable<ProductViewModel> Products { get; set; }
 
         private void AddProduct()
         {
@@ -33,7 +35,9 @@ namespace Finance.ViewModels
 
         private void LoadAllProducts()
         {
-            Products = _productManager.GetAllProducts();
+            Products = _productManager.GetAllProducts()
+                .Select(product => new ProductViewModel(product));
+
             OnPropertyChanged(()=> Products);
         }
 

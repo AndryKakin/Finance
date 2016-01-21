@@ -1,6 +1,4 @@
-﻿using System.Drawing;
-
-namespace Models.Products
+﻿namespace Models.Products
 {
     public class Product
     {
@@ -8,6 +6,6 @@ namespace Models.Products
         public string Name { get; set; }
         public string Description { get; set; }
 
-        public Bitmap Bitmap { get; set; }
+        public byte[] Bitmap { get; set; }
     }
 }
