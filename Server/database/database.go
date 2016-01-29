@@ -1,9 +1,10 @@
-package main
+package database
 
 import (
-	"github.com/HouzuoGuo/tiedot/db"
-	"fmt"
 	"encoding/json"
+	"fmt"
+
+	"github.com/HouzuoGuo/tiedot/db"
 )
 
 func createProduct() (js map[string]interface{}) {
@@ -14,10 +15,10 @@ func createProduct() (js map[string]interface{}) {
 		"Description": "%s"
 	}
 }
-`, 
-	"Bread", 
-	"Very tasty black bread.")
-	
+`,
+		"Bread",
+		"Very tasty black bread.")
+
 	if err := json.Unmarshal([]byte(doc), &js); err != nil {
 		panic(err)
 	}
@@ -25,19 +26,19 @@ func createProduct() (js map[string]interface{}) {
 }
 
 func createIndex(index string, store *db.Col) {
-	
+
 	existIndexes := store.AllIndexes()
-	
+
 	for i := 0; i < len(existIndexes); i++ {
-		for j :=0; j < len(existIndexes[i]); j++ {
+		for j := 0; j < len(existIndexes[i]); j++ {
 			if existIndexes[i][j] == index {
 				return
-			}			
+			}
 		}
 	}
-	
+
 	err := store.Index([]string{index})
-	
+
 	if err != nil {
 		panic(err)
 	}
@@ -45,14 +46,14 @@ func createIndex(index string, store *db.Col) {
 
 func createStore(storeName string, db *db.DB) {
 	allStores := db.AllCols()
-	for i := 0; i < len(allStores);i++ {
+	for i := 0; i < len(allStores); i++ {
 		if allStores[i] == storeName {
 			return
 		}
 	}
 	err := db.Create(storeName)
-	
+
 	if err != nil {
 		panic(err)
-	}	
+	}
 }

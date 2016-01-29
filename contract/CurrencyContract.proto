@@ -1,0 +1,27 @@
+syntax = "proto3";
+
+option java_package = "io.grpc.examples";
+option objc_class_prefix = "HLW";
+option go_package = "services";
+option csharp_namespace = "Google.Protobuf.services";
+
+package services;
+
+message Currency {
+  int64  Id = 1;
+  string Name = 2;
+  string Code = 3;
+
+}
+
+message CurrenciesResponse {
+  repeated Currency Currencies = 1;
+}
+
+message GetAllRequest {
+
+}
+
+service ProductService {
+  rpc GetAll (GetAllRequest)  returns (CurrenciesResponse) {}
+}

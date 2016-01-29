@@ -7,38 +7,38 @@ using System.Threading;
 using System.Threading.Tasks;
 using Grpc.Core;
 
-namespace Google.Protobuf.Products {
+namespace Google.Protobuf.services {
   public static class ProductService
   {
-    static readonly string __ServiceName = "products.ProductService";
+    static readonly string __ServiceName = "services.ProductService";
 
-    static readonly Marshaller<global::Google.Protobuf.Products.Product> __Marshaller_Product = Marshallers.Create((arg) => global::Google.Protobuf.MessageExtensions.ToByteArray(arg), global::Google.Protobuf.Products.Product.Parser.ParseFrom);
-    static readonly Marshaller<global::Google.Protobuf.Products.ResultResponse> __Marshaller_ResultResponse = Marshallers.Create((arg) => global::Google.Protobuf.MessageExtensions.ToByteArray(arg), global::Google.Protobuf.Products.ResultResponse.Parser.ParseFrom);
-    static readonly Marshaller<global::Google.Protobuf.Products.GetAllRequest> __Marshaller_GetAllRequest = Marshallers.Create((arg) => global::Google.Protobuf.MessageExtensions.ToByteArray(arg), global::Google.Protobuf.Products.GetAllRequest.Parser.ParseFrom);
-    static readonly Marshaller<global::Google.Protobuf.Products.ProductsResponse> __Marshaller_ProductsResponse = Marshallers.Create((arg) => global::Google.Protobuf.MessageExtensions.ToByteArray(arg), global::Google.Protobuf.Products.ProductsResponse.Parser.ParseFrom);
+    static readonly Marshaller<global::Google.Protobuf.services.Product> __Marshaller_Product = Marshallers.Create((arg) => global::Google.Protobuf.MessageExtensions.ToByteArray(arg), global::Google.Protobuf.services.Product.Parser.ParseFrom);
+    static readonly Marshaller<global::Google.Protobuf.services.ResultResponse> __Marshaller_ResultResponse = Marshallers.Create((arg) => global::Google.Protobuf.MessageExtensions.ToByteArray(arg), global::Google.Protobuf.services.ResultResponse.Parser.ParseFrom);
+    static readonly Marshaller<global::Google.Protobuf.services.GetAllRequest> __Marshaller_GetAllRequest = Marshallers.Create((arg) => global::Google.Protobuf.MessageExtensions.ToByteArray(arg), global::Google.Protobuf.services.GetAllRequest.Parser.ParseFrom);
+    static readonly Marshaller<global::Google.Protobuf.services.ProductsResponse> __Marshaller_ProductsResponse = Marshallers.Create((arg) => global::Google.Protobuf.MessageExtensions.ToByteArray(arg), global::Google.Protobuf.services.ProductsResponse.Parser.ParseFrom);
 
-    static readonly Method<global::Google.Protobuf.Products.Product, global::Google.Protobuf.Products.ResultResponse> __Method_AddProduct = new Method<global::Google.Protobuf.Products.Product, global::Google.Protobuf.Products.ResultResponse>(
+    static readonly Method<global::Google.Protobuf.services.Product, global::Google.Protobuf.services.ResultResponse> __Method_Add = new Method<global::Google.Protobuf.services.Product, global::Google.Protobuf.services.ResultResponse>(
         MethodType.Unary,
         __ServiceName,
-        "AddProduct",
+        "Add",
         __Marshaller_Product,
         __Marshaller_ResultResponse);
 
-    static readonly Method<global::Google.Protobuf.Products.Product, global::Google.Protobuf.Products.ResultResponse> __Method_UpdateProduct = new Method<global::Google.Protobuf.Products.Product, global::Google.Protobuf.Products.ResultResponse>(
+    static readonly Method<global::Google.Protobuf.services.Product, global::Google.Protobuf.services.ResultResponse> __Method_Update = new Method<global::Google.Protobuf.services.Product, global::Google.Protobuf.services.ResultResponse>(
         MethodType.Unary,
         __ServiceName,
-        "UpdateProduct",
+        "Update",
         __Marshaller_Product,
         __Marshaller_ResultResponse);
 
-    static readonly Method<global::Google.Protobuf.Products.Product, global::Google.Protobuf.Products.ResultResponse> __Method_DeleteProduct = new Method<global::Google.Protobuf.Products.Product, global::Google.Protobuf.Products.ResultResponse>(
+    static readonly Method<global::Google.Protobuf.services.Product, global::Google.Protobuf.services.ResultResponse> __Method_Delete = new Method<global::Google.Protobuf.services.Product, global::Google.Protobuf.services.ResultResponse>(
         MethodType.Unary,
         __ServiceName,
-        "DeleteProduct",
+        "Delete",
         __Marshaller_Product,
         __Marshaller_ResultResponse);
 
-    static readonly Method<global::Google.Protobuf.Products.GetAllRequest, global::Google.Protobuf.Products.ProductsResponse> __Method_GetAll = new Method<global::Google.Protobuf.Products.GetAllRequest, global::Google.Protobuf.Products.ProductsResponse>(
+    static readonly Method<global::Google.Protobuf.services.GetAllRequest, global::Google.Protobuf.services.ProductsResponse> __Method_GetAll = new Method<global::Google.Protobuf.services.GetAllRequest, global::Google.Protobuf.services.ProductsResponse>(
         MethodType.Unary,
         __ServiceName,
         "GetAll",
@@ -48,37 +48,37 @@ namespace Google.Protobuf.Products {
     // service descriptor
     public static global::Google.Protobuf.Reflection.ServiceDescriptor Descriptor
     {
-      get { return global::Google.Protobuf.Products.ProductContract.Descriptor.Services[0]; }
+      get { return global::Google.Protobuf.services.ProductContract.Descriptor.Services[0]; }
     }
 
     // client interface
     public interface IProductServiceClient
     {
-      global::Google.Protobuf.Products.ResultResponse AddProduct(global::Google.Protobuf.Products.Product request, Metadata headers = null, DateTime? deadline = null, CancellationToken cancellationToken = default(CancellationToken));
-      global::Google.Protobuf.Products.ResultResponse AddProduct(global::Google.Protobuf.Products.Product request, CallOptions options);
-      AsyncUnaryCall<global::Google.Protobuf.Products.ResultResponse> AddProductAsync(global::Google.Protobuf.Products.Product request, Metadata headers = null, DateTime? deadline = null, CancellationToken cancellationToken = default(CancellationToken));
-      AsyncUnaryCall<global::Google.Protobuf.Products.ResultResponse> AddProductAsync(global::Google.Protobuf.Products.Product request, CallOptions options);
-      global::Google.Protobuf.Products.ResultResponse UpdateProduct(global::Google.Protobuf.Products.Product request, Metadata headers = null, DateTime? deadline = null, CancellationToken cancellationToken = default(CancellationToken));
-      global::Google.Protobuf.Products.ResultResponse UpdateProduct(global::Google.Protobuf.Products.Product request, CallOptions options);
-      AsyncUnaryCall<global::Google.Protobuf.Products.ResultResponse> UpdateProductAsync(global::Google.Protobuf.Products.Product request, Metadata headers = null, DateTime? deadline = null, CancellationToken cancellationToken = default(CancellationToken));
-      AsyncUnaryCall<global::Google.Protobuf.Products.ResultResponse> UpdateProductAsync(global::Google.Protobuf.Products.Product request, CallOptions options);
-      global::Google.Protobuf.Products.ResultResponse DeleteProduct(global::Google.Protobuf.Products.Product request, Metadata headers = null, DateTime? deadline = null, CancellationToken cancellationToken = default(CancellationToken));
-      global::Google.Protobuf.Products.ResultResponse DeleteProduct(global::Google.Protobuf.Products.Product request, CallOptions options);
-      AsyncUnaryCall<global::Google.Protobuf.Products.ResultResponse> DeleteProductAsync(global::Google.Protobuf.Products.Product request, Metadata headers = null, DateTime? deadline = null, CancellationToken cancellationToken = default(CancellationToken));
-      AsyncUnaryCall<global::Google.Protobuf.Products.ResultResponse> DeleteProductAsync(global::Google.Protobuf.Products.Product request, CallOptions options);
-      global::Google.Protobuf.Products.ProductsResponse GetAll(global::Google.Protobuf.Products.GetAllRequest request, Metadata headers = null, DateTime? deadline = null, CancellationToken cancellationToken = default(CancellationToken));
-      global::Google.Protobuf.Products.ProductsResponse GetAll(global::Google.Protobuf.Products.GetAllRequest request, CallOptions options);
-      AsyncUnaryCall<global::Google.Protobuf.Products.ProductsResponse> GetAllAsync(global::Google.Protobuf.Products.GetAllRequest request, Metadata headers = null, DateTime? deadline = null, CancellationToken cancellationToken = default(CancellationToken));
-      AsyncUnaryCall<global::Google.Protobuf.Products.ProductsResponse> GetAllAsync(global::Google.Protobuf.Products.GetAllRequest request, CallOptions options);
+      global::Google.Protobuf.services.ResultResponse Add(global::Google.Protobuf.services.Product request, Metadata headers = null, DateTime? deadline = null, CancellationToken cancellationToken = default(CancellationToken));
+      global::Google.Protobuf.services.ResultResponse Add(global::Google.Protobuf.services.Product request, CallOptions options);
+      AsyncUnaryCall<global::Google.Protobuf.services.ResultResponse> AddAsync(global::Google.Protobuf.services.Product request, Metadata headers = null, DateTime? deadline = null, CancellationToken cancellationToken = default(CancellationToken));
+      AsyncUnaryCall<global::Google.Protobuf.services.ResultResponse> AddAsync(global::Google.Protobuf.services.Product request, CallOptions options);
+      global::Google.Protobuf.services.ResultResponse Update(global::Google.Protobuf.services.Product request, Metadata headers = null, DateTime? deadline = null, CancellationToken cancellationToken = default(CancellationToken));
+      global::Google.Protobuf.services.ResultResponse Update(global::Google.Protobuf.services.Product request, CallOptions options);
+      AsyncUnaryCall<global::Google.Protobuf.services.ResultResponse> UpdateAsync(global::Google.Protobuf.services.Product request, Metadata headers = null, DateTime? deadline = null, CancellationToken cancellationToken = default(CancellationToken));
+      AsyncUnaryCall<global::Google.Protobuf.services.ResultResponse> UpdateAsync(global::Google.Protobuf.services.Product request, CallOptions options);
+      global::Google.Protobuf.services.ResultResponse Delete(global::Google.Protobuf.services.Product request, Metadata headers = null, DateTime? deadline = null, CancellationToken cancellationToken = default(CancellationToken));
+      global::Google.Protobuf.services.ResultResponse Delete(global::Google.Protobuf.services.Product request, CallOptions options);
+      AsyncUnaryCall<global::Google.Protobuf.services.ResultResponse> DeleteAsync(global::Google.Protobuf.services.Product request, Metadata headers = null, DateTime? deadline = null, CancellationToken cancellationToken = default(CancellationToken));
+      AsyncUnaryCall<global::Google.Protobuf.services.ResultResponse> DeleteAsync(global::Google.Protobuf.services.Product request, CallOptions options);
+      global::Google.Protobuf.services.ProductsResponse GetAll(global::Google.Protobuf.services.GetAllRequest request, Metadata headers = null, DateTime? deadline = null, CancellationToken cancellationToken = default(CancellationToken));
+      global::Google.Protobuf.services.ProductsResponse GetAll(global::Google.Protobuf.services.GetAllRequest request, CallOptions options);
+      AsyncUnaryCall<global::Google.Protobuf.services.ProductsResponse> GetAllAsync(global::Google.Protobuf.services.GetAllRequest request, Metadata headers = null, DateTime? deadline = null, CancellationToken cancellationToken = default(CancellationToken));
+      AsyncUnaryCall<global::Google.Protobuf.services.ProductsResponse> GetAllAsync(global::Google.Protobuf.services.GetAllRequest request, CallOptions options);
     }
 
     // server-side interface
     public interface IProductService
     {
-      Task<global::Google.Protobuf.Products.ResultResponse> AddProduct(global::Google.Protobuf.Products.Product request, ServerCallContext context);
-      Task<global::Google.Protobuf.Products.ResultResponse> UpdateProduct(global::Google.Protobuf.Products.Product request, ServerCallContext context);
-      Task<global::Google.Protobuf.Products.ResultResponse> DeleteProduct(global::Google.Protobuf.Products.Product request, ServerCallContext context);
-      Task<global::Google.Protobuf.Products.ProductsResponse> GetAll(global::Google.Protobuf.Products.GetAllRequest request, ServerCallContext context);
+      Task<global::Google.Protobuf.services.ResultResponse> Add(global::Google.Protobuf.services.Product request, ServerCallContext context);
+      Task<global::Google.Protobuf.services.ResultResponse> Update(global::Google.Protobuf.services.Product request, ServerCallContext context);
+      Task<global::Google.Protobuf.services.ResultResponse> Delete(global::Google.Protobuf.services.Product request, ServerCallContext context);
+      Task<global::Google.Protobuf.services.ProductsResponse> GetAll(global::Google.Protobuf.services.GetAllRequest request, ServerCallContext context);
     }
 
     // client stub
@@ -87,82 +87,82 @@ namespace Google.Protobuf.Products {
       public ProductServiceClient(Channel channel) : base(channel)
       {
       }
-      public global::Google.Protobuf.Products.ResultResponse AddProduct(global::Google.Protobuf.Products.Product request, Metadata headers = null, DateTime? deadline = null, CancellationToken cancellationToken = default(CancellationToken))
+      public global::Google.Protobuf.services.ResultResponse Add(global::Google.Protobuf.services.Product request, Metadata headers = null, DateTime? deadline = null, CancellationToken cancellationToken = default(CancellationToken))
       {
-        var call = CreateCall(__Method_AddProduct, new CallOptions(headers, deadline, cancellationToken));
+        var call = CreateCall(__Method_Add, new CallOptions(headers, deadline, cancellationToken));
         return Calls.BlockingUnaryCall(call, request);
       }
-      public global::Google.Protobuf.Products.ResultResponse AddProduct(global::Google.Protobuf.Products.Product request, CallOptions options)
+      public global::Google.Protobuf.services.ResultResponse Add(global::Google.Protobuf.services.Product request, CallOptions options)
       {
-        var call = CreateCall(__Method_AddProduct, options);
+        var call = CreateCall(__Method_Add, options);
         return Calls.BlockingUnaryCall(call, request);
       }
-      public AsyncUnaryCall<global::Google.Protobuf.Products.ResultResponse> AddProductAsync(global::Google.Protobuf.Products.Product request, Metadata headers = null, DateTime? deadline = null, CancellationToken cancellationToken = default(CancellationToken))
+      public AsyncUnaryCall<global::Google.Protobuf.services.ResultResponse> AddAsync(global::Google.Protobuf.services.Product request, Metadata headers = null, DateTime? deadline = null, CancellationToken cancellationToken = default(CancellationToken))
       {
-        var call = CreateCall(__Method_AddProduct, new CallOptions(headers, deadline, cancellationToken));
+        var call = CreateCall(__Method_Add, new CallOptions(headers, deadline, cancellationToken));
         return Calls.AsyncUnaryCall(call, request);
       }
-      public AsyncUnaryCall<global::Google.Protobuf.Products.ResultResponse> AddProductAsync(global::Google.Protobuf.Products.Product request, CallOptions options)
+      public AsyncUnaryCall<global::Google.Protobuf.services.ResultResponse> AddAsync(global::Google.Protobuf.services.Product request, CallOptions options)
       {
-        var call = CreateCall(__Method_AddProduct, options);
+        var call = CreateCall(__Method_Add, options);
         return Calls.AsyncUnaryCall(call, request);
       }
-      public global::Google.Protobuf.Products.ResultResponse UpdateProduct(global::Google.Protobuf.Products.Product request, Metadata headers = null, DateTime? deadline = null, CancellationToken cancellationToken = default(CancellationToken))
+      public global::Google.Protobuf.services.ResultResponse Update(global::Google.Protobuf.services.Product request, Metadata headers = null, DateTime? deadline = null, CancellationToken cancellationToken = default(CancellationToken))
       {
-        var call = CreateCall(__Method_UpdateProduct, new CallOptions(headers, deadline, cancellationToken));
+        var call = CreateCall(__Method_Update, new CallOptions(headers, deadline, cancellationToken));
         return Calls.BlockingUnaryCall(call, request);
       }
-      public global::Google.Protobuf.Products.ResultResponse UpdateProduct(global::Google.Protobuf.Products.Product request, CallOptions options)
+      public global::Google.Protobuf.services.ResultResponse Update(global::Google.Protobuf.services.Product request, CallOptions options)
       {
-        var call = CreateCall(__Method_UpdateProduct, options);
+        var call = CreateCall(__Method_Update, options);
         return Calls.BlockingUnaryCall(call, request);
       }
-      public AsyncUnaryCall<global::Google.Protobuf.Products.ResultResponse> UpdateProductAsync(global::Google.Protobuf.Products.Product request, Metadata headers = null, DateTime? deadline = null, CancellationToken cancellationToken = default(CancellationToken))
+      public AsyncUnaryCall<global::Google.Protobuf.services.ResultResponse> UpdateAsync(global::Google.Protobuf.services.Product request, Metadata headers = null, DateTime? deadline = null, CancellationToken cancellationToken = default(CancellationToken))
       {
-        var call = CreateCall(__Method_UpdateProduct, new CallOptions(headers, deadline, cancellationToken));
+        var call = CreateCall(__Method_Update, new CallOptions(headers, deadline, cancellationToken));
         return Calls.AsyncUnaryCall(call, request);
       }
-      public AsyncUnaryCall<global::Google.Protobuf.Products.ResultResponse> UpdateProductAsync(global::Google.Protobuf.Products.Product request, CallOptions options)
+      public AsyncUnaryCall<global::Google.Protobuf.services.ResultResponse> UpdateAsync(global::Google.Protobuf.services.Product request, CallOptions options)
       {
-        var call = CreateCall(__Method_UpdateProduct, options);
+        var call = CreateCall(__Method_Update, options);
         return Calls.AsyncUnaryCall(call, request);
       }
-      public global::Google.Protobuf.Products.ResultResponse DeleteProduct(global::Google.Protobuf.Products.Product request, Metadata headers = null, DateTime? deadline = null, CancellationToken cancellationToken = default(CancellationToken))
+      public global::Google.Protobuf.services.ResultResponse Delete(global::Google.Protobuf.services.Product request, Metadata headers = null, DateTime? deadline = null, CancellationToken cancellationToken = default(CancellationToken))
       {
-        var call = CreateCall(__Method_DeleteProduct, new CallOptions(headers, deadline, cancellationToken));
+        var call = CreateCall(__Method_Delete, new CallOptions(headers, deadline, cancellationToken));
         return Calls.BlockingUnaryCall(call, request);
       }
-      public global::Google.Protobuf.Products.ResultResponse DeleteProduct(global::Google.Protobuf.Products.Product request, CallOptions options)
+      public global::Google.Protobuf.services.ResultResponse Delete(global::Google.Protobuf.services.Product request, CallOptions options)
       {
-        var call = CreateCall(__Method_DeleteProduct, options);
+        var call = CreateCall(__Method_Delete, options);
         return Calls.BlockingUnaryCall(call, request);
       }
-      public AsyncUnaryCall<global::Google.Protobuf.Products.ResultResponse> DeleteProductAsync(global::Google.Protobuf.Products.Product request, Metadata headers = null, DateTime? deadline = null, CancellationToken cancellationToken = default(CancellationToken))
+      public AsyncUnaryCall<global::Google.Protobuf.services.ResultResponse> DeleteAsync(global::Google.Protobuf.services.Product request, Metadata headers = null, DateTime? deadline = null, CancellationToken cancellationToken = default(CancellationToken))
       {
-        var call = CreateCall(__Method_DeleteProduct, new CallOptions(headers, deadline, cancellationToken));
+        var call = CreateCall(__Method_Delete, new CallOptions(headers, deadline, cancellationToken));
         return Calls.AsyncUnaryCall(call, request);
       }
-      public AsyncUnaryCall<global::Google.Protobuf.Products.ResultResponse> DeleteProductAsync(global::Google.Protobuf.Products.Product request, CallOptions options)
+      public AsyncUnaryCall<global::Google.Protobuf.services.ResultResponse> DeleteAsync(global::Google.Protobuf.services.Product request, CallOptions options)
       {
-        var call = CreateCall(__Method_DeleteProduct, options);
+        var call = CreateCall(__Method_Delete, options);
         return Calls.AsyncUnaryCall(call, request);
       }
-      public global::Google.Protobuf.Products.ProductsResponse GetAll(global::Google.Protobuf.Products.GetAllRequest request, Metadata headers = null, DateTime? deadline = null, CancellationToken cancellationToken = default(CancellationToken))
+      public global::Google.Protobuf.services.ProductsResponse GetAll(global::Google.Protobuf.services.GetAllRequest request, Metadata headers = null, DateTime? deadline = null, CancellationToken cancellationToken = default(CancellationToken))
       {
         var call = CreateCall(__Method_GetAll, new CallOptions(headers, deadline, cancellationToken));
         return Calls.BlockingUnaryCall(call, request);
       }
-      public global::Google.Protobuf.Products.ProductsResponse GetAll(global::Google.Protobuf.Products.GetAllRequest request, CallOptions options)
+      public global::Google.Protobuf.services.ProductsResponse GetAll(global::Google.Protobuf.services.GetAllRequest request, CallOptions options)
       {
         var call = CreateCall(__Method_GetAll, options);
         return Calls.BlockingUnaryCall(call, request);
       }
-      public AsyncUnaryCall<global::Google.Protobuf.Products.ProductsResponse> GetAllAsync(global::Google.Protobuf.Products.GetAllRequest request, Metadata headers = null, DateTime? deadline = null, CancellationToken cancellationToken = default(CancellationToken))
+      public AsyncUnaryCall<global::Google.Protobuf.services.ProductsResponse> GetAllAsync(global::Google.Protobuf.services.GetAllRequest request, Metadata headers = null, DateTime? deadline = null, CancellationToken cancellationToken = default(CancellationToken))
       {
         var call = CreateCall(__Method_GetAll, new CallOptions(headers, deadline, cancellationToken));
         return Calls.AsyncUnaryCall(call, request);
       }
-      public AsyncUnaryCall<global::Google.Protobuf.Products.ProductsResponse> GetAllAsync(global::Google.Protobuf.Products.GetAllRequest request, CallOptions options)
+      public AsyncUnaryCall<global::Google.Protobuf.services.ProductsResponse> GetAllAsync(global::Google.Protobuf.services.GetAllRequest request, CallOptions options)
       {
         var call = CreateCall(__Method_GetAll, options);
         return Calls.AsyncUnaryCall(call, request);
@@ -173,9 +173,9 @@ namespace Google.Protobuf.Products {
     public static ServerServiceDefinition BindService(IProductService serviceImpl)
     {
       return ServerServiceDefinition.CreateBuilder(__ServiceName)
-          .AddMethod(__Method_AddProduct, serviceImpl.AddProduct)
-          .AddMethod(__Method_UpdateProduct, serviceImpl.UpdateProduct)
-          .AddMethod(__Method_DeleteProduct, serviceImpl.DeleteProduct)
+          .AddMethod(__Method_Add, serviceImpl.Add)
+          .AddMethod(__Method_Update, serviceImpl.Update)
+          .AddMethod(__Method_Delete, serviceImpl.Delete)
           .AddMethod(__Method_GetAll, serviceImpl.GetAll).Build();
     }
 

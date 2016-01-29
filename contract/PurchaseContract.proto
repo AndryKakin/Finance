@@ -1,0 +1,38 @@
+syntax = "proto3";
+
+option java_package = "io.grpc.examples";
+option objc_class_prefix = "HLW";
+option go_package = "services";
+option csharp_namespace = "Google.Protobuf.services";
+
+package services;
+
+enum Status {
+    Ok = 0;
+    Failed = 1;
+}
+
+message Purchase {
+  int64  Id = 1;
+  int64  FkCurrency = 2;
+  
+}
+
+message PurchasesResponse {
+  repeated Purchase Purchases = 1;
+}
+
+message ResultResponse {
+  Status Status = 1;
+}
+
+message GetAllRequest {
+
+}
+
+service PriceService {
+  rpc Add    (Purchase) returns (ResultResponse) {}
+  rpc Update (Purchase) returns (ResultResponse) {}
+  rpc Delete (Purchase) returns (ResultResponse) {}
+  rpc GetAll (GetAllRequest)  returns (PurchasesResponse) {}
+}

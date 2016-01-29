@@ -53,11 +53,29 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="..\..\contract\CurrencyContract.cs">
+      <Link>Currency\CurrencyContract.cs</Link>
+    </Compile>
+    <Compile Include="..\..\contract\CurrencyContractGrpc.cs">
+      <Link>Currency\CurrencyContractGrpc.cs</Link>
+    </Compile>
+    <Compile Include="..\..\contract\PriceContract.cs">
+      <Link>Prices\PriceContract.cs</Link>
+    </Compile>
+    <Compile Include="..\..\contract\PriceContractGrpc.cs">
+      <Link>Prices\PriceContractGrpc.cs</Link>
+    </Compile>
     <Compile Include="..\..\contract\ProductContract.cs">
-      <Link>ProductContract.cs</Link>
+      <Link>Products\ProductContract.cs</Link>
     </Compile>
     <Compile Include="..\..\contract\ProductContractGrpc.cs">
-      <Link>ProductContractGrpc.cs</Link>
+      <Link>Products\ProductContractGrpc.cs</Link>
+    </Compile>
+    <Compile Include="..\..\contract\PurchaseContract.cs">
+      <Link>Purchase\PurchaseContract.cs</Link>
+    </Compile>
+    <Compile Include="..\..\contract\PurchaseContractGrpc.cs">
+      <Link>Purchase\PurchaseContractGrpc.cs</Link>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

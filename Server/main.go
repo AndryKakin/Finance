@@ -1,6 +1,8 @@
 package main
 
 import (
+	"Finance/server/database"
+	"Finance/server/services"
 	"fmt"
 	"os"
 
@@ -40,7 +42,7 @@ func ExitIfUserEnterExit() {
 func main() {
 	InitializeDB()
 
-	go ServerGo()
+	go GoProductService()
 
 	ExitIfUserEnterExit()
 }
