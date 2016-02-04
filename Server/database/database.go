@@ -7,6 +7,9 @@ import (
 	"github.com/HouzuoGuo/tiedot/db"
 )
 
+var ProductStoreName = "Product"
+var MainDBPath = "DB\\"
+
 func createProduct() (js map[string]interface{}) {
 	doc := fmt.Sprintf(`
 {

@@ -1,7 +1,7 @@
 package services
 
 import (
-	"Finance/server/database"
+	"Finance/Server/database"
 	"encoding/json"
 	"fmt"
 	"log"
@@ -20,16 +20,16 @@ const (
 type server struct{}
 
 func GetDbProductStore() *db.Col {
-	myDb, err := db.OpenDB(MainDBPath)
+	myDb, err := db.OpenDB(database.MainDBPath)
 
 	if err != nil {
 		panic(err)
 	}
 
-	return myDb.Use(productStoreName)
+	return myDb.Use(database.ProductStoreName)
 }
 
-func (s *server) AddProduct(ctx context.Context, in *Product) (*ResultResponse, error) {
+func (s *server) Add(ctx context.Context, in *Product) (*ResultResponse, error) {
 	productStore := GetDbProductStore()
 	docID, err := productStore.Insert(map[string]interface{}{
 		"Name":        in.Name,
@@ -42,12 +42,12 @@ func (s *server) AddProduct(ctx context.Context, in *Product) (*ResultResponse, 
 	return &ResultResponse{Status: Status_Ok}, nil
 }
 
-func (s *server) UpdateProduct(ctx context.Context, in *Product) (*ResultResponse, error) {
+func (s *server) Update(ctx context.Context, in *Product) (*ResultResponse, error) {
 	fmt.Print("UpdateProduct: Id(%v) Time(%v) Name(%v)\n", in.Id, time.Now(), in.Name)
 	return &ResultResponse{Status: Status_Ok}, nil
 }
 
-func (s *server) DeleteProduct(ctx context.Context, in *Product) (*ResultResponse, error) {
+func (s *server) Delete(ctx context.Context, in *Product) (*ResultResponse, error) {
 	fmt.Print("DeleteProduct: Id(%v) Time(%v) Name(%v)\n", in.Id, time.Now(), in.Name)
 	return &ResultResponse{Status: Status_Ok}, nil
 }
