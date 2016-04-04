@@ -8,6 +8,7 @@ import (
 	"net"
 	"time"
 
+	"github.com/HouzuoGuo/tiedot/db"
 	"golang.org/x/net/context"
 	"google.golang.org/grpc"
 )
@@ -25,6 +26,11 @@ func GetDbCurrencyStore() *db.Col {
 		panic(err)
 	}
 	return mydb.Use(CurrencyStoreName)
+}
+
+func InitializeCurrencies() {
+	curencyStore := GetDbCurrencyStore()
+	curencyStore.Index()
 }
 
 type server struct{}

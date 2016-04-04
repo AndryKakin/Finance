@@ -6,9 +6,9 @@ using System.Drawing.Imaging;
 using System.IO;
 using System.Linq;
 using Google.Protobuf;
-using Google.Protobuf.Products;
+using Google.Protobuf.products;
 using Grpc.Core;
-using Status = Google.Protobuf.Products.Status;
+using Status = Google.Protobuf.products.Status;
 
 namespace Models.Products
 {
@@ -29,13 +29,13 @@ namespace Models.Products
             Channel channel = new Channel(_addresses, Credentials.Insecure);
             
             var client = ProductService.NewClient(channel);
-            var request = new Google.Protobuf.Products.Product
+            var request = new Google.Protobuf.products.Product
             {
                 Name = productModel.Name,
                 Description = productModel.Description,
                 Bitmap = ByteString.CopyFrom(productModel.Bitmap)
             };
-            var result = client.AddProduct(request);
+            var result = client.Add(request);
             if(result.Status == Status.Failed)
                 throw new Exception();
         }
@@ -58,7 +58,7 @@ namespace Models.Products
             var channel = new Channel(_addresses, Credentials.Insecure);
 
             var client = ProductService.NewClient(channel);
-            var results = client.GetAll(new GetAllRequest());
+            var results = client.GetAll(new ProductsRequest());
             return results.Products.Select(dtoProduct => new Product
             {
                 Id = dtoProduct.Id,
