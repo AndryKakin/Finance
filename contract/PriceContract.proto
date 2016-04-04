@@ -2,10 +2,10 @@ syntax = "proto3";
 
 option java_package = "io.grpc.examples";
 option objc_class_prefix = "HLW";
-option go_package = "services";
-option csharp_namespace = "Google.Protobuf.services";
+option go_package = "prices";
+option csharp_namespace = "Google.Protobuf.prices";
 
-package services;
+package prices;
 
 enum Status {
     Ok = 0;

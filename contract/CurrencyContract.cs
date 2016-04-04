@@ -7,7 +7,7 @@ using pb = global::Google.Protobuf;
 using pbc = global::Google.Protobuf.Collections;
 using pbr = global::Google.Protobuf.Reflection;
 using scg = global::System.Collections.Generic;
-namespace Google.Protobuf.services {
+namespace Google.Protobuf.currencies {
 
   [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
   public static partial class CurrencyContract {
@@ -21,20 +21,20 @@ namespace Google.Protobuf.services {
     static CurrencyContract() {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
-            "ChZDdXJyZW5jeUNvbnRyYWN0LnByb3RvEghzZXJ2aWNlcyIyCghDdXJyZW5j", 
-            "eRIKCgJJZBgBIAEoAxIMCgROYW1lGAIgASgJEgwKBENvZGUYAyABKAkiPAoS", 
-            "Q3VycmVuY2llc1Jlc3BvbnNlEiYKCkN1cnJlbmNpZXMYASADKAsyEi5zZXJ2", 
-            "aWNlcy5DdXJyZW5jeSIPCg1HZXRBbGxSZXF1ZXN0MlMKDlByb2R1Y3RTZXJ2", 
-            "aWNlEkEKBkdldEFsbBIXLnNlcnZpY2VzLkdldEFsbFJlcXVlc3QaHC5zZXJ2", 
-            "aWNlcy5DdXJyZW5jaWVzUmVzcG9uc2UiAEI9ChBpby5ncnBjLmV4YW1wbGVz", 
-            "WghzZXJ2aWNlc6ICA0hMV6oCGEdvb2dsZS5Qcm90b2J1Zi5zZXJ2aWNlc2IG", 
-            "cHJvdG8z"));
+            "ChZDdXJyZW5jeUNvbnRyYWN0LnByb3RvEgpjdXJyZW5jaWVzIjIKCEN1cnJl", 
+            "bmN5EgoKAklkGAEgASgDEgwKBE5hbWUYAiABKAkSDAoEQ29kZRgDIAEoCSI+", 
+            "ChJDdXJyZW5jaWVzUmVzcG9uc2USKAoKQ3VycmVuY2llcxgBIAMoCzIULmN1", 
+            "cnJlbmNpZXMuQ3VycmVuY3kiEwoRQ3VycmVuY2llc1JlcXVlc3QyXAoPQ3Vy", 
+            "cmVuY3lTZXJ2aWNlEkkKBkdldEFsbBIdLmN1cnJlbmNpZXMuQ3VycmVuY2ll", 
+            "c1JlcXVlc3QaHi5jdXJyZW5jaWVzLkN1cnJlbmNpZXNSZXNwb25zZSIAQkEK", 
+            "EGlvLmdycGMuZXhhbXBsZXNaCmN1cnJlbmNpZXOiAgNITFeqAhpHb29nbGUu", 
+            "UHJvdG9idWYuY3VycmVuY2llc2IGcHJvdG8z"));
       descriptor = pbr::FileDescriptor.InternalBuildGeneratedFileFrom(descriptorData,
           new pbr::FileDescriptor[] { },
           new pbr::GeneratedCodeInfo(null, new pbr::GeneratedCodeInfo[] {
-            new pbr::GeneratedCodeInfo(typeof(global::Google.Protobuf.services.Currency), new[]{ "Id", "Name", "Code" }, null, null, null),
-            new pbr::GeneratedCodeInfo(typeof(global::Google.Protobuf.services.CurrenciesResponse), new[]{ "Currencies" }, null, null, null),
-            new pbr::GeneratedCodeInfo(typeof(global::Google.Protobuf.services.GetAllRequest), null, null, null, null)
+            new pbr::GeneratedCodeInfo(typeof(global::Google.Protobuf.currencies.Currency), new[]{ "Id", "Name", "Code" }, null, null, null),
+            new pbr::GeneratedCodeInfo(typeof(global::Google.Protobuf.currencies.CurrenciesResponse), new[]{ "Currencies" }, null, null, null),
+            new pbr::GeneratedCodeInfo(typeof(global::Google.Protobuf.currencies.CurrenciesRequest), null, null, null, null)
           }));
     }
     #endregion
@@ -47,7 +47,7 @@ namespace Google.Protobuf.services {
     public static pb::MessageParser<Currency> Parser { get { return _parser; } }
 
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::Google.Protobuf.services.CurrencyContract.Descriptor.MessageTypes[0]; }
+      get { return global::Google.Protobuf.currencies.CurrencyContract.Descriptor.MessageTypes[0]; }
     }
 
     pbr::MessageDescriptor pb::IMessage.Descriptor {
@@ -201,7 +201,7 @@ namespace Google.Protobuf.services {
     public static pb::MessageParser<CurrenciesResponse> Parser { get { return _parser; } }
 
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::Google.Protobuf.services.CurrencyContract.Descriptor.MessageTypes[1]; }
+      get { return global::Google.Protobuf.currencies.CurrencyContract.Descriptor.MessageTypes[1]; }
     }
 
     pbr::MessageDescriptor pb::IMessage.Descriptor {
@@ -223,10 +223,10 @@ namespace Google.Protobuf.services {
     }
 
     public const int CurrenciesFieldNumber = 1;
-    private static readonly pb::FieldCodec<global::Google.Protobuf.services.Currency> _repeated_currencies_codec
-        = pb::FieldCodec.ForMessage(10, global::Google.Protobuf.services.Currency.Parser);
-    private readonly pbc::RepeatedField<global::Google.Protobuf.services.Currency> currencies_ = new pbc::RepeatedField<global::Google.Protobuf.services.Currency>();
-    public pbc::RepeatedField<global::Google.Protobuf.services.Currency> Currencies {
+    private static readonly pb::FieldCodec<global::Google.Protobuf.currencies.Currency> _repeated_currencies_codec
+        = pb::FieldCodec.ForMessage(10, global::Google.Protobuf.currencies.Currency.Parser);
+    private readonly pbc::RepeatedField<global::Google.Protobuf.currencies.Currency> currencies_ = new pbc::RepeatedField<global::Google.Protobuf.currencies.Currency>();
+    public pbc::RepeatedField<global::Google.Protobuf.currencies.Currency> Currencies {
       get { return currencies_; }
     }
 
@@ -290,36 +290,36 @@ namespace Google.Protobuf.services {
   }
 
   [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-  public sealed partial class GetAllRequest : pb::IMessage<GetAllRequest> {
-    private static readonly pb::MessageParser<GetAllRequest> _parser = new pb::MessageParser<GetAllRequest>(() => new GetAllRequest());
-    public static pb::MessageParser<GetAllRequest> Parser { get { return _parser; } }
+  public sealed partial class CurrenciesRequest : pb::IMessage<CurrenciesRequest> {
+    private static readonly pb::MessageParser<CurrenciesRequest> _parser = new pb::MessageParser<CurrenciesRequest>(() => new CurrenciesRequest());
+    public static pb::MessageParser<CurrenciesRequest> Parser { get { return _parser; } }
 
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::Google.Protobuf.services.CurrencyContract.Descriptor.MessageTypes[2]; }
+      get { return global::Google.Protobuf.currencies.CurrencyContract.Descriptor.MessageTypes[2]; }
     }
 
     pbr::MessageDescriptor pb::IMessage.Descriptor {
       get { return Descriptor; }
     }
 
-    public GetAllRequest() {
+    public CurrenciesRequest() {
       OnConstruction();
     }
 
     partial void OnConstruction();
 
-    public GetAllRequest(GetAllRequest other) : this() {
+    public CurrenciesRequest(CurrenciesRequest other) : this() {
     }
 
-    public GetAllRequest Clone() {
-      return new GetAllRequest(this);
+    public CurrenciesRequest Clone() {
+      return new CurrenciesRequest(this);
     }
 
     public override bool Equals(object other) {
-      return Equals(other as GetAllRequest);
+      return Equals(other as CurrenciesRequest);
     }
 
-    public bool Equals(GetAllRequest other) {
+    public bool Equals(CurrenciesRequest other) {
       if (ReferenceEquals(other, null)) {
         return false;
       }
@@ -346,7 +346,7 @@ namespace Google.Protobuf.services {
       return size;
     }
 
-    public void MergeFrom(GetAllRequest other) {
+    public void MergeFrom(CurrenciesRequest other) {
       if (other == null) {
         return;
       }

@@ -1,8 +1,8 @@
 package main
 
 import (
-	"Finance/server/database"
-	"Finance/server/services"
+	"Finance/Server/database"
+	"Finance/Server/services/products"
 	"fmt"
 	"os"
 
@@ -19,11 +19,11 @@ func InitializeDB() {
 		panic(err)
 	}
 
-	createStore(productStoreName, myDb)
+	database.CreateStore(productStoreName, myDb)
 
 	productStore := myDb.Use(productStoreName)
 
-	createIndex("Id", productStore)
+	database.CreateIndex("Id", productStore)
 
 	defer myDb.Close()
 }
@@ -42,7 +42,7 @@ func ExitIfUserEnterExit() {
 func main() {
 	InitializeDB()
 
-	go GoProductService()
+	go products.GoProductService()
 
 	ExitIfUserEnterExit()
 }

@@ -7,7 +7,7 @@ using pb = global::Google.Protobuf;
 using pbc = global::Google.Protobuf.Collections;
 using pbr = global::Google.Protobuf.Reflection;
 using scg = global::System.Collections.Generic;
-namespace Google.Protobuf.services {
+namespace Google.Protobuf.prices {
 
   [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
   public static partial class PriceContract {
@@ -21,26 +21,26 @@ namespace Google.Protobuf.services {
     static PriceContract() {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
-            "ChNQcmljZUNvbnRyYWN0LnByb3RvEghzZXJ2aWNlcyJJCgVQcmljZRIKCgJJ", 
-            "ZBgBIAEoAxIRCglGa1Byb2R1Y3QYAiABKAMSEgoKRmtQdXJjaGFzZRgDIAEo", 
-            "AxINCgVQcmljZRgFIAEoASIxCg5QcmljZXNSZXNwb25zZRIfCgZQcmljZXMY", 
-            "ASADKAsyDy5zZXJ2aWNlcy5QcmljZSIyCg5SZXN1bHRSZXNwb25zZRIgCgZT", 
-            "dGF0dXMYASABKA4yEC5zZXJ2aWNlcy5TdGF0dXMiDwoNR2V0QWxsUmVxdWVz", 
-            "dCocCgZTdGF0dXMSBgoCT2sQABIKCgZGYWlsZWQQATLvAQoMUHJpY2VTZXJ2", 
-            "aWNlEjIKA0FkZBIPLnNlcnZpY2VzLlByaWNlGhguc2VydmljZXMuUmVzdWx0", 
-            "UmVzcG9uc2UiABI1CgZVcGRhdGUSDy5zZXJ2aWNlcy5QcmljZRoYLnNlcnZp", 
-            "Y2VzLlJlc3VsdFJlc3BvbnNlIgASNQoGRGVsZXRlEg8uc2VydmljZXMuUHJp", 
-            "Y2UaGC5zZXJ2aWNlcy5SZXN1bHRSZXNwb25zZSIAEj0KBkdldEFsbBIXLnNl", 
-            "cnZpY2VzLkdldEFsbFJlcXVlc3QaGC5zZXJ2aWNlcy5QcmljZXNSZXNwb25z", 
-            "ZSIAQj0KEGlvLmdycGMuZXhhbXBsZXNaCHNlcnZpY2VzogIDSExXqgIYR29v", 
-            "Z2xlLlByb3RvYnVmLnNlcnZpY2VzYgZwcm90bzM="));
+            "ChNQcmljZUNvbnRyYWN0LnByb3RvEgZwcmljZXMiSQoFUHJpY2USCgoCSWQY", 
+            "ASABKAMSEQoJRmtQcm9kdWN0GAIgASgDEhIKCkZrUHVyY2hhc2UYAyABKAMS", 
+            "DQoFUHJpY2UYBSABKAEiLwoOUHJpY2VzUmVzcG9uc2USHQoGUHJpY2VzGAEg", 
+            "AygLMg0ucHJpY2VzLlByaWNlIjAKDlJlc3VsdFJlc3BvbnNlEh4KBlN0YXR1", 
+            "cxgBIAEoDjIOLnByaWNlcy5TdGF0dXMiDwoNR2V0QWxsUmVxdWVzdCocCgZT", 
+            "dGF0dXMSBgoCT2sQABIKCgZGYWlsZWQQATLfAQoMUHJpY2VTZXJ2aWNlEi4K", 
+            "A0FkZBINLnByaWNlcy5QcmljZRoWLnByaWNlcy5SZXN1bHRSZXNwb25zZSIA", 
+            "EjEKBlVwZGF0ZRINLnByaWNlcy5QcmljZRoWLnByaWNlcy5SZXN1bHRSZXNw", 
+            "b25zZSIAEjEKBkRlbGV0ZRINLnByaWNlcy5QcmljZRoWLnByaWNlcy5SZXN1", 
+            "bHRSZXNwb25zZSIAEjkKBkdldEFsbBIVLnByaWNlcy5HZXRBbGxSZXF1ZXN0", 
+            "GhYucHJpY2VzLlByaWNlc1Jlc3BvbnNlIgBCOQoQaW8uZ3JwYy5leGFtcGxl", 
+            "c1oGcHJpY2VzogIDSExXqgIWR29vZ2xlLlByb3RvYnVmLnByaWNlc2IGcHJv", 
+            "dG8z"));
       descriptor = pbr::FileDescriptor.InternalBuildGeneratedFileFrom(descriptorData,
           new pbr::FileDescriptor[] { },
-          new pbr::GeneratedCodeInfo(new[] {typeof(global::Google.Protobuf.services.Status), }, new pbr::GeneratedCodeInfo[] {
-            new pbr::GeneratedCodeInfo(typeof(global::Google.Protobuf.services.Price), new[]{ "Id", "FkProduct", "FkPurchase", "Price_" }, null, null, null),
-            new pbr::GeneratedCodeInfo(typeof(global::Google.Protobuf.services.PricesResponse), new[]{ "Prices" }, null, null, null),
-            new pbr::GeneratedCodeInfo(typeof(global::Google.Protobuf.services.ResultResponse), new[]{ "Status" }, null, null, null),
-            new pbr::GeneratedCodeInfo(typeof(global::Google.Protobuf.services.GetAllRequest), null, null, null, null)
+          new pbr::GeneratedCodeInfo(new[] {typeof(global::Google.Protobuf.prices.Status), }, new pbr::GeneratedCodeInfo[] {
+            new pbr::GeneratedCodeInfo(typeof(global::Google.Protobuf.prices.Price), new[]{ "Id", "FkProduct", "FkPurchase", "Price_" }, null, null, null),
+            new pbr::GeneratedCodeInfo(typeof(global::Google.Protobuf.prices.PricesResponse), new[]{ "Prices" }, null, null, null),
+            new pbr::GeneratedCodeInfo(typeof(global::Google.Protobuf.prices.ResultResponse), new[]{ "Status" }, null, null, null),
+            new pbr::GeneratedCodeInfo(typeof(global::Google.Protobuf.prices.GetAllRequest), null, null, null, null)
           }));
     }
     #endregion
@@ -61,7 +61,7 @@ namespace Google.Protobuf.services {
     public static pb::MessageParser<Price> Parser { get { return _parser; } }
 
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::Google.Protobuf.services.PriceContract.Descriptor.MessageTypes[0]; }
+      get { return global::Google.Protobuf.prices.PriceContract.Descriptor.MessageTypes[0]; }
     }
 
     pbr::MessageDescriptor pb::IMessage.Descriptor {
@@ -241,7 +241,7 @@ namespace Google.Protobuf.services {
     public static pb::MessageParser<PricesResponse> Parser { get { return _parser; } }
 
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::Google.Protobuf.services.PriceContract.Descriptor.MessageTypes[1]; }
+      get { return global::Google.Protobuf.prices.PriceContract.Descriptor.MessageTypes[1]; }
     }
 
     pbr::MessageDescriptor pb::IMessage.Descriptor {
@@ -263,10 +263,10 @@ namespace Google.Protobuf.services {
     }
 
     public const int PricesFieldNumber = 1;
-    private static readonly pb::FieldCodec<global::Google.Protobuf.services.Price> _repeated_prices_codec
-        = pb::FieldCodec.ForMessage(10, global::Google.Protobuf.services.Price.Parser);
-    private readonly pbc::RepeatedField<global::Google.Protobuf.services.Price> prices_ = new pbc::RepeatedField<global::Google.Protobuf.services.Price>();
-    public pbc::RepeatedField<global::Google.Protobuf.services.Price> Prices {
+    private static readonly pb::FieldCodec<global::Google.Protobuf.prices.Price> _repeated_prices_codec
+        = pb::FieldCodec.ForMessage(10, global::Google.Protobuf.prices.Price.Parser);
+    private readonly pbc::RepeatedField<global::Google.Protobuf.prices.Price> prices_ = new pbc::RepeatedField<global::Google.Protobuf.prices.Price>();
+    public pbc::RepeatedField<global::Google.Protobuf.prices.Price> Prices {
       get { return prices_; }
     }
 
@@ -335,7 +335,7 @@ namespace Google.Protobuf.services {
     public static pb::MessageParser<ResultResponse> Parser { get { return _parser; } }
 
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::Google.Protobuf.services.PriceContract.Descriptor.MessageTypes[2]; }
+      get { return global::Google.Protobuf.prices.PriceContract.Descriptor.MessageTypes[2]; }
     }
 
     pbr::MessageDescriptor pb::IMessage.Descriptor {
@@ -357,8 +357,8 @@ namespace Google.Protobuf.services {
     }
 
     public const int StatusFieldNumber = 1;
-    private global::Google.Protobuf.services.Status status_ = global::Google.Protobuf.services.Status.Ok;
-    public global::Google.Protobuf.services.Status Status {
+    private global::Google.Protobuf.prices.Status status_ = global::Google.Protobuf.prices.Status.Ok;
+    public global::Google.Protobuf.prices.Status Status {
       get { return status_; }
       set {
         status_ = value;
@@ -382,7 +382,7 @@ namespace Google.Protobuf.services {
 
     public override int GetHashCode() {
       int hash = 1;
-      if (Status != global::Google.Protobuf.services.Status.Ok) hash ^= Status.GetHashCode();
+      if (Status != global::Google.Protobuf.prices.Status.Ok) hash ^= Status.GetHashCode();
       return hash;
     }
 
@@ -391,7 +391,7 @@ namespace Google.Protobuf.services {
     }
 
     public void WriteTo(pb::CodedOutputStream output) {
-      if (Status != global::Google.Protobuf.services.Status.Ok) {
+      if (Status != global::Google.Protobuf.prices.Status.Ok) {
         output.WriteRawTag(8);
         output.WriteEnum((int) Status);
       }
@@ -399,7 +399,7 @@ namespace Google.Protobuf.services {
 
     public int CalculateSize() {
       int size = 0;
-      if (Status != global::Google.Protobuf.services.Status.Ok) {
+      if (Status != global::Google.Protobuf.prices.Status.Ok) {
         size += 1 + pb::CodedOutputStream.ComputeEnumSize((int) Status);
       }
       return size;
@@ -409,7 +409,7 @@ namespace Google.Protobuf.services {
       if (other == null) {
         return;
       }
-      if (other.Status != global::Google.Protobuf.services.Status.Ok) {
+      if (other.Status != global::Google.Protobuf.prices.Status.Ok) {
         Status = other.Status;
       }
     }
@@ -422,7 +422,7 @@ namespace Google.Protobuf.services {
             input.SkipLastField();
             break;
           case 8: {
-            status_ = (global::Google.Protobuf.services.Status) input.ReadEnum();
+            status_ = (global::Google.Protobuf.prices.Status) input.ReadEnum();
             break;
           }
         }
@@ -437,7 +437,7 @@ namespace Google.Protobuf.services {
     public static pb::MessageParser<GetAllRequest> Parser { get { return _parser; } }
 
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::Google.Protobuf.services.PriceContract.Descriptor.MessageTypes[3]; }
+      get { return global::Google.Protobuf.prices.PriceContract.Descriptor.MessageTypes[3]; }
     }
 
     pbr::MessageDescriptor pb::IMessage.Descriptor {

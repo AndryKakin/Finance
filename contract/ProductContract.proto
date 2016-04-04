@@ -2,10 +2,10 @@ syntax = "proto3";
 
 option java_package = "io.grpc.examples";
 option objc_class_prefix = "HLW";
-option go_package = "services";
-option csharp_namespace = "Google.Protobuf.services";
+option go_package = "products";
+option csharp_namespace = "Google.Protobuf.products";
 
-package services;
+package products;
 
 enum Status {
     Ok = 0;
@@ -28,7 +28,7 @@ message ResultResponse {
   Status Status = 1;
 }
 
-message GetAllRequest {
+message ProductsRequest {
 
 }
 
@@ -36,5 +36,5 @@ service ProductService {
   rpc Add (Product) returns (ResultResponse) {}
   rpc Update (Product) returns (ResultResponse) {}
   rpc Delete (Product) returns (ResultResponse) {}
-  rpc GetAll (GetAllRequest)  returns (ProductsResponse) {}
+  rpc GetAll (ProductsRequest)  returns (ProductsResponse) {}
 }

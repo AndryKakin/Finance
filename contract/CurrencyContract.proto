@@ -2,10 +2,10 @@ syntax = "proto3";
 
 option java_package = "io.grpc.examples";
 option objc_class_prefix = "HLW";
-option go_package = "services";
-option csharp_namespace = "Google.Protobuf.services";
+option go_package = "currencies";
+option csharp_namespace = "Google.Protobuf.currencies";
 
-package services;
+package currencies;
 
 message Currency {
   int64  Id = 1;
@@ -18,10 +18,10 @@ message CurrenciesResponse {
   repeated Currency Currencies = 1;
 }
 
-message GetAllRequest {
+message CurrenciesRequest {
 
 }
 
-service ProductService {
-  rpc GetAll (GetAllRequest)  returns (CurrenciesResponse) {}
+service CurrencyService {
+  rpc GetAll (CurrenciesRequest)  returns (CurrenciesResponse) {}
 }

@@ -7,8 +7,28 @@ import (
 	"github.com/HouzuoGuo/tiedot/db"
 )
 
+var PriceStoreName = "Price"
 var ProductStoreName = "Product"
 var MainDBPath = "DB\\"
+
+func GetDbPriceStore() *db.Col {
+	mydb, err := db.OpenDB(MainDBPath)
+
+	if err != nil {
+		panic(err)
+	}
+	return mydb.Use(PriceStoreName)
+}
+
+func GetDbProductStore() *db.Col {
+	myDb, err := db.OpenDB(MainDBPath)
+
+	if err != nil {
+		panic(err)
+	}
+
+	return myDb.Use(ProductStoreName)
+}
 
 func createProduct() (js map[string]interface{}) {
 	doc := fmt.Sprintf(`
@@ -28,7 +48,7 @@ func createProduct() (js map[string]interface{}) {
 	return
 }
 
-func createIndex(index string, store *db.Col) {
+func CreateIndex(index string, store *db.Col) {
 
 	existIndexes := store.AllIndexes()
 
@@ -47,7 +67,7 @@ func createIndex(index string, store *db.Col) {
 	}
 }
 
-func createStore(storeName string, db *db.DB) {
+func CreateStore(storeName string, db *db.DB) {
 	allStores := db.AllCols()
 	for i := 0; i < len(allStores); i++ {
 		if allStores[i] == storeName {
