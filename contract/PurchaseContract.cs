@@ -26,14 +26,14 @@ namespace Google.Protobuf.purchases {
             "ZXNSZXNwb25zZRImCglQdXJjaGFzZXMYASADKAsyEy5wdXJjaGFzZXMuUHVy", 
             "Y2hhc2UiMwoOUmVzdWx0UmVzcG9uc2USIQoGU3RhdHVzGAEgASgOMhEucHVy", 
             "Y2hhc2VzLlN0YXR1cyIPCg1HZXRBbGxSZXF1ZXN0KhwKBlN0YXR1cxIGCgJP", 
-            "axAAEgoKBkZhaWxlZBABMoMCCgxQcmljZVNlcnZpY2USNwoDQWRkEhMucHVy", 
-            "Y2hhc2VzLlB1cmNoYXNlGhkucHVyY2hhc2VzLlJlc3VsdFJlc3BvbnNlIgAS", 
-            "OgoGVXBkYXRlEhMucHVyY2hhc2VzLlB1cmNoYXNlGhkucHVyY2hhc2VzLlJl", 
-            "c3VsdFJlc3BvbnNlIgASOgoGRGVsZXRlEhMucHVyY2hhc2VzLlB1cmNoYXNl", 
-            "GhkucHVyY2hhc2VzLlJlc3VsdFJlc3BvbnNlIgASQgoGR2V0QWxsEhgucHVy", 
-            "Y2hhc2VzLkdldEFsbFJlcXVlc3QaHC5wdXJjaGFzZXMuUHVyY2hhc2VzUmVz", 
-            "cG9uc2UiAEI/ChBpby5ncnBjLmV4YW1wbGVzWglwdXJjaGFzZXOiAgNITFeq", 
-            "AhlHb29nbGUuUHJvdG9idWYucHVyY2hhc2VzYgZwcm90bzM="));
+            "axAAEgoKBkZhaWxlZBABMoYCCg9QdXJjaGFzZVNlcnZpY2USNwoDQWRkEhMu", 
+            "cHVyY2hhc2VzLlB1cmNoYXNlGhkucHVyY2hhc2VzLlJlc3VsdFJlc3BvbnNl", 
+            "IgASOgoGVXBkYXRlEhMucHVyY2hhc2VzLlB1cmNoYXNlGhkucHVyY2hhc2Vz", 
+            "LlJlc3VsdFJlc3BvbnNlIgASOgoGRGVsZXRlEhMucHVyY2hhc2VzLlB1cmNo", 
+            "YXNlGhkucHVyY2hhc2VzLlJlc3VsdFJlc3BvbnNlIgASQgoGR2V0QWxsEhgu", 
+            "cHVyY2hhc2VzLkdldEFsbFJlcXVlc3QaHC5wdXJjaGFzZXMuUHVyY2hhc2Vz", 
+            "UmVzcG9uc2UiAEI/ChBpby5ncnBjLmV4YW1wbGVzWglwdXJjaGFzZXOiAgNI", 
+            "TFeqAhlHb29nbGUuUHJvdG9idWYucHVyY2hhc2VzYgZwcm90bzM="));
       descriptor = pbr::FileDescriptor.InternalBuildGeneratedFileFrom(descriptorData,
           new pbr::FileDescriptor[] { },
           new pbr::GeneratedCodeInfo(new[] {typeof(global::Google.Protobuf.purchases.Status), }, new pbr::GeneratedCodeInfo[] {

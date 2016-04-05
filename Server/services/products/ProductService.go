@@ -62,6 +62,7 @@ func (s *server) GetAll(ctx context.Context, in *ProductsRequest) (*ProductsResp
 }
 
 func GoProductService() {
+	fmt.Println("Product service starting...")
 	lis, err := net.Listen("tcp", port)
 	if err != nil {
 		log.Fatalf("failed to listen: %v", err)
@@ -69,4 +70,5 @@ func GoProductService() {
 	s := grpc.NewServer()
 	RegisterProductServiceServer(s, &server{})
 	s.Serve(lis)
+	fmt.Println("Product service started")
 }

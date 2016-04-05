@@ -14,7 +14,7 @@ import (
 )
 
 const (
-	port = ":50051"
+	port = ":50052"
 )
 
 var CurrencyStoreName = "Currency"
@@ -29,33 +29,31 @@ func GetDbCurrencyStore() *db.Col {
 }
 
 func InitializeCurrencies() {
-	curencyStore := GetDbCurrencyStore()
-	curencyStore.Index()
-}
+	mydb, err := db.OpenDB(database.MainDBPath)
 
-type server struct{}
-
-func (s *server) Add(ctx context.Context, in *Currency) (*ResultResponse, error) {
-	currencyStore := GetDbCurrencyStore()
-	docID, err := currencyStore.Insert(map[string]interface{}{
-		"Name": in.Name,
-		"Code": in.Code})
 	if err != nil {
 		panic(err)
 	}
-	fmt.Print("AddCurrency: Id(%v) Time(%v) Name(%v)\n", docID, time.Now(), in.Name)
-	return &ResultResponse{Status: Status_Ok}, nil
+	database.CreateStore(CurrencyStoreName, mydb)
+	defer mydb.Close()
+
+	currencyStore := GetDbCurrencyStore()
+	count := currencyStore.ApproxDocCount()
+	fmt.Println("Currency: %v", count)
+
+	if count < 1 {
+		docID, err := currencyStore.Insert(map[string]interface{}{
+			"Id":   1,
+			"Name": "Rubli",
+			"Code": "RUB"})
+		if err != nil {
+			panic(err)
+		}
+		fmt.Println("Create currency Id: %v", docID)
+	}
 }
 
-func (s *server) Update(ctx context.Context, in *Currency) (*ResultResponse, error) {
-	fmt.Print("UpdateCurrency: Id(%v) Time(%v) Name(%v)\n", in.Id, time.Now(), in.Name)
-	return &ResultResponse{Status: Status_Ok}, nil
-}
-
-func (s *server) Delete(ctx context.Context, in *Currency) (*ResultResponse, error) {
-	fmt.Print("DeleteCurrency: Id(%v) Time(%v) Name(%v)\n", in.Id, time.Now(), in.Name)
-	return &ResultResponse{Status: Status_Ok}, nil
-}
+type server struct{}
 
 func (s *server) GetAll(ctx context.Context, in *CurrenciesRequest) (*CurrenciesResponse, error) {
 	var result = "GetAll:" + time.Now().Format(time.UnixDate)
@@ -78,6 +76,7 @@ func (s *server) GetAll(ctx context.Context, in *CurrenciesRequest) (*Currencies
 }
 
 func GoCurrencyService() {
+	fmt.Println("Currency service starting...")
 	lis, err := net.Listen("tcp", port)
 	if err != nil {
 		log.Fatalf("failed to listen: %v", err)
@@ -85,4 +84,5 @@ func GoCurrencyService() {
 	s := grpc.NewServer()
 	RegisterCurrencyServiceServer(s, &server{})
 	s.Serve(lis)
+	fmt.Println("Currency service started")
 }

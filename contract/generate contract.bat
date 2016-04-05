@@ -24,6 +24,7 @@ echo Start generate currency service
 ..\..\Library\GRPC\GrpcGeneration\protoc.exe --go_out=plugins=grpc:. CurrencyContract.proto
 ..\WindowsClient\packages\Google.Protobuf.3.0.0-alpha4\tools\protoc.exe -I ../contract --csharp_out . --grpc_out . --plugin=protoc-gen-grpc=..\WindowsClient\packages\Grpc.Tools.0.7.1\tools\grpc_csharp_plugin.exe ../contract/CurrencyContract.proto
 copy "../contract/CurrencyContract.pb.go" "../Server/services/currencies/CurrencyContract.pb.go"
+copy "../contract/CurrencyContract.pb.go" "../GoClientForTest/services/currencies/CurrencyContract.pb.go"
 echo Currency service generated
 
 echo All is complete.

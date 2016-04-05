@@ -8,9 +8,9 @@ using System.Threading.Tasks;
 using Grpc.Core;
 
 namespace Google.Protobuf.purchases {
-  public static class PriceService
+  public static class PurchaseService
   {
-    static readonly string __ServiceName = "purchases.PriceService";
+    static readonly string __ServiceName = "purchases.PurchaseService";
 
     static readonly Marshaller<global::Google.Protobuf.purchases.Purchase> __Marshaller_Purchase = Marshallers.Create((arg) => global::Google.Protobuf.MessageExtensions.ToByteArray(arg), global::Google.Protobuf.purchases.Purchase.Parser.ParseFrom);
     static readonly Marshaller<global::Google.Protobuf.purchases.ResultResponse> __Marshaller_ResultResponse = Marshallers.Create((arg) => global::Google.Protobuf.MessageExtensions.ToByteArray(arg), global::Google.Protobuf.purchases.ResultResponse.Parser.ParseFrom);
@@ -52,7 +52,7 @@ namespace Google.Protobuf.purchases {
     }
 
     // client interface
-    public interface IPriceServiceClient
+    public interface IPurchaseServiceClient
     {
       global::Google.Protobuf.purchases.ResultResponse Add(global::Google.Protobuf.purchases.Purchase request, Metadata headers = null, DateTime? deadline = null, CancellationToken cancellationToken = default(CancellationToken));
       global::Google.Protobuf.purchases.ResultResponse Add(global::Google.Protobuf.purchases.Purchase request, CallOptions options);
@@ -73,7 +73,7 @@ namespace Google.Protobuf.purchases {
     }
 
     // server-side interface
-    public interface IPriceService
+    public interface IPurchaseService
     {
       Task<global::Google.Protobuf.purchases.ResultResponse> Add(global::Google.Protobuf.purchases.Purchase request, ServerCallContext context);
       Task<global::Google.Protobuf.purchases.ResultResponse> Update(global::Google.Protobuf.purchases.Purchase request, ServerCallContext context);
@@ -82,9 +82,9 @@ namespace Google.Protobuf.purchases {
     }
 
     // client stub
-    public class PriceServiceClient : ClientBase, IPriceServiceClient
+    public class PurchaseServiceClient : ClientBase, IPurchaseServiceClient
     {
-      public PriceServiceClient(Channel channel) : base(channel)
+      public PurchaseServiceClient(Channel channel) : base(channel)
       {
       }
       public global::Google.Protobuf.purchases.ResultResponse Add(global::Google.Protobuf.purchases.Purchase request, Metadata headers = null, DateTime? deadline = null, CancellationToken cancellationToken = default(CancellationToken))
@@ -170,7 +170,7 @@ namespace Google.Protobuf.purchases {
     }
 
     // creates service definition that can be registered with a server
-    public static ServerServiceDefinition BindService(IPriceService serviceImpl)
+    public static ServerServiceDefinition BindService(IPurchaseService serviceImpl)
     {
       return ServerServiceDefinition.CreateBuilder(__ServiceName)
           .AddMethod(__Method_Add, serviceImpl.Add)
@@ -180,9 +180,9 @@ namespace Google.Protobuf.purchases {
     }
 
     // creates a new client
-    public static PriceServiceClient NewClient(Channel channel)
+    public static PurchaseServiceClient NewClient(Channel channel)
     {
-      return new PriceServiceClient(channel);
+      return new PurchaseServiceClient(channel);
     }
 
   }
