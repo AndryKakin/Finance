@@ -8,10 +8,7 @@ option csharp_namespace = "Google.Protobuf.currencies";
 package currencies;
 
 message Currency {
-  int64  Id = 1;
-  string Name = 2;
   string Code = 3;
-
 }
 
 message CurrenciesResponse {

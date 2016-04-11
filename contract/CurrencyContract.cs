@@ -21,18 +21,18 @@ namespace Google.Protobuf.currencies {
     static CurrencyContract() {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
-            "ChZDdXJyZW5jeUNvbnRyYWN0LnByb3RvEgpjdXJyZW5jaWVzIjIKCEN1cnJl", 
-            "bmN5EgoKAklkGAEgASgDEgwKBE5hbWUYAiABKAkSDAoEQ29kZRgDIAEoCSI+", 
-            "ChJDdXJyZW5jaWVzUmVzcG9uc2USKAoKQ3VycmVuY2llcxgBIAMoCzIULmN1", 
-            "cnJlbmNpZXMuQ3VycmVuY3kiEwoRQ3VycmVuY2llc1JlcXVlc3QyXAoPQ3Vy", 
-            "cmVuY3lTZXJ2aWNlEkkKBkdldEFsbBIdLmN1cnJlbmNpZXMuQ3VycmVuY2ll", 
-            "c1JlcXVlc3QaHi5jdXJyZW5jaWVzLkN1cnJlbmNpZXNSZXNwb25zZSIAQkEK", 
-            "EGlvLmdycGMuZXhhbXBsZXNaCmN1cnJlbmNpZXOiAgNITFeqAhpHb29nbGUu", 
-            "UHJvdG9idWYuY3VycmVuY2llc2IGcHJvdG8z"));
+            "ChZDdXJyZW5jeUNvbnRyYWN0LnByb3RvEgpjdXJyZW5jaWVzIhgKCEN1cnJl", 
+            "bmN5EgwKBENvZGUYAyABKAkiPgoSQ3VycmVuY2llc1Jlc3BvbnNlEigKCkN1", 
+            "cnJlbmNpZXMYASADKAsyFC5jdXJyZW5jaWVzLkN1cnJlbmN5IhMKEUN1cnJl", 
+            "bmNpZXNSZXF1ZXN0MlwKD0N1cnJlbmN5U2VydmljZRJJCgZHZXRBbGwSHS5j", 
+            "dXJyZW5jaWVzLkN1cnJlbmNpZXNSZXF1ZXN0Gh4uY3VycmVuY2llcy5DdXJy", 
+            "ZW5jaWVzUmVzcG9uc2UiAEJBChBpby5ncnBjLmV4YW1wbGVzWgpjdXJyZW5j", 
+            "aWVzogIDSExXqgIaR29vZ2xlLlByb3RvYnVmLmN1cnJlbmNpZXNiBnByb3Rv", 
+            "Mw=="));
       descriptor = pbr::FileDescriptor.InternalBuildGeneratedFileFrom(descriptorData,
           new pbr::FileDescriptor[] { },
           new pbr::GeneratedCodeInfo(null, new pbr::GeneratedCodeInfo[] {
-            new pbr::GeneratedCodeInfo(typeof(global::Google.Protobuf.currencies.Currency), new[]{ "Id", "Name", "Code" }, null, null, null),
+            new pbr::GeneratedCodeInfo(typeof(global::Google.Protobuf.currencies.Currency), new[]{ "Code" }, null, null, null),
             new pbr::GeneratedCodeInfo(typeof(global::Google.Protobuf.currencies.CurrenciesResponse), new[]{ "Currencies" }, null, null, null),
             new pbr::GeneratedCodeInfo(typeof(global::Google.Protobuf.currencies.CurrenciesRequest), null, null, null, null)
           }));
@@ -61,31 +61,11 @@ namespace Google.Protobuf.currencies {
     partial void OnConstruction();
 
     public Currency(Currency other) : this() {
-      id_ = other.id_;
-      name_ = other.name_;
       code_ = other.code_;
     }
 
     public Currency Clone() {
       return new Currency(this);
-    }
-
-    public const int IdFieldNumber = 1;
-    private long id_;
-    public long Id {
-      get { return id_; }
-      set {
-        id_ = value;
-      }
-    }
-
-    public const int NameFieldNumber = 2;
-    private string name_ = "";
-    public string Name {
-      get { return name_; }
-      set {
-        name_ = pb::Preconditions.CheckNotNull(value, "value");
-      }
     }
 
     public const int CodeFieldNumber = 3;
@@ -108,16 +88,12 @@ namespace Google.Protobuf.currencies {
       if (ReferenceEquals(other, this)) {
         return true;
       }
-      if (Id != other.Id) return false;
-      if (Name != other.Name) return false;
       if (Code != other.Code) return false;
       return true;
     }
 
     public override int GetHashCode() {
       int hash = 1;
-      if (Id != 0L) hash ^= Id.GetHashCode();
-      if (Name.Length != 0) hash ^= Name.GetHashCode();
       if (Code.Length != 0) hash ^= Code.GetHashCode();
       return hash;
     }
@@ -127,14 +103,6 @@ namespace Google.Protobuf.currencies {
     }
 
     public void WriteTo(pb::CodedOutputStream output) {
-      if (Id != 0L) {
-        output.WriteRawTag(8);
-        output.WriteInt64(Id);
-      }
-      if (Name.Length != 0) {
-        output.WriteRawTag(18);
-        output.WriteString(Name);
-      }
       if (Code.Length != 0) {
         output.WriteRawTag(26);
         output.WriteString(Code);
@@ -143,12 +111,6 @@ namespace Google.Protobuf.currencies {
 
     public int CalculateSize() {
       int size = 0;
-      if (Id != 0L) {
-        size += 1 + pb::CodedOutputStream.ComputeInt64Size(Id);
-      }
-      if (Name.Length != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeStringSize(Name);
-      }
       if (Code.Length != 0) {
         size += 1 + pb::CodedOutputStream.ComputeStringSize(Code);
       }
@@ -158,12 +120,6 @@ namespace Google.Protobuf.currencies {
     public void MergeFrom(Currency other) {
       if (other == null) {
         return;
-      }
-      if (other.Id != 0L) {
-        Id = other.Id;
-      }
-      if (other.Name.Length != 0) {
-        Name = other.Name;
       }
       if (other.Code.Length != 0) {
         Code = other.Code;
@@ -177,14 +133,6 @@ namespace Google.Protobuf.currencies {
           default:
             input.SkipLastField();
             break;
-          case 8: {
-            Id = input.ReadInt64();
-            break;
-          }
-          case 18: {
-            Name = input.ReadString();
-            break;
-          }
           case 26: {
             Code = input.ReadString();
             break;

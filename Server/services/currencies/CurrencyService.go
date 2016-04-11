@@ -16,6 +16,17 @@ import (
 const (
 	port = ":50052"
 )
+const (
+	currencyCode = "Code"
+)
+
+const (
+	rubCurrency = "RUB"
+)
+
+const (
+	usdCurrency = "USD"
+)
 
 var CurrencyStoreName = "Currency"
 
@@ -28,6 +39,62 @@ func GetDbCurrencyStore() *db.Col {
 	return mydb.Use(CurrencyStoreName)
 }
 
+func insertRubCurrency(store *db.Col) {
+	haveItem := false
+
+	store.ForEachDoc(func(id int, docContent []byte) (willMoveOn bool) {
+		var currency Currency
+		err := json.Unmarshal(docContent, &currency)
+		if err != nil {
+			panic(err)
+		}
+
+		if currency.Code == rubCurrency {
+			haveItem = true
+			return false
+		} else {
+			return true // move on to the next document OR
+		}
+	})
+
+	if !haveItem {
+		docID, err := store.Insert(map[string]interface{}{currencyCode: rubCurrency})
+		if err != nil {
+			panic(err)
+		}
+		fmt.Println("Create currency Id: %v  %v", docID, rubCurrency)
+	}
+	fmt.Println("Currency %v created early", rubCurrency)
+}
+
+func insertUsdCurrency(store *db.Col) {
+	haveItem := false
+
+	store.ForEachDoc(func(id int, docContent []byte) (willMoveOn bool) {
+		var currency Currency
+		err := json.Unmarshal(docContent, &currency)
+		if err != nil {
+			panic(err)
+		}
+
+		if currency.Code == usdCurrency {
+			haveItem = true
+			return false
+		} else {
+			return true // move on to the next document OR
+		}
+	})
+
+	if !haveItem {
+		docID, err := store.Insert(map[string]interface{}{currencyCode: usdCurrency})
+		if err != nil {
+			panic(err)
+		}
+		fmt.Println("Create currency Id: %v  %v", docID, usdCurrency)
+	}
+	fmt.Println("Currency %v created early", usdCurrency)
+}
+
 func InitializeCurrencies() {
 	mydb, err := db.OpenDB(database.MainDBPath)
 
@@ -35,22 +102,12 @@ func InitializeCurrencies() {
 		panic(err)
 	}
 	database.CreateStore(CurrencyStoreName, mydb)
+	currencyStore := mydb.Use(CurrencyStoreName)
+
+	insertRubCurrency(currencyStore)
+	insertUsdCurrency(currencyStore)
+
 	defer mydb.Close()
-
-	currencyStore := GetDbCurrencyStore()
-	count := currencyStore.ApproxDocCount()
-	fmt.Println("Currency: %v", count)
-
-	if count < 1 {
-		docID, err := currencyStore.Insert(map[string]interface{}{
-			"Id":   1,
-			"Name": "Rubli",
-			"Code": "RUB"})
-		if err != nil {
-			panic(err)
-		}
-		fmt.Println("Create currency Id: %v", docID)
-	}
 }
 
 type server struct{}
@@ -68,9 +125,8 @@ func (s *server) GetAll(ctx context.Context, in *CurrenciesRequest) (*Currencies
 			panic(err)
 		}
 		currencies = append(currencies, &currency)
-		fmt.Println("Id: %v Name: %v", currency.Id, currency.Name)
-		return true  // move on to the next document OR
-		return false // do not move on to the next document
+		fmt.Println("Id: v% Code: %v", id, currency.Code)
+		return true
 	})
 	return &CurrenciesResponse{Currencies: currencies}, nil
 }
