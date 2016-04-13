@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.Composition;
+﻿using System;
+using System.ComponentModel.Composition;
 using System.Drawing;
 using System.IO;
 using System.Windows.Forms;
@@ -25,11 +26,13 @@ namespace Finance.ViewModels
             ChooseImageCommand = new DelegateCommand(ExecuteMethod);
         }
 
+        private Byte[] BitmapBytes { get; set; }
+
         private void ExecuteMethod()
         {
             OpenFileDialog fdlg = new OpenFileDialog();
-            fdlg.Title = "C# Corner Open File Dialog";
-            fdlg.Filter = "All files (*.*)|*.*|All files (*.*)|*.*";
+            fdlg.Title = "Jpeg files";
+            fdlg.Filter = "All files (*.jpg)|*.jpg|All files (*.jpg)|*.jpg";
             fdlg.FilterIndex = 2;
             fdlg.RestoreDirectory = true;
             if (fdlg.ShowDialog() == DialogResult.OK)
@@ -47,7 +50,8 @@ namespace Finance.ViewModels
                     image.CacheOption = BitmapCacheOption.OnLoad;
                     image.EndInit();
                     image.Freeze();
-
+                    memStream.Position = 0;
+                    BitmapBytes = ReadFully(memStream);
                     TempBitmap = image;
                     OnPropertyChanged(() => TempBitmap);
                 }
@@ -55,15 +59,39 @@ namespace Finance.ViewModels
             OnPropertyChanged(() => TempBitmap);
         }
 
+        public static byte[] ReadFully(Stream input)
+        {
+            byte[] buffer = new byte[16 * 1024];
+            using (MemoryStream ms = new MemoryStream())
+            {
+                int read;
+                while ((read = input.Read(buffer, 0, buffer.Length)) > 0)
+                {
+                    ms.Write(buffer, 0, read);
+                }
+                return ms.ToArray();
+            }
+        }
         private void AddProduct()
         {
             _productManager.Add(new Product
             {
                 Name = Name,
                 Description = Description,
-                //Bitmap = Bitmap
+                Bitmap = BitmapBytes
 
             });
+        }
+
+        Byte[] BitmapSource2ByteArray(BitmapSource source)
+        {
+            var encoder = new System.Windows.Media.Imaging.PngBitmapEncoder();
+            var frame = System.Windows.Media.Imaging.BitmapFrame.Create(source);
+            encoder.Frames.Add(frame);
+            var stream = new MemoryStream();
+
+            encoder.Save(stream);
+            return stream.ToArray();
         }
 
         public Bitmap Bitmap { get; set; }

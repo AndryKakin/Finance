@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:viewModels="clr-namespace:Finance.ViewModels"
         mc:Ignorable="d"
-        Title="AddProductWindowView" Height="300" Width="500"
+        Title="AddProductWindowView" Height="500" Width="500"
         d:DataContext="{d:DesignInstance viewModels:AddProductViewModel,
                                               IsDesignTimeCreatable=True}">
     <Grid>
@@ -43,7 +43,7 @@
                 Content="Save"
                 Command="{Binding SaveCommand}"/>
         <Button Grid.Row="3" Grid.Column="1"
-                Content="Save"
+                Content="Cancel"
                 Command="{Binding CancelCommand}"/>
         
     </Grid>

@@ -20,6 +20,13 @@ message Product {
   bytes  Bitmap = 5;
 }
 
+message AddProductRequest {
+  string Name = 2;
+  string Description = 3;
+  string Code = 4;
+  bytes  Bitmap = 5;
+}
+
 message ProductsResponse {
   repeated Product Products = 1;
 }
@@ -33,7 +40,7 @@ message ProductsRequest {
 }
 
 service ProductService {
-  rpc Add (Product) returns (ResultResponse) {}
+  rpc Add (AddProductRequest) returns (ResultResponse) {}
   rpc Update (Product) returns (ResultResponse) {}
   rpc Delete (Product) returns (ResultResponse) {}
   rpc GetAll (ProductsRequest)  returns (ProductsResponse) {}

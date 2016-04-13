@@ -23,22 +23,25 @@ namespace Google.Protobuf.products {
           string.Concat(
             "ChVQcm9kdWN0Q29udHJhY3QucHJvdG8SCHByb2R1Y3RzIlkKB1Byb2R1Y3QS", 
             "CgoCSWQYASABKAMSDAoETmFtZRgCIAEoCRITCgtEZXNjcmlwdGlvbhgDIAEo", 
-            "CRIPCgdCYXJjb2RlGAQgASgJEg4KBkJpdG1hcBgFIAEoDCI3ChBQcm9kdWN0", 
-            "c1Jlc3BvbnNlEiMKCFByb2R1Y3RzGAEgAygLMhEucHJvZHVjdHMuUHJvZHVj", 
-            "dCIyCg5SZXN1bHRSZXNwb25zZRIgCgZTdGF0dXMYASABKA4yEC5wcm9kdWN0", 
-            "cy5TdGF0dXMiEQoPUHJvZHVjdHNSZXF1ZXN0KhwKBlN0YXR1cxIGCgJPaxAA", 
-            "EgoKBkZhaWxlZBABMvsBCg5Qcm9kdWN0U2VydmljZRI0CgNBZGQSES5wcm9k", 
-            "dWN0cy5Qcm9kdWN0GhgucHJvZHVjdHMuUmVzdWx0UmVzcG9uc2UiABI3CgZV", 
-            "cGRhdGUSES5wcm9kdWN0cy5Qcm9kdWN0GhgucHJvZHVjdHMuUmVzdWx0UmVz", 
-            "cG9uc2UiABI3CgZEZWxldGUSES5wcm9kdWN0cy5Qcm9kdWN0GhgucHJvZHVj", 
-            "dHMuUmVzdWx0UmVzcG9uc2UiABJBCgZHZXRBbGwSGS5wcm9kdWN0cy5Qcm9k", 
-            "dWN0c1JlcXVlc3QaGi5wcm9kdWN0cy5Qcm9kdWN0c1Jlc3BvbnNlIgBCPQoQ", 
-            "aW8uZ3JwYy5leGFtcGxlc1oIcHJvZHVjdHOiAgNITFeqAhhHb29nbGUuUHJv", 
-            "dG9idWYucHJvZHVjdHNiBnByb3RvMw=="));
+            "CRIPCgdCYXJjb2RlGAQgASgJEg4KBkJpdG1hcBgFIAEoDCJUChFBZGRQcm9k", 
+            "dWN0UmVxdWVzdBIMCgROYW1lGAIgASgJEhMKC0Rlc2NyaXB0aW9uGAMgASgJ", 
+            "EgwKBENvZGUYBCABKAkSDgoGQml0bWFwGAUgASgMIjcKEFByb2R1Y3RzUmVz", 
+            "cG9uc2USIwoIUHJvZHVjdHMYASADKAsyES5wcm9kdWN0cy5Qcm9kdWN0IjIK", 
+            "DlJlc3VsdFJlc3BvbnNlEiAKBlN0YXR1cxgBIAEoDjIQLnByb2R1Y3RzLlN0", 
+            "YXR1cyIRCg9Qcm9kdWN0c1JlcXVlc3QqHAoGU3RhdHVzEgYKAk9rEAASCgoG", 
+            "RmFpbGVkEAEyhQIKDlByb2R1Y3RTZXJ2aWNlEj4KA0FkZBIbLnByb2R1Y3Rz", 
+            "LkFkZFByb2R1Y3RSZXF1ZXN0GhgucHJvZHVjdHMuUmVzdWx0UmVzcG9uc2Ui", 
+            "ABI3CgZVcGRhdGUSES5wcm9kdWN0cy5Qcm9kdWN0GhgucHJvZHVjdHMuUmVz", 
+            "dWx0UmVzcG9uc2UiABI3CgZEZWxldGUSES5wcm9kdWN0cy5Qcm9kdWN0Ghgu", 
+            "cHJvZHVjdHMuUmVzdWx0UmVzcG9uc2UiABJBCgZHZXRBbGwSGS5wcm9kdWN0", 
+            "cy5Qcm9kdWN0c1JlcXVlc3QaGi5wcm9kdWN0cy5Qcm9kdWN0c1Jlc3BvbnNl", 
+            "IgBCPQoQaW8uZ3JwYy5leGFtcGxlc1oIcHJvZHVjdHOiAgNITFeqAhhHb29n", 
+            "bGUuUHJvdG9idWYucHJvZHVjdHNiBnByb3RvMw=="));
       descriptor = pbr::FileDescriptor.InternalBuildGeneratedFileFrom(descriptorData,
           new pbr::FileDescriptor[] { },
           new pbr::GeneratedCodeInfo(new[] {typeof(global::Google.Protobuf.products.Status), }, new pbr::GeneratedCodeInfo[] {
             new pbr::GeneratedCodeInfo(typeof(global::Google.Protobuf.products.Product), new[]{ "Id", "Name", "Description", "Barcode", "Bitmap" }, null, null, null),
+            new pbr::GeneratedCodeInfo(typeof(global::Google.Protobuf.products.AddProductRequest), new[]{ "Name", "Description", "Code", "Bitmap" }, null, null, null),
             new pbr::GeneratedCodeInfo(typeof(global::Google.Protobuf.products.ProductsResponse), new[]{ "Products" }, null, null, null),
             new pbr::GeneratedCodeInfo(typeof(global::Google.Protobuf.products.ResultResponse), new[]{ "Status" }, null, null, null),
             new pbr::GeneratedCodeInfo(typeof(global::Google.Protobuf.products.ProductsRequest), null, null, null, null)
@@ -263,12 +266,192 @@ namespace Google.Protobuf.products {
   }
 
   [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+  public sealed partial class AddProductRequest : pb::IMessage<AddProductRequest> {
+    private static readonly pb::MessageParser<AddProductRequest> _parser = new pb::MessageParser<AddProductRequest>(() => new AddProductRequest());
+    public static pb::MessageParser<AddProductRequest> Parser { get { return _parser; } }
+
+    public static pbr::MessageDescriptor Descriptor {
+      get { return global::Google.Protobuf.products.ProductContract.Descriptor.MessageTypes[1]; }
+    }
+
+    pbr::MessageDescriptor pb::IMessage.Descriptor {
+      get { return Descriptor; }
+    }
+
+    public AddProductRequest() {
+      OnConstruction();
+    }
+
+    partial void OnConstruction();
+
+    public AddProductRequest(AddProductRequest other) : this() {
+      name_ = other.name_;
+      description_ = other.description_;
+      code_ = other.code_;
+      bitmap_ = other.bitmap_;
+    }
+
+    public AddProductRequest Clone() {
+      return new AddProductRequest(this);
+    }
+
+    public const int NameFieldNumber = 2;
+    private string name_ = "";
+    public string Name {
+      get { return name_; }
+      set {
+        name_ = pb::Preconditions.CheckNotNull(value, "value");
+      }
+    }
+
+    public const int DescriptionFieldNumber = 3;
+    private string description_ = "";
+    public string Description {
+      get { return description_; }
+      set {
+        description_ = pb::Preconditions.CheckNotNull(value, "value");
+      }
+    }
+
+    public const int CodeFieldNumber = 4;
+    private string code_ = "";
+    public string Code {
+      get { return code_; }
+      set {
+        code_ = pb::Preconditions.CheckNotNull(value, "value");
+      }
+    }
+
+    public const int BitmapFieldNumber = 5;
+    private pb::ByteString bitmap_ = pb::ByteString.Empty;
+    public pb::ByteString Bitmap {
+      get { return bitmap_; }
+      set {
+        bitmap_ = pb::Preconditions.CheckNotNull(value, "value");
+      }
+    }
+
+    public override bool Equals(object other) {
+      return Equals(other as AddProductRequest);
+    }
+
+    public bool Equals(AddProductRequest other) {
+      if (ReferenceEquals(other, null)) {
+        return false;
+      }
+      if (ReferenceEquals(other, this)) {
+        return true;
+      }
+      if (Name != other.Name) return false;
+      if (Description != other.Description) return false;
+      if (Code != other.Code) return false;
+      if (Bitmap != other.Bitmap) return false;
+      return true;
+    }
+
+    public override int GetHashCode() {
+      int hash = 1;
+      if (Name.Length != 0) hash ^= Name.GetHashCode();
+      if (Description.Length != 0) hash ^= Description.GetHashCode();
+      if (Code.Length != 0) hash ^= Code.GetHashCode();
+      if (Bitmap.Length != 0) hash ^= Bitmap.GetHashCode();
+      return hash;
+    }
+
+    public override string ToString() {
+      return pb::JsonFormatter.Default.Format(this);
+    }
+
+    public void WriteTo(pb::CodedOutputStream output) {
+      if (Name.Length != 0) {
+        output.WriteRawTag(18);
+        output.WriteString(Name);
+      }
+      if (Description.Length != 0) {
+        output.WriteRawTag(26);
+        output.WriteString(Description);
+      }
+      if (Code.Length != 0) {
+        output.WriteRawTag(34);
+        output.WriteString(Code);
+      }
+      if (Bitmap.Length != 0) {
+        output.WriteRawTag(42);
+        output.WriteBytes(Bitmap);
+      }
+    }
+
+    public int CalculateSize() {
+      int size = 0;
+      if (Name.Length != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeStringSize(Name);
+      }
+      if (Description.Length != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeStringSize(Description);
+      }
+      if (Code.Length != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeStringSize(Code);
+      }
+      if (Bitmap.Length != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeBytesSize(Bitmap);
+      }
+      return size;
+    }
+
+    public void MergeFrom(AddProductRequest other) {
+      if (other == null) {
+        return;
+      }
+      if (other.Name.Length != 0) {
+        Name = other.Name;
+      }
+      if (other.Description.Length != 0) {
+        Description = other.Description;
+      }
+      if (other.Code.Length != 0) {
+        Code = other.Code;
+      }
+      if (other.Bitmap.Length != 0) {
+        Bitmap = other.Bitmap;
+      }
+    }
+
+    public void MergeFrom(pb::CodedInputStream input) {
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+        switch(tag) {
+          default:
+            input.SkipLastField();
+            break;
+          case 18: {
+            Name = input.ReadString();
+            break;
+          }
+          case 26: {
+            Description = input.ReadString();
+            break;
+          }
+          case 34: {
+            Code = input.ReadString();
+            break;
+          }
+          case 42: {
+            Bitmap = input.ReadBytes();
+            break;
+          }
+        }
+      }
+    }
+
+  }
+
+  [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
   public sealed partial class ProductsResponse : pb::IMessage<ProductsResponse> {
     private static readonly pb::MessageParser<ProductsResponse> _parser = new pb::MessageParser<ProductsResponse>(() => new ProductsResponse());
     public static pb::MessageParser<ProductsResponse> Parser { get { return _parser; } }
 
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::Google.Protobuf.products.ProductContract.Descriptor.MessageTypes[1]; }
+      get { return global::Google.Protobuf.products.ProductContract.Descriptor.MessageTypes[2]; }
     }
 
     pbr::MessageDescriptor pb::IMessage.Descriptor {
@@ -362,7 +545,7 @@ namespace Google.Protobuf.products {
     public static pb::MessageParser<ResultResponse> Parser { get { return _parser; } }
 
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::Google.Protobuf.products.ProductContract.Descriptor.MessageTypes[2]; }
+      get { return global::Google.Protobuf.products.ProductContract.Descriptor.MessageTypes[3]; }
     }
 
     pbr::MessageDescriptor pb::IMessage.Descriptor {
@@ -464,7 +647,7 @@ namespace Google.Protobuf.products {
     public static pb::MessageParser<ProductsRequest> Parser { get { return _parser; } }
 
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::Google.Protobuf.products.ProductContract.Descriptor.MessageTypes[3]; }
+      get { return global::Google.Protobuf.products.ProductContract.Descriptor.MessageTypes[4]; }
     }
 
     pbr::MessageDescriptor pb::IMessage.Descriptor {

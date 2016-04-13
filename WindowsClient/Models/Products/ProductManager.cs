@@ -29,11 +29,12 @@ namespace Models.Products
             Channel channel = new Channel(_addresses, Credentials.Insecure);
             
             var client = ProductService.NewClient(channel);
-            var request = new Google.Protobuf.products.Product
+            var request = new AddProductRequest
             {
                 Name = productModel.Name,
                 Description = productModel.Description,
-                Bitmap = ByteString.CopyFrom(productModel.Bitmap)
+                Bitmap = ByteString.CopyFrom(productModel.Bitmap),
+                Code = "Test"
             };
             var result = client.Add(request);
             if(result.Status == Status.Failed)

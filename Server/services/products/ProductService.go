@@ -18,7 +18,7 @@ const (
 
 type server struct{}
 
-func (s *server) Add(ctx context.Context, in *Product) (*ResultResponse, error) {
+func (s *server) Add(ctx context.Context, in *AddProductRequest) (*ResultResponse, error) {
 	productStore := database.GetDbProductStore()
 	docID, err := productStore.Insert(map[string]interface{}{
 		"Name":        in.Name,
