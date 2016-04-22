@@ -1,7 +1,7 @@
 package products
 
 import (
-	"Finance/Server/database"
+	"Finance/Server/database/Products"
 	"encoding/json"
 	"fmt"
 	"log"
@@ -19,14 +19,14 @@ const (
 type server struct{}
 
 func (s *server) Add(ctx context.Context, in *AddProductRequest) (*ResultResponse, error) {
-	productStore := database.GetDbProductStore()
-	docID, err := productStore.Insert(map[string]interface{}{
-		"Name":        in.Name,
-		"Description": in.Description,
-		"Bitmap":      in.Bitmap})
-	if err != nil {
-		panic(err)
-	}
+	productDB := new(Products.ProductDB)
+	productDB.Name = in.Name
+	productDB.Code = in.Code
+	productDB.Description = in.Description
+	productDB.Bitmap = in.Bitmap
+
+	docID := Products.Add(productDB)
+
 	fmt.Print("AddProduct: Id(%v) Time(%v) Name(%v)\n", docID, time.Now(), in.Name)
 	return &ResultResponse{Status: Status_Ok}, nil
 }
@@ -44,7 +44,7 @@ func (s *server) Delete(ctx context.Context, in *Product) (*ResultResponse, erro
 func (s *server) GetAll(ctx context.Context, in *ProductsRequest) (*ProductsResponse, error) {
 	var result = "GetAll:" + time.Now().Format(time.UnixDate)
 	fmt.Println(result)
-	productStore := database.GetDbProductStore()
+	productStore := Products.GetDbProductStore()
 	products := make([]*Product, 0)
 
 	productStore.ForEachDoc(func(id int, docContent []byte) (willMoveOn bool) {

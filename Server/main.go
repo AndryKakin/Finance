@@ -30,7 +30,7 @@ func InitializeDB() {
 	database.CreateIndex("Id", productStore)
 
 	fmt.Println("Initialize currency")
-	currencies.InitializeCurrencies()
+	database.InitializeCurrencies()
 
 	defer myDb.Close()
 	fmt.Println("Initialize DB End")
