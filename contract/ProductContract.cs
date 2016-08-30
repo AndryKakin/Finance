@@ -28,15 +28,16 @@ namespace Google.Protobuf.products {
             "EgwKBENvZGUYBCABKAkSDgoGQml0bWFwGAUgASgMIjcKEFByb2R1Y3RzUmVz", 
             "cG9uc2USIwoIUHJvZHVjdHMYASADKAsyES5wcm9kdWN0cy5Qcm9kdWN0IjIK", 
             "DlJlc3VsdFJlc3BvbnNlEiAKBlN0YXR1cxgBIAEoDjIQLnByb2R1Y3RzLlN0", 
-            "YXR1cyIRCg9Qcm9kdWN0c1JlcXVlc3QqHAoGU3RhdHVzEgYKAk9rEAASCgoG", 
-            "RmFpbGVkEAEyhQIKDlByb2R1Y3RTZXJ2aWNlEj4KA0FkZBIbLnByb2R1Y3Rz", 
-            "LkFkZFByb2R1Y3RSZXF1ZXN0GhgucHJvZHVjdHMuUmVzdWx0UmVzcG9uc2Ui", 
-            "ABI3CgZVcGRhdGUSES5wcm9kdWN0cy5Qcm9kdWN0GhgucHJvZHVjdHMuUmVz", 
-            "dWx0UmVzcG9uc2UiABI3CgZEZWxldGUSES5wcm9kdWN0cy5Qcm9kdWN0Ghgu", 
-            "cHJvZHVjdHMuUmVzdWx0UmVzcG9uc2UiABJBCgZHZXRBbGwSGS5wcm9kdWN0", 
-            "cy5Qcm9kdWN0c1JlcXVlc3QaGi5wcm9kdWN0cy5Qcm9kdWN0c1Jlc3BvbnNl", 
-            "IgBCPQoQaW8uZ3JwYy5leGFtcGxlc1oIcHJvZHVjdHOiAgNITFeqAhhHb29n", 
-            "bGUuUHJvdG9idWYucHJvZHVjdHNiBnByb3RvMw=="));
+            "YXR1cyIRCg9Qcm9kdWN0c1JlcXVlc3QiIgoUUmVtb3ZlUHJvZHVjdFJlcXVl", 
+            "c3QSCgoCSWQYASABKAMqHAoGU3RhdHVzEgYKAk9rEAASCgoGRmFpbGVkEAEy", 
+            "kgIKDlByb2R1Y3RTZXJ2aWNlEj4KA0FkZBIbLnByb2R1Y3RzLkFkZFByb2R1", 
+            "Y3RSZXF1ZXN0GhgucHJvZHVjdHMuUmVzdWx0UmVzcG9uc2UiABI3CgZVcGRh", 
+            "dGUSES5wcm9kdWN0cy5Qcm9kdWN0GhgucHJvZHVjdHMuUmVzdWx0UmVzcG9u", 
+            "c2UiABJECgZEZWxldGUSHi5wcm9kdWN0cy5SZW1vdmVQcm9kdWN0UmVxdWVz", 
+            "dBoYLnByb2R1Y3RzLlJlc3VsdFJlc3BvbnNlIgASQQoGR2V0QWxsEhkucHJv", 
+            "ZHVjdHMuUHJvZHVjdHNSZXF1ZXN0GhoucHJvZHVjdHMuUHJvZHVjdHNSZXNw", 
+            "b25zZSIAQj0KEGlvLmdycGMuZXhhbXBsZXNaCHByb2R1Y3RzogIDSExXqgIY", 
+            "R29vZ2xlLlByb3RvYnVmLnByb2R1Y3RzYgZwcm90bzM="));
       descriptor = pbr::FileDescriptor.InternalBuildGeneratedFileFrom(descriptorData,
           new pbr::FileDescriptor[] { },
           new pbr::GeneratedCodeInfo(new[] {typeof(global::Google.Protobuf.products.Status), }, new pbr::GeneratedCodeInfo[] {
@@ -44,7 +45,8 @@ namespace Google.Protobuf.products {
             new pbr::GeneratedCodeInfo(typeof(global::Google.Protobuf.products.AddProductRequest), new[]{ "Name", "Description", "Code", "Bitmap" }, null, null, null),
             new pbr::GeneratedCodeInfo(typeof(global::Google.Protobuf.products.ProductsResponse), new[]{ "Products" }, null, null, null),
             new pbr::GeneratedCodeInfo(typeof(global::Google.Protobuf.products.ResultResponse), new[]{ "Status" }, null, null, null),
-            new pbr::GeneratedCodeInfo(typeof(global::Google.Protobuf.products.ProductsRequest), null, null, null, null)
+            new pbr::GeneratedCodeInfo(typeof(global::Google.Protobuf.products.ProductsRequest), null, null, null, null),
+            new pbr::GeneratedCodeInfo(typeof(global::Google.Protobuf.products.RemoveProductRequest), new[]{ "Id" }, null, null, null)
           }));
     }
     #endregion
@@ -711,6 +713,108 @@ namespace Google.Protobuf.products {
           default:
             input.SkipLastField();
             break;
+        }
+      }
+    }
+
+  }
+
+  [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+  public sealed partial class RemoveProductRequest : pb::IMessage<RemoveProductRequest> {
+    private static readonly pb::MessageParser<RemoveProductRequest> _parser = new pb::MessageParser<RemoveProductRequest>(() => new RemoveProductRequest());
+    public static pb::MessageParser<RemoveProductRequest> Parser { get { return _parser; } }
+
+    public static pbr::MessageDescriptor Descriptor {
+      get { return global::Google.Protobuf.products.ProductContract.Descriptor.MessageTypes[5]; }
+    }
+
+    pbr::MessageDescriptor pb::IMessage.Descriptor {
+      get { return Descriptor; }
+    }
+
+    public RemoveProductRequest() {
+      OnConstruction();
+    }
+
+    partial void OnConstruction();
+
+    public RemoveProductRequest(RemoveProductRequest other) : this() {
+      id_ = other.id_;
+    }
+
+    public RemoveProductRequest Clone() {
+      return new RemoveProductRequest(this);
+    }
+
+    public const int IdFieldNumber = 1;
+    private long id_;
+    public long Id {
+      get { return id_; }
+      set {
+        id_ = value;
+      }
+    }
+
+    public override bool Equals(object other) {
+      return Equals(other as RemoveProductRequest);
+    }
+
+    public bool Equals(RemoveProductRequest other) {
+      if (ReferenceEquals(other, null)) {
+        return false;
+      }
+      if (ReferenceEquals(other, this)) {
+        return true;
+      }
+      if (Id != other.Id) return false;
+      return true;
+    }
+
+    public override int GetHashCode() {
+      int hash = 1;
+      if (Id != 0L) hash ^= Id.GetHashCode();
+      return hash;
+    }
+
+    public override string ToString() {
+      return pb::JsonFormatter.Default.Format(this);
+    }
+
+    public void WriteTo(pb::CodedOutputStream output) {
+      if (Id != 0L) {
+        output.WriteRawTag(8);
+        output.WriteInt64(Id);
+      }
+    }
+
+    public int CalculateSize() {
+      int size = 0;
+      if (Id != 0L) {
+        size += 1 + pb::CodedOutputStream.ComputeInt64Size(Id);
+      }
+      return size;
+    }
+
+    public void MergeFrom(RemoveProductRequest other) {
+      if (other == null) {
+        return;
+      }
+      if (other.Id != 0L) {
+        Id = other.Id;
+      }
+    }
+
+    public void MergeFrom(pb::CodedInputStream input) {
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+        switch(tag) {
+          default:
+            input.SkipLastField();
+            break;
+          case 8: {
+            Id = input.ReadInt64();
+            break;
+          }
         }
       }
     }

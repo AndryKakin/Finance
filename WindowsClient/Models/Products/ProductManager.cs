@@ -24,7 +24,7 @@ namespace Models.Products
                 Properties.Settings.Default.ServerPort);
         }
 
-        public void Add(Product productModel)
+        public async void Add(Product productModel)
         {
             Channel channel = new Channel(_addresses, Credentials.Insecure);
             
@@ -36,8 +36,25 @@ namespace Models.Products
                 Bitmap = ByteString.CopyFrom(productModel.Bitmap),
                 Code = "Test"
             };
-            var result = client.Add(request);
+
+            var result = await client.AddAsync(request);
             if(result.Status == Status.Failed)
+                throw new Exception();
+        }
+
+        public async void Remove(long productId)
+        {
+            Channel channel = new Channel(_addresses, Credentials.Insecure);
+
+            var client = ProductService.NewClient(channel);
+            var request = new RemoveProductRequest
+            {
+                Id = productId
+            };
+
+            var result = await client.DeleteAsync(request);
+
+            if (result.Status == Status.Failed)
                 throw new Exception();
         }
 

@@ -25,6 +25,7 @@
                 Command="{Binding AddProductCommand}"/>
         <Button Grid.Row="0"
                 Grid.Column="1"
+                Command="{Binding RemoveProductCommand}"
                 Content="Delete product"/>
         <Button Grid.Row="0"
                 Grid.Column="2"
@@ -36,13 +37,15 @@
         <ListBox Grid.Row="1" 
                  Grid.Column="0"
                  Grid.ColumnSpan="4"
+                 SelectedValue="{Binding SelectedProduct, Mode=TwoWay}"
                  ItemsSource="{Binding Products}">
             <ListBox.ItemTemplate>
                 <DataTemplate>
                     <StackPanel Orientation="Horizontal">
+                        <TextBlock Text="{Binding Id}"/>
                         <Image Height="32"
                                Width="32"
-                               Source="{Binding Image}"></Image>
+                               Source="{Binding Image}"/>
                         <TextBlock Text="{Binding Name}"/>
                     </StackPanel>
                 </DataTemplate>

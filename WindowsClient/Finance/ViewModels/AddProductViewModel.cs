@@ -18,12 +18,23 @@ namespace Finance.ViewModels
     {
         private ProductManager _productManager;
 
+        public EventHandler OnClose;
+
         [ImportingConstructor]
         public AddProductViewModel(ProductManager productManager)
         {
             _productManager = productManager;
             SaveCommand = new DelegateCommand(AddProduct);
             ChooseImageCommand = new DelegateCommand(ExecuteMethod);
+        }
+
+        private void CloseWindow()
+        {
+            var onClose = OnClose;
+            if (onClose != null)
+            {
+                onClose(this, new EventArgs());
+            }
         }
 
         private Byte[] BitmapBytes { get; set; }
@@ -37,9 +48,6 @@ namespace Finance.ViewModels
             fdlg.RestoreDirectory = true;
             if (fdlg.ShowDialog() == DialogResult.OK)
             {
-                //ImageSource imageSource = new BitmapImage(new Uri(fdlg.FileName));
-
-                //TempBitmap = imageSource;
                 using (var memStream = File.Open(fdlg.FileName, FileMode.Open))
                 {
                     Bitmap = new Bitmap(memStream);
@@ -81,17 +89,7 @@ namespace Finance.ViewModels
                 Bitmap = BitmapBytes
 
             });
-        }
-
-        Byte[] BitmapSource2ByteArray(BitmapSource source)
-        {
-            var encoder = new System.Windows.Media.Imaging.PngBitmapEncoder();
-            var frame = System.Windows.Media.Imaging.BitmapFrame.Create(source);
-            encoder.Frames.Add(frame);
-            var stream = new MemoryStream();
-
-            encoder.Save(stream);
-            return stream.ToArray();
+            CloseWindow();
         }
 
         public Bitmap Bitmap { get; set; }

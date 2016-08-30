@@ -14,7 +14,7 @@ import (
 )
 
 const (
-	port = ":50051"
+	port = ":50054"
 )
 
 var PurchaseStoreName = "Purchase"
@@ -73,11 +73,13 @@ func (s *server) GetAll(ctx context.Context, in *GetAllRequest) (*PurchasesRespo
 }
 
 func GoPurchasesService() {
+	fmt.Println("Purchase service starting...")
 	lis, err := net.Listen("tcp", port)
 	if err != nil {
 		log.Fatalf("failed to listen: %v", err)
 	}
 	s := grpc.NewServer()
-	RegisterPriceServiceServer(s, &server{})
+	RegisterPurchaseServiceServer(s, &server{})
 	s.Serve(lis)
+	fmt.Println("Purchase service started")
 }

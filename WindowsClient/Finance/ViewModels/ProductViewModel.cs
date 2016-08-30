@@ -33,5 +33,7 @@ namespace Finance.ViewModels
         }
 
         public ImageSource Image { get; }
+
+        public long Id { get { return _model.Id; } }
     }
 }

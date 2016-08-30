@@ -55,7 +55,7 @@ func (s *server) Delete(ctx context.Context, in *Price) (*ResultResponse, error)
 func (s *server) GetAll(ctx context.Context, in *GetAllRequest) (*PricesResponse, error) {
 	var result = "GetAll:" + time.Now().Format(time.UnixDate)
 	fmt.Println(result)
-	productStore := database.GetDbProductStore()
+	productStore := database.GetDbPriceStore()
 	prices := make([]*Price, 0)
 
 	productStore.ForEachDoc(func(id int, docContent []byte) (willMoveOn bool) {
@@ -65,7 +65,7 @@ func (s *server) GetAll(ctx context.Context, in *GetAllRequest) (*PricesResponse
 			panic(err)
 		}
 		prices = append(prices, &price)
-		fmt.Println("Id: %v Price: %v", price.Id, price.Price)
+		fmt.Println("Id: (%v) Price: (%v)", price.Id, price.Price)
 		return true  // move on to the next document OR
 		return false // do not move on to the next document
 	})
@@ -73,6 +73,7 @@ func (s *server) GetAll(ctx context.Context, in *GetAllRequest) (*PricesResponse
 }
 
 func GoPriceService() {
+	fmt.Println("Prices service starting...")
 	lis, err := net.Listen("tcp", port)
 	if err != nil {
 		log.Fatalf("failed to listen: %v", err)
@@ -80,4 +81,5 @@ func GoPriceService() {
 	s := grpc.NewServer()
 	RegisterPriceServiceServer(s, &server{})
 	s.Serve(lis)
+	fmt.Println("Prices service started")
 }

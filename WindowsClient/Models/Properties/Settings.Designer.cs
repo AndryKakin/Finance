@@ -34,7 +34,7 @@ namespace Models.Properties {
         
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("50051")]
+        [global::System.Configuration.DefaultSettingValueAttribute("50053")]
         public string ServerPort {
             get {
                 return ((string)(this["ServerPort"]));

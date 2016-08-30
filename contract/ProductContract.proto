@@ -39,9 +39,13 @@ message ProductsRequest {
 
 }
 
+message RemoveProductRequest {
+ int64 Id = 1;
+}
+
 service ProductService {
   rpc Add (AddProductRequest) returns (ResultResponse) {}
   rpc Update (Product) returns (ResultResponse) {}
-  rpc Delete (Product) returns (ResultResponse) {}
+  rpc Delete (RemoveProductRequest) returns (ResultResponse) {}
   rpc GetAll (ProductsRequest)  returns (ProductsResponse) {}
 }

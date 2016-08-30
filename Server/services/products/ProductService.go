@@ -13,7 +13,7 @@ import (
 )
 
 const (
-	port = ":50051"
+	port = ":50053"
 )
 
 type server struct{}
@@ -36,8 +36,15 @@ func (s *server) Update(ctx context.Context, in *Product) (*ResultResponse, erro
 	return &ResultResponse{Status: Status_Ok}, nil
 }
 
-func (s *server) Delete(ctx context.Context, in *Product) (*ResultResponse, error) {
-	fmt.Print("DeleteProduct: Id(%v) Time(%v) Name(%v)\n", in.Id, time.Now(), in.Name)
+func (s *server) Delete(ctx context.Context, in *RemoveProductRequest) (*ResultResponse, error) {
+	productStore := Products.GetDbProductStore()
+	err := productStore.Delete(int(in.Id))
+	if err != nil {
+		fmt.Print("DeleteProduct: Id %v  Time %v FAILED (%v)\n", in.Id, time.Now(), err.Error())
+		return &ResultResponse{Status: Status_Failed}, nil
+	}
+
+	fmt.Print("DeleteProduct: Id %v Time %v \n", in.Id, time.Now())
 	return &ResultResponse{Status: Status_Ok}, nil
 }
 
@@ -50,11 +57,12 @@ func (s *server) GetAll(ctx context.Context, in *ProductsRequest) (*ProductsResp
 	productStore.ForEachDoc(func(id int, docContent []byte) (willMoveOn bool) {
 		var product Product
 		err := json.Unmarshal(docContent, &product)
+		product.Id = int64(id)
 		if err != nil {
 			panic(err)
 		}
 		products = append(products, &product)
-		fmt.Println("Id: %v Name: %v", product.Id, product.Name)
+		fmt.Println("Id: %v Name: %v", id, product.Name)
 		return true  // move on to the next document OR
 		return false // do not move on to the next document
 	})

@@ -15,6 +15,7 @@ namespace Finance.ViewModels
     public class ProductEditViewModel : BindableBase
     {
         private readonly ProductManager _productManager;
+        private ProductViewModel _selectedProduct;
 
         [ImportingConstructor]
         public ProductEditViewModel(ProductManager productManager)
@@ -22,10 +23,38 @@ namespace Finance.ViewModels
             _productManager = productManager;
             LoadProductCommand = new DelegateCommand(LoadAllProducts);
             AddProductCommand = new DelegateCommand(AddProduct);
+            RemoveProductCommand = new DelegateCommand(RemoveProduct);
             Products = new ObservableCollection<ProductViewModel>();
         }
 
+        private bool CanRemoveProduct()
+        {
+            return SelectedProduct != null;
+        }
+
+        private void RemoveProduct()
+        {
+            var selectedProduct = SelectedProduct;
+            if (selectedProduct != null)
+            {
+                _productManager.Remove(selectedProduct.Id);
+            }
+        }
+
         public IEnumerable<ProductViewModel> Products { get; set; }
+
+        public ProductViewModel SelectedProduct
+        {
+            get { return _selectedProduct; }
+            set
+            {
+                if(_selectedProduct == value)
+                    return;
+
+                _selectedProduct = value;
+                OnPropertyChanged(() => SelectedProduct);
+            }
+        }
 
         private void AddProduct()
         {
@@ -35,6 +64,7 @@ namespace Finance.ViewModels
 
         private void LoadAllProducts()
         {
+            Products = new List<ProductViewModel>();
             Products = _productManager.GetAllProducts()
                 .Select(product => new ProductViewModel(product));
 
@@ -44,5 +74,8 @@ namespace Finance.ViewModels
         public ICommand LoadProductCommand { get; set; }
 
         public ICommand AddProductCommand { get; set; }
+
+        public ICommand RemoveProductCommand { get; set; }
+
     }
 }

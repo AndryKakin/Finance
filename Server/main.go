@@ -3,7 +3,9 @@ package main
 import (
 	"Finance/Server/database"
 	"Finance/Server/services/currencies"
+	"Finance/Server/services/prices"
 	"Finance/Server/services/products"
+	"Finance/Server/services/purchases"
 	"fmt"
 	"os"
 
@@ -52,7 +54,10 @@ func main() {
 
 	go products.GoProductService()
 	go currencies.GoCurrencyService()
+	go prices.GoPriceService()
+	go purchases.GoPurchasesService()
 
 	fmt.Println("Please enter to end...")
+
 	ExitIfUserEnterExit()
 }
