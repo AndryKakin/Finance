@@ -31,10 +31,11 @@ func GetDbPurchaseStore() *db.Col {
 type server struct{}
 
 func (s *server) Add(ctx context.Context, in *Purchase) (*ResultResponse, error) {
-	currencyStore := GetDbPurchaseStore()
-	docID, err := currencyStore.Insert(map[string]interface{}{
+	purchaseStore := GetDbPurchaseStore()
+	docID, err := purchaseStore.Insert(map[string]interface{}{
 		"FkCurrency": in.FkCurrency,
-		"Id":         in.Id})
+		"Id":         in.Id,
+		"DateTime":   in.DateTime})
 	if err != nil {
 		panic(err)
 	}

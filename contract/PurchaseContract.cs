@@ -21,23 +21,27 @@ namespace Google.Protobuf.purchases {
     static PurchaseContract() {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
-            "ChZQdXJjaGFzZUNvbnRyYWN0LnByb3RvEglwdXJjaGFzZXMiKgoIUHVyY2hh", 
-            "c2USCgoCSWQYASABKAMSEgoKRmtDdXJyZW5jeRgCIAEoAyI7ChFQdXJjaGFz", 
-            "ZXNSZXNwb25zZRImCglQdXJjaGFzZXMYASADKAsyEy5wdXJjaGFzZXMuUHVy", 
-            "Y2hhc2UiMwoOUmVzdWx0UmVzcG9uc2USIQoGU3RhdHVzGAEgASgOMhEucHVy", 
-            "Y2hhc2VzLlN0YXR1cyIPCg1HZXRBbGxSZXF1ZXN0KhwKBlN0YXR1cxIGCgJP", 
-            "axAAEgoKBkZhaWxlZBABMoYCCg9QdXJjaGFzZVNlcnZpY2USNwoDQWRkEhMu", 
-            "cHVyY2hhc2VzLlB1cmNoYXNlGhkucHVyY2hhc2VzLlJlc3VsdFJlc3BvbnNl", 
-            "IgASOgoGVXBkYXRlEhMucHVyY2hhc2VzLlB1cmNoYXNlGhkucHVyY2hhc2Vz", 
-            "LlJlc3VsdFJlc3BvbnNlIgASOgoGRGVsZXRlEhMucHVyY2hhc2VzLlB1cmNo", 
-            "YXNlGhkucHVyY2hhc2VzLlJlc3VsdFJlc3BvbnNlIgASQgoGR2V0QWxsEhgu", 
-            "cHVyY2hhc2VzLkdldEFsbFJlcXVlc3QaHC5wdXJjaGFzZXMuUHVyY2hhc2Vz", 
-            "UmVzcG9uc2UiAEI/ChBpby5ncnBjLmV4YW1wbGVzWglwdXJjaGFzZXOiAgNI", 
-            "TFeqAhlHb29nbGUuUHJvdG9idWYucHVyY2hhc2VzYgZwcm90bzM="));
+            "ChZQdXJjaGFzZUNvbnRyYWN0LnByb3RvEglwdXJjaGFzZXMiRAoLUHVjaGFz", 
+            "ZUl0ZW0SEwoLRmtQcm9kdWN0SWQYASABKAMSEQoJRnVsbFByaWNlGAIgASgC", 
+            "Eg0KBUNvdW50GAMgASgCImcKCFB1cmNoYXNlEgoKAklkGAEgASgDEhIKCkZr", 
+            "Q3VycmVuY3kYAiABKAMSEAoIRGF0ZVRpbWUYAyABKAkSKQoJUHVyY2hhc2Vz", 
+            "GAQgAygLMhYucHVyY2hhc2VzLlB1Y2hhc2VJdGVtIjsKEVB1cmNoYXNlc1Jl", 
+            "c3BvbnNlEiYKCVB1cmNoYXNlcxgBIAMoCzITLnB1cmNoYXNlcy5QdXJjaGFz", 
+            "ZSIzCg5SZXN1bHRSZXNwb25zZRIhCgZTdGF0dXMYASABKA4yES5wdXJjaGFz", 
+            "ZXMuU3RhdHVzIg8KDUdldEFsbFJlcXVlc3QqHAoGU3RhdHVzEgYKAk9rEAAS", 
+            "CgoGRmFpbGVkEAEyhgIKD1B1cmNoYXNlU2VydmljZRI3CgNBZGQSEy5wdXJj", 
+            "aGFzZXMuUHVyY2hhc2UaGS5wdXJjaGFzZXMuUmVzdWx0UmVzcG9uc2UiABI6", 
+            "CgZVcGRhdGUSEy5wdXJjaGFzZXMuUHVyY2hhc2UaGS5wdXJjaGFzZXMuUmVz", 
+            "dWx0UmVzcG9uc2UiABI6CgZEZWxldGUSEy5wdXJjaGFzZXMuUHVyY2hhc2Ua", 
+            "GS5wdXJjaGFzZXMuUmVzdWx0UmVzcG9uc2UiABJCCgZHZXRBbGwSGC5wdXJj", 
+            "aGFzZXMuR2V0QWxsUmVxdWVzdBocLnB1cmNoYXNlcy5QdXJjaGFzZXNSZXNw", 
+            "b25zZSIAQj8KEGlvLmdycGMuZXhhbXBsZXNaCXB1cmNoYXNlc6ICA0hMV6oC", 
+            "GUdvb2dsZS5Qcm90b2J1Zi5wdXJjaGFzZXNiBnByb3RvMw=="));
       descriptor = pbr::FileDescriptor.InternalBuildGeneratedFileFrom(descriptorData,
           new pbr::FileDescriptor[] { },
           new pbr::GeneratedCodeInfo(new[] {typeof(global::Google.Protobuf.purchases.Status), }, new pbr::GeneratedCodeInfo[] {
-            new pbr::GeneratedCodeInfo(typeof(global::Google.Protobuf.purchases.Purchase), new[]{ "Id", "FkCurrency" }, null, null, null),
+            new pbr::GeneratedCodeInfo(typeof(global::Google.Protobuf.purchases.PuchaseItem), new[]{ "FkProductId", "FullPrice", "Count" }, null, null, null),
+            new pbr::GeneratedCodeInfo(typeof(global::Google.Protobuf.purchases.Purchase), new[]{ "Id", "FkCurrency", "DateTime", "Purchases" }, null, null, null),
             new pbr::GeneratedCodeInfo(typeof(global::Google.Protobuf.purchases.PurchasesResponse), new[]{ "Purchases" }, null, null, null),
             new pbr::GeneratedCodeInfo(typeof(global::Google.Protobuf.purchases.ResultResponse), new[]{ "Status" }, null, null, null),
             new pbr::GeneratedCodeInfo(typeof(global::Google.Protobuf.purchases.GetAllRequest), null, null, null, null)
@@ -56,12 +60,166 @@ namespace Google.Protobuf.purchases {
 
   #region Messages
   [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+  public sealed partial class PuchaseItem : pb::IMessage<PuchaseItem> {
+    private static readonly pb::MessageParser<PuchaseItem> _parser = new pb::MessageParser<PuchaseItem>(() => new PuchaseItem());
+    public static pb::MessageParser<PuchaseItem> Parser { get { return _parser; } }
+
+    public static pbr::MessageDescriptor Descriptor {
+      get { return global::Google.Protobuf.purchases.PurchaseContract.Descriptor.MessageTypes[0]; }
+    }
+
+    pbr::MessageDescriptor pb::IMessage.Descriptor {
+      get { return Descriptor; }
+    }
+
+    public PuchaseItem() {
+      OnConstruction();
+    }
+
+    partial void OnConstruction();
+
+    public PuchaseItem(PuchaseItem other) : this() {
+      fkProductId_ = other.fkProductId_;
+      fullPrice_ = other.fullPrice_;
+      count_ = other.count_;
+    }
+
+    public PuchaseItem Clone() {
+      return new PuchaseItem(this);
+    }
+
+    public const int FkProductIdFieldNumber = 1;
+    private long fkProductId_;
+    public long FkProductId {
+      get { return fkProductId_; }
+      set {
+        fkProductId_ = value;
+      }
+    }
+
+    public const int FullPriceFieldNumber = 2;
+    private float fullPrice_;
+    public float FullPrice {
+      get { return fullPrice_; }
+      set {
+        fullPrice_ = value;
+      }
+    }
+
+    public const int CountFieldNumber = 3;
+    private float count_;
+    public float Count {
+      get { return count_; }
+      set {
+        count_ = value;
+      }
+    }
+
+    public override bool Equals(object other) {
+      return Equals(other as PuchaseItem);
+    }
+
+    public bool Equals(PuchaseItem other) {
+      if (ReferenceEquals(other, null)) {
+        return false;
+      }
+      if (ReferenceEquals(other, this)) {
+        return true;
+      }
+      if (FkProductId != other.FkProductId) return false;
+      if (FullPrice != other.FullPrice) return false;
+      if (Count != other.Count) return false;
+      return true;
+    }
+
+    public override int GetHashCode() {
+      int hash = 1;
+      if (FkProductId != 0L) hash ^= FkProductId.GetHashCode();
+      if (FullPrice != 0F) hash ^= FullPrice.GetHashCode();
+      if (Count != 0F) hash ^= Count.GetHashCode();
+      return hash;
+    }
+
+    public override string ToString() {
+      return pb::JsonFormatter.Default.Format(this);
+    }
+
+    public void WriteTo(pb::CodedOutputStream output) {
+      if (FkProductId != 0L) {
+        output.WriteRawTag(8);
+        output.WriteInt64(FkProductId);
+      }
+      if (FullPrice != 0F) {
+        output.WriteRawTag(21);
+        output.WriteFloat(FullPrice);
+      }
+      if (Count != 0F) {
+        output.WriteRawTag(29);
+        output.WriteFloat(Count);
+      }
+    }
+
+    public int CalculateSize() {
+      int size = 0;
+      if (FkProductId != 0L) {
+        size += 1 + pb::CodedOutputStream.ComputeInt64Size(FkProductId);
+      }
+      if (FullPrice != 0F) {
+        size += 1 + 4;
+      }
+      if (Count != 0F) {
+        size += 1 + 4;
+      }
+      return size;
+    }
+
+    public void MergeFrom(PuchaseItem other) {
+      if (other == null) {
+        return;
+      }
+      if (other.FkProductId != 0L) {
+        FkProductId = other.FkProductId;
+      }
+      if (other.FullPrice != 0F) {
+        FullPrice = other.FullPrice;
+      }
+      if (other.Count != 0F) {
+        Count = other.Count;
+      }
+    }
+
+    public void MergeFrom(pb::CodedInputStream input) {
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+        switch(tag) {
+          default:
+            input.SkipLastField();
+            break;
+          case 8: {
+            FkProductId = input.ReadInt64();
+            break;
+          }
+          case 21: {
+            FullPrice = input.ReadFloat();
+            break;
+          }
+          case 29: {
+            Count = input.ReadFloat();
+            break;
+          }
+        }
+      }
+    }
+
+  }
+
+  [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
   public sealed partial class Purchase : pb::IMessage<Purchase> {
     private static readonly pb::MessageParser<Purchase> _parser = new pb::MessageParser<Purchase>(() => new Purchase());
     public static pb::MessageParser<Purchase> Parser { get { return _parser; } }
 
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::Google.Protobuf.purchases.PurchaseContract.Descriptor.MessageTypes[0]; }
+      get { return global::Google.Protobuf.purchases.PurchaseContract.Descriptor.MessageTypes[1]; }
     }
 
     pbr::MessageDescriptor pb::IMessage.Descriptor {
@@ -77,6 +235,8 @@ namespace Google.Protobuf.purchases {
     public Purchase(Purchase other) : this() {
       id_ = other.id_;
       fkCurrency_ = other.fkCurrency_;
+      dateTime_ = other.dateTime_;
+      purchases_ = other.purchases_.Clone();
     }
 
     public Purchase Clone() {
@@ -101,6 +261,23 @@ namespace Google.Protobuf.purchases {
       }
     }
 
+    public const int DateTimeFieldNumber = 3;
+    private string dateTime_ = "";
+    public string DateTime {
+      get { return dateTime_; }
+      set {
+        dateTime_ = pb::Preconditions.CheckNotNull(value, "value");
+      }
+    }
+
+    public const int PurchasesFieldNumber = 4;
+    private static readonly pb::FieldCodec<global::Google.Protobuf.purchases.PuchaseItem> _repeated_purchases_codec
+        = pb::FieldCodec.ForMessage(34, global::Google.Protobuf.purchases.PuchaseItem.Parser);
+    private readonly pbc::RepeatedField<global::Google.Protobuf.purchases.PuchaseItem> purchases_ = new pbc::RepeatedField<global::Google.Protobuf.purchases.PuchaseItem>();
+    public pbc::RepeatedField<global::Google.Protobuf.purchases.PuchaseItem> Purchases {
+      get { return purchases_; }
+    }
+
     public override bool Equals(object other) {
       return Equals(other as Purchase);
     }
@@ -114,6 +291,8 @@ namespace Google.Protobuf.purchases {
       }
       if (Id != other.Id) return false;
       if (FkCurrency != other.FkCurrency) return false;
+      if (DateTime != other.DateTime) return false;
+      if(!purchases_.Equals(other.purchases_)) return false;
       return true;
     }
 
@@ -121,6 +300,8 @@ namespace Google.Protobuf.purchases {
       int hash = 1;
       if (Id != 0L) hash ^= Id.GetHashCode();
       if (FkCurrency != 0L) hash ^= FkCurrency.GetHashCode();
+      if (DateTime.Length != 0) hash ^= DateTime.GetHashCode();
+      hash ^= purchases_.GetHashCode();
       return hash;
     }
 
@@ -137,6 +318,11 @@ namespace Google.Protobuf.purchases {
         output.WriteRawTag(16);
         output.WriteInt64(FkCurrency);
       }
+      if (DateTime.Length != 0) {
+        output.WriteRawTag(26);
+        output.WriteString(DateTime);
+      }
+      purchases_.WriteTo(output, _repeated_purchases_codec);
     }
 
     public int CalculateSize() {
@@ -147,6 +333,10 @@ namespace Google.Protobuf.purchases {
       if (FkCurrency != 0L) {
         size += 1 + pb::CodedOutputStream.ComputeInt64Size(FkCurrency);
       }
+      if (DateTime.Length != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeStringSize(DateTime);
+      }
+      size += purchases_.CalculateSize(_repeated_purchases_codec);
       return size;
     }
 
@@ -160,6 +350,10 @@ namespace Google.Protobuf.purchases {
       if (other.FkCurrency != 0L) {
         FkCurrency = other.FkCurrency;
       }
+      if (other.DateTime.Length != 0) {
+        DateTime = other.DateTime;
+      }
+      purchases_.Add(other.purchases_);
     }
 
     public void MergeFrom(pb::CodedInputStream input) {
@@ -177,6 +371,14 @@ namespace Google.Protobuf.purchases {
             FkCurrency = input.ReadInt64();
             break;
           }
+          case 26: {
+            DateTime = input.ReadString();
+            break;
+          }
+          case 34: {
+            purchases_.AddEntriesFrom(input, _repeated_purchases_codec);
+            break;
+          }
         }
       }
     }
@@ -189,7 +391,7 @@ namespace Google.Protobuf.purchases {
     public static pb::MessageParser<PurchasesResponse> Parser { get { return _parser; } }
 
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::Google.Protobuf.purchases.PurchaseContract.Descriptor.MessageTypes[1]; }
+      get { return global::Google.Protobuf.purchases.PurchaseContract.Descriptor.MessageTypes[2]; }
     }
 
     pbr::MessageDescriptor pb::IMessage.Descriptor {
@@ -283,7 +485,7 @@ namespace Google.Protobuf.purchases {
     public static pb::MessageParser<ResultResponse> Parser { get { return _parser; } }
 
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::Google.Protobuf.purchases.PurchaseContract.Descriptor.MessageTypes[2]; }
+      get { return global::Google.Protobuf.purchases.PurchaseContract.Descriptor.MessageTypes[3]; }
     }
 
     pbr::MessageDescriptor pb::IMessage.Descriptor {
@@ -385,7 +587,7 @@ namespace Google.Protobuf.purchases {
     public static pb::MessageParser<GetAllRequest> Parser { get { return _parser; } }
 
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::Google.Protobuf.purchases.PurchaseContract.Descriptor.MessageTypes[3]; }
+      get { return global::Google.Protobuf.purchases.PurchaseContract.Descriptor.MessageTypes[4]; }
     }
 
     pbr::MessageDescriptor pb::IMessage.Descriptor {

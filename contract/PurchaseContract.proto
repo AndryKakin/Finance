@@ -12,10 +12,17 @@ enum Status {
     Failed = 1;
 }
 
+message PuchaseItem {
+  int64  FkProductId = 1;
+  float  FullPrice = 2;
+  float  Count = 3;
+}
+
 message Purchase {
   int64  Id = 1;
   int64  FkCurrency = 2;
-  
+  string DateTime = 3;
+  repeated PuchaseItem Purchases = 4;
 }
 
 message PurchasesResponse {
